@@ -1,0 +1,64 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-input/iron-input.html">
+<link rel="import" href="bower_components/firebase-element/firebase-collection.html">
+<link rel="import" href="bower_components/firebase-element/firebase-document.html">
+
+<dom-module id="proto-element">
+
+  <template>  
+    <p> <span>{{ owner }}</span>'s inner dom! </p>
+    <p> my property: <span>{{ myproperty }}</span></p>
+    <div>
+        <input is="iron-input" bind-value="{{ owner }}" placeholder="name here">
+    </div>
+    <div>
+        <input is="iron-input" bind-value="{{ myproperty }}" placeholder="myproperty here">
+    </div>
+
+    <firebase-collection
+      data="{{dinosaurs}}"
+      location="https://blistering-fire-7537.firebaseio.com/protelement">
+    </firebase-collection>
+    <p>Dino stuff: <span>{{ dinosaurs.notesdemo }}</span></p>
+    <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+      <h4>[[dinosaur.__firebaseKey__]]</h4>
+      <span>Height: </span><span>[[dinosaur.body]]</span>
+    </template>
+
+    <firebase-document
+      data="{{protoElement}}"
+      location="https://blistering-fire-7537.firebaseio.com/">
+    </firebase-document>
+
+    <p>Proto Element stuff: <span>{{ protoElement.notesdemo }}</span></p>
+
+    <div>
+    <content></content>
+    </div>
+  </template>
+
+  <script>
+    // register a new element called proto-element
+    Polymer({
+      is: "proto-element",
+      // add a callback to the element's prototype
+      ready: function() {
+        // this.innerHTML = "I'm a proto-element. Check out my prototype!"
+        console.log('Polymer ready!');
+        this.owner = "Yufeng";
+      },
+      properties: {
+        myproperty: {
+          type: String,
+          value: "default declared property value"
+        },
+/*
+        protoElement:  {
+          value: "this is a value"
+        },
+*/
+      }
+    });
+  </script>
+
+</dom-module>
