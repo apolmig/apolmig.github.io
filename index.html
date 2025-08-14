@@ -32,7 +32,7 @@
 
   <style>
     :root {
-      --accent: #ff6600; /* Naranja tech */
+      --accent: #ff6600;
       --bg: #ffffff;
       --text: #111111;
       --subtext: #555555;
@@ -55,6 +55,14 @@
       color: var(--text);
       overflow-x: hidden;
       transition: background 0.3s, color 0.3s;
+    }
+    canvas#bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
     .container {
       max-width: 1100px;
@@ -160,21 +168,14 @@
     footer a:hover {
       color: var(--text);
     }
-    /* Animaciones */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes fadeUp {
-      to { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeUp { to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
 <body>
+
+<canvas id="bg-animation"></canvas>
 
 <div class="container">
   <h1>Miguel Guerrero</h1>
@@ -212,6 +213,146 @@
     <a href="https://twitter.com/apolmig">Twitter</a>
   </footer>
 </div>
+
+<!-- Animación Three.js con Bloom -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
+<script>
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if (!isMobile) {
+    const canvas = document.getElementById('bg-animation');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const composer = new THREE.EffectComposer(renderer);
+    composer.addPass(new THREE.RenderPass(scene, camera));
+    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.8, 0.6, 0.85);
+    composer.addPass(bloomPass);
+
+    function createGradientMaterial(color1, color2) {
+      const size = 128;
+      const data = new Uint8Array(size * size * 3);
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const dx = x - size / 2;
+          const dy = y - size / 2;
+          const dist = Math.sqrt(dx * dx + dy * dy) / (size / 2);
+          const t = Math.min(1, dist);
+          const r = Math.floor(color1.r * 255 * (1 - t) + color2.r * 255 * t);
+          const g = Math.floor(color1.g * 255 * (1 - t) + color2.g * 255 * t);
+          const b = Math.floor(color1.b * 255 * (1 - t) + color2.b * 255 * t);
+          const index = (y * size + x) * 3;
+          data[index] = r;
+          data[index + 1] = g;
+          data[index + 2] = b;
+        }
+      }
+      const texture = new THREE.DataTexture(data, size, size, THREE.RGBFormat);
+      texture.needsUpdate = true;
+      return new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+    }
+
+    const colorInner = new THREE.Color(0xffa64d);
+    const colorOuter = new THREE.Color(0x331a00);
+    const gradientMaterial = createGradientMaterial(colorInner, colorOuter);
+
+    const nodes = [];
+    for (let i = 0; i < 20; i++) {
+      const node = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), gradientMaterial.clone());
+      node.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
+      scene.add(node);
+      nodes.push(node);
+    }
+
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 0xaaaaaa, opacity: 0.4, transparent: true });
+    const connections = [];
+    nodes.forEach((a, i) => {
+      nodes.forEach((b, j) => {
+        if (i < j && Math.random() > 0.7) {
+          const geometry = new THREE.BufferGeometry().setFromPoints([a.position, b.position]);
+          const line = new THREE.Line(geometry, lineMaterial);
+          scene.add(line);
+          connections.push({ line, a, b });
+        }
+      });
+    });
+
+    const particles = [];
+    const particleMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 });
+    connections.forEach(conn => {
+      for (let i = 0; i < 2; i++) {
+        const speed = 0.002 + Math.random() * 0.002;
+        const length = 0.05 + speed * 15;
+        const geometry = new THREE.CylinderGeometry(0.005, 0.005, length, 6);
+        geometry.rotateX(Math.PI / 2);
+        const particle = new THREE.Mesh(geometry, particleMaterial.clone());
+        particle.userData.start = conn.a.position.clone();
+        particle.userData.end = conn.b.position.clone();
+        particle.userData.progress = Math.random();
+        particle.userData.speed = speed;
+        scene.add(particle);
+        particles.push(particle);
+      }
+    });
+
+    camera.position.z = 5;
+    let targetX = 0, targetY = 0;
+    document.addEventListener('mousemove', (event) => {
+      targetX = (event.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    let isActive = true;
+    document.addEventListener('visibilitychange', () => { isActive = !document.hidden; });
+
+    function animate(time) {
+      requestAnimationFrame(animate);
+      if (!isActive) return;
+
+      scene.rotation.y += 0.02 * (targetX - scene.rotation.y);
+      scene.rotation.x += 0.02 * (targetY - scene.rotation.x);
+
+      const pulse = 1 + 0.3 * Math.sin(time * 0.005);
+      nodes.forEach(node => {
+        const dist = node.position.length();
+        if (dist < 1.5) {
+          node.scale.set(pulse, pulse, pulse);
+          const hueShift = (Math.sin(time * 0.002) + 1) / 2 * 0.1;
+          node.material.color.setHSL(0.08 + hueShift, 1, 0.5);
+        } else {
+          node.scale.set(1, 1, 1);
+          node.material.color.setHSL(0.08, 1, 0.5);
+        }
+      });
+
+      particles.forEach(p => {
+        p.userData.progress += p.userData.speed;
+        if (p.userData.progress > 1) p.userData.progress = 0;
+        const pos = new THREE.Vector3().lerpVectors(p.userData.start, p.userData.end, p.userData.progress);
+        p.position.copy(pos);
+        const dir = new THREE.Vector3().subVectors(p.userData.end, p.userData.start).normalize();
+        const axis = new THREE.Vector3(0, 1, 0);
+        const quaternion = new THREE.Quaternion().setFromUnitVectors(axis, dir.clone().normalize());
+        p.quaternion.copy(quaternion);
+      });
+
+      composer.render();
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      composer.setSize(window.innerWidth, window.innerHeight);
+    });
+  }
+</script>
 
 </body>
 </html>
