@@ -79,6 +79,7 @@
       margin: 0;
       color: var(--accent);
       animation: slideDown 0.8s ease-in-out;
+      cursor: pointer;
     }
     h2 {
       font-size: 1.5rem;
@@ -172,7 +173,6 @@
     @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     @keyframes fadeUp { to { transform: translateY(0); opacity: 1; } }
 
-    /* Ajustes responsive */
     @media (max-width: 768px) {
       .container {
         height: auto;
@@ -209,7 +209,7 @@
 <canvas id="bg-animation"></canvas>
 
 <div class="container">
-  <h1>Miguel Guerrero</h1>
+  <h1 id="title">Miguel Guerrero</h1>
   <h2>Estrategia + IA + Impacto Social</h2>
   <p>
     Lidero proyectos de Inteligencia Artificial en el sector público y privado, conectando visión estratégica, 
@@ -245,7 +245,7 @@
   </footer>
 </div>
 
-<!-- Three.js animation with glow and particles -->
+<!-- Three.js animation -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
@@ -259,66 +259,71 @@
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // Bloom composer
+    // Bloom
     const composer = new THREE.EffectComposer(renderer);
-    const renderPass = new THREE.RenderPass(scene, camera);
-    composer.addPass(renderPass);
-    const bloomPass = new THREE.UnrealBloomPass(
-      new THREE.Vector2(window.innerWidth, window.innerHeight),
-      1.5, 0.4, 0.85
-    );
-    bloomPass.threshold = 0;
-    bloomPass.strength = 1.2;
-    bloomPass.radius = 0.6;
+    composer.addPass(new THREE.RenderPass(scene, camera));
+    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.2, 0.4, 0.85);
     composer.addPass(bloomPass);
 
-    // Nodes
     const nodes = [];
-    const nodeGeometry = new THREE.SphereGeometry(0.06, 16, 16);
     const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff6600 });
     for (let i = 0; i < 20; i++) {
-      const node = new THREE.Mesh(nodeGeometry, nodeMaterial.clone());
+      const node = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), nodeMaterial.clone());
       node.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
       scene.add(node);
       nodes.push(node);
     }
 
-    // Connections
     const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.3, transparent: true });
     const connections = [];
     nodes.forEach((a, i) => {
       nodes.forEach((b, j) => {
         if (i < j && Math.random() > 0.7) {
+          const dist = a.position.distanceTo(b.position);
           const geometry = new THREE.BufferGeometry().setFromPoints([a.position, b.position]);
-          const line = new THREE.Line(geometry, lineMaterial);
-          scene.add(line);
-          // Particle along line
-          const particleGeo = new THREE.SphereGeometry(0.015, 8, 8);
-          const particleMat = new THREE.MeshBasicMaterial({ color: 0xff6600 });
-          const particle = new THREE.Mesh(particleGeo, particleMat);
+          scene.add(new THREE.Line(geometry, lineMaterial));
+
+          const particle = new THREE.Mesh(new THREE.SphereGeometry(0.015, 8, 8), new THREE.MeshBasicMaterial({ color: 0xff6600 }));
           scene.add(particle);
-          connections.push({ a, b, particle, t: Math.random() });
+          connections.push({ a, b, particle, t: Math.random(), speed: 0.001 + (1/dist)*0.0005 });
         }
       });
     });
 
     camera.position.z = 5;
+    let networkSpeed = 1;
 
     function animate() {
       requestAnimationFrame(animate);
-      scene.rotation.y += 0.0015;
+      scene.rotation.y += 0.0015 * networkSpeed;
+      const time = Date.now() * 0.002;
 
-      // Move particles
       connections.forEach(conn => {
-        conn.t += 0.002;
+        conn.t += conn.speed * networkSpeed;
         if (conn.t > 1) conn.t = 0;
         const pos = new THREE.Vector3().lerpVectors(conn.a.position, conn.b.position, conn.t);
         conn.particle.position.copy(pos);
+
+        // Color oscillation
+        const color = new THREE.Color().setHSL((time % 360) / 360, 1, 0.5);
+        conn.particle.material.color.copy(color);
       });
 
       composer.render();
     }
     animate();
+
+    // Hover effect
+    document.getElementById("title").addEventListener("mouseenter", () => {
+      bloomPass.strength = 2;
+      networkSpeed = 2;
+      lineMaterial.opacity = 0.6;
+    });
+    document.getElementById("title").addEventListener("mouseleave", () => {
+      bloomPass.strength = 1.2;
+      networkSpeed = 1;
+      lineMaterial.opacity = 0.3;
+    });
 
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth/window.innerHeight;
