@@ -13,8 +13,8 @@
   <meta property="og:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://apolmig.github.io" />
-  <meta property="og:image" content="https://apolmig.github.io/preview.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image" content="https://apolmig.github.io/preview_abstract3.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Miguel Guerrero – Estrategia + IA + Impacto" />
   <meta name="twitter:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
-  <meta name="twitter:image" content="https://apolmig.github.io/preview.jpg" />
+  <meta name="twitter:image" content="https://apolmig.github.io/preview_abstract3.png" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -32,7 +32,7 @@
 
   <style>
     :root {
-      --accent: #ff6600;
+      --accent: #ff6600; /* Naranja tech */
       --bg: #ffffff;
       --text: #111111;
       --subtext: #555555;
@@ -55,14 +55,16 @@
       color: var(--text);
       overflow-x: hidden;
       transition: background 0.3s, color 0.3s;
+      position: relative;
     }
     canvas#bg-animation {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -1;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      filter: blur(2px) opacity(0.6);
     }
     .container {
       max-width: 1100px;
@@ -214,12 +216,9 @@
   </footer>
 </div>
 
-<!-- Animación Three.js con Bloom -->
+<!-- Three.js -->
+<!-- Parte del script Three.js actualizada -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-
 <script>
   const isMobile = /Mobi|Android/i.test(navigator.userAgent);
   if (!isMobile) {
@@ -229,46 +228,18 @@
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    const composer = new THREE.EffectComposer(renderer);
-    composer.addPass(new THREE.RenderPass(scene, camera));
-    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.8, 0.6, 0.85);
-    composer.addPass(bloomPass);
-
-    function createGradientMaterial(color1, color2) {
-      const size = 128;
-      const data = new Uint8Array(size * size * 3);
-      for (let y = 0; y < size; y++) {
-        for (let x = 0; x < size; x++) {
-          const dx = x - size / 2;
-          const dy = y - size / 2;
-          const dist = Math.sqrt(dx * dx + dy * dy) / (size / 2);
-          const t = Math.min(1, dist);
-          const r = Math.floor(color1.r * 255 * (1 - t) + color2.r * 255 * t);
-          const g = Math.floor(color1.g * 255 * (1 - t) + color2.g * 255 * t);
-          const b = Math.floor(color1.b * 255 * (1 - t) + color2.b * 255 * t);
-          const index = (y * size + x) * 3;
-          data[index] = r;
-          data[index + 1] = g;
-          data[index + 2] = b;
-        }
-      }
-      const texture = new THREE.DataTexture(data, size, size, THREE.RGBFormat);
-      texture.needsUpdate = true;
-      return new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-    }
-
-    const colorInner = new THREE.Color(0xffa64d);
-    const colorOuter = new THREE.Color(0x331a00);
-    const gradientMaterial = createGradientMaterial(colorInner, colorOuter);
-
+    // Nodos
     const nodes = [];
+    const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff6600 });
     for (let i = 0; i < 20; i++) {
-      const node = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), gradientMaterial.clone());
+      const node = new THREE.Mesh(new THREE.SphereGeometry(0.05, 8, 8), nodeMaterial.clone());
       node.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
+      node.userData.baseColor = 0xff6600;
       scene.add(node);
       nodes.push(node);
     }
 
+    // Líneas
     const lineMaterial = new THREE.LineBasicMaterial({ color: 0xaaaaaa, opacity: 0.4, transparent: true });
     const connections = [];
     nodes.forEach((a, i) => {
@@ -282,66 +253,41 @@
       });
     });
 
-    const particles = [];
-    const particleMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 });
-    connections.forEach(conn => {
-      for (let i = 0; i < 2; i++) {
-        const speed = 0.002 + Math.random() * 0.002;
-        const length = 0.05 + speed * 15;
-        const geometry = new THREE.CylinderGeometry(0.005, 0.005, length, 6);
-        geometry.rotateX(Math.PI / 2);
-        const particle = new THREE.Mesh(geometry, particleMaterial.clone());
-        particle.userData.start = conn.a.position.clone();
-        particle.userData.end = conn.b.position.clone();
-        particle.userData.progress = Math.random();
-        particle.userData.speed = speed;
-        scene.add(particle);
-        particles.push(particle);
-      }
-    });
-
     camera.position.z = 5;
+
+    // Interacción ratón
     let targetX = 0, targetY = 0;
     document.addEventListener('mousemove', (event) => {
       targetX = (event.clientX / window.innerWidth - 0.5) * 2;
       targetY = (event.clientY / window.innerHeight - 0.5) * 2;
     });
 
-    let isActive = true;
-    document.addEventListener('visibilitychange', () => { isActive = !document.hidden; });
-
     function animate(time) {
       requestAnimationFrame(animate);
-      if (!isActive) return;
 
+      // Rotación hacia el ratón
       scene.rotation.y += 0.02 * (targetX - scene.rotation.y);
       scene.rotation.x += 0.02 * (targetY - scene.rotation.x);
 
+      // Pulso luminoso nodos activos
       const pulse = 1 + 0.3 * Math.sin(time * 0.005);
       nodes.forEach(node => {
         const dist = node.position.length();
         if (dist < 1.5) {
           node.scale.set(pulse, pulse, pulse);
-          const hueShift = (Math.sin(time * 0.002) + 1) / 2 * 0.1;
-          node.material.color.setHSL(0.08 + hueShift, 1, 0.5);
+          node.material.color.setHex(0xff9933); // Más brillante
         } else {
           node.scale.set(1, 1, 1);
-          node.material.color.setHSL(0.08, 1, 0.5);
+          node.material.color.setHex(node.userData.baseColor);
         }
       });
 
-      particles.forEach(p => {
-        p.userData.progress += p.userData.speed;
-        if (p.userData.progress > 1) p.userData.progress = 0;
-        const pos = new THREE.Vector3().lerpVectors(p.userData.start, p.userData.end, p.userData.progress);
-        p.position.copy(pos);
-        const dir = new THREE.Vector3().subVectors(p.userData.end, p.userData.start).normalize();
-        const axis = new THREE.Vector3(0, 1, 0);
-        const quaternion = new THREE.Quaternion().setFromUnitVectors(axis, dir.clone().normalize());
-        p.quaternion.copy(quaternion);
+      // Actualizar líneas
+      connections.forEach(conn => {
+        conn.line.geometry.setFromPoints([conn.a.position, conn.b.position]);
       });
 
-      composer.render();
+      renderer.render(scene, camera);
     }
     animate();
 
@@ -349,10 +295,10 @@
       camera.aspect = window.innerWidth/window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-      composer.setSize(window.innerWidth, window.innerHeight);
     });
   }
 </script>
+
 
 </body>
 </html>
