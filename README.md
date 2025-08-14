@@ -1,6 +1,6 @@
 # 🌐 Miguel Guerrero – Estrategia + IA + Impacto Social
 
-![Preview](preview.png)
+![Preview](preview.jpg)
 
 Landing personal minimalista y responsive.  
 Incluye modo **claro/oscuro automático**, animaciones sutiles y estilo **premium tech** con acento azul eléctrico.
