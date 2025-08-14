@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Meta básicos -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Miguel Guerrero – Estrategia + IA + Impacto</title>
@@ -24,10 +23,7 @@
   <meta name="twitter:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
   <meta name="twitter:image" content="https://apolmig.github.io/preview.jpg" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -41,6 +37,7 @@
     }
     @media (prefers-color-scheme: dark) {
       :root {
+        --accent: #00ccff;
         --bg: #0a0a0a;
         --text: #f5f5f5;
         --subtext: #cccccc;
@@ -142,7 +139,6 @@
       color: var(--bg);
     }
     .primary:hover {
-      background: #cc5200;
       transform: scale(1.05);
     }
     .secondary {
@@ -218,18 +214,9 @@
   </p>
 
   <div class="highlights">
-    <div class="highlight">
-      <h3>AI Governance</h3>
-      <p>Estrategias nacionales y soberanía tecnológica.</p>
-    </div>
-    <div class="highlight">
-      <h3>Educación & Comunidad</h3>
-      <p>Fundador de Saturdays.AI, DAWIA y otros: IA para todos.</p>
-    </div>
-    <div class="highlight">
-      <h3>Innovación & Negocio</h3>
-      <p>Desarrollo de productos y servicios de IA de alto impacto.</p>
-    </div>
+    <div class="highlight"><h3>AI Governance</h3><p>Estrategias nacionales y soberanía tecnológica.</p></div>
+    <div class="highlight"><h3>Educación & Comunidad</h3><p>Fundador de Saturdays.AI, DAWIA y otros: IA para todos.</p></div>
+    <div class="highlight"><h3>Innovación & Negocio</h3><p>Desarrollo de productos y servicios de IA de alto impacto.</p></div>
   </div>
 
   <div class="cta">
@@ -245,12 +232,15 @@
   </footer>
 </div>
 
-<!-- Three.js animation -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
 <script>
+  const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const mainColor = new THREE.Color(darkMode ? 0x00ccff : 0xff6600);
+  const secondaryColor = new THREE.Color(darkMode ? 0xaa66ff : 0x00ccff);
+
   const isMobile = /Mobi|Android/i.test(navigator.userAgent);
   if (!isMobile) {
     const canvas = document.getElementById('bg-animation');
@@ -259,22 +249,20 @@
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // Bloom
     const composer = new THREE.EffectComposer(renderer);
     composer.addPass(new THREE.RenderPass(scene, camera));
-    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.2, 0.4, 0.85);
+    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), darkMode ? 1.0 : 1.2, 0.4, 0.85);
     composer.addPass(bloomPass);
 
     const nodes = [];
-    const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff6600 });
     for (let i = 0; i < 20; i++) {
-      const node = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), nodeMaterial.clone());
+      const node = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), new THREE.MeshBasicMaterial({ color: mainColor }));
       node.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
       scene.add(node);
       nodes.push(node);
     }
 
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.3, transparent: true });
+    const lineMaterial = new THREE.LineBasicMaterial({ color: darkMode ? 0xffffff : 0x444444, opacity: 0.3, transparent: true });
     const connections = [];
     nodes.forEach((a, i) => {
       nodes.forEach((b, j) => {
@@ -282,8 +270,7 @@
           const dist = a.position.distanceTo(b.position);
           const geometry = new THREE.BufferGeometry().setFromPoints([a.position, b.position]);
           scene.add(new THREE.Line(geometry, lineMaterial));
-
-          const particle = new THREE.Mesh(new THREE.SphereGeometry(0.015, 8, 8), new THREE.MeshBasicMaterial({ color: 0xff6600 }));
+          const particle = new THREE.Mesh(new THREE.SphereGeometry(0.015, 8, 8), new THREE.MeshBasicMaterial({ color: mainColor }));
           scene.add(particle);
           connections.push({ a, b, particle, t: Math.random(), speed: 0.001 + (1/dist)*0.0005 });
         }
@@ -297,30 +284,24 @@
       requestAnimationFrame(animate);
       scene.rotation.y += 0.0015 * networkSpeed;
       const time = Date.now() * 0.002;
-
       connections.forEach(conn => {
         conn.t += conn.speed * networkSpeed;
         if (conn.t > 1) conn.t = 0;
         const pos = new THREE.Vector3().lerpVectors(conn.a.position, conn.b.position, conn.t);
         conn.particle.position.copy(pos);
-
-        // Color oscillation
-        const color = new THREE.Color().setHSL((time % 360) / 360, 1, 0.5);
-        conn.particle.material.color.copy(color);
+        conn.particle.material.color.lerpColors(mainColor, secondaryColor, (Math.sin(time + conn.t*10) + 1) / 2);
       });
-
       composer.render();
     }
     animate();
 
-    // Hover effect
     document.getElementById("title").addEventListener("mouseenter", () => {
-      bloomPass.strength = 2;
+      bloomPass.strength = darkMode ? 1.5 : 2;
       networkSpeed = 2;
       lineMaterial.opacity = 0.6;
     });
     document.getElementById("title").addEventListener("mouseleave", () => {
-      bloomPass.strength = 1.2;
+      bloomPass.strength = darkMode ? 1.0 : 1.2;
       networkSpeed = 1;
       lineMaterial.opacity = 0.3;
     });
