@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
   <!-- Meta básicos -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Miguel Guerrero – Estrategia + IA + Impacto</title>
-  <meta name="description" content="Miguel Guerrero – Estrategia, IA y proyectos de alto impacto en el sector público y privado. AI Governance, Innovación y Educación." />
+  <title id="page-title">Miguel Guerrero – Candidato a Director de IA | CAIO</title>
+  <meta name="description" id="page-description" content="Miguel Guerrero – Candidato ideal para Director de IA/CAIO. Experiencia en La Moncloa + formación ejecutiva en MIT, Yonsei, Stanford. Perfil híbrido técnico-estratégico." />
   <meta name="author" content="Miguel Guerrero" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Miguel Guerrero – Estrategia + IA + Impacto" />
-  <meta property="og:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
+  <meta property="og:title" content="Miguel Guerrero – Candidato a Director de IA | CAIO" />
+  <meta property="og:description" content="Candidato ideal para Director de IA/CAIO. Experiencia práctica en gobierno + formación ejecutiva de élite + visión estratégica." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://apolmig.github.io" />
   <meta property="og:image" content="https://apolmig.github.io/preview.jpg" />
@@ -20,8 +20,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Miguel Guerrero – Estrategia + IA + Impacto" />
-  <meta name="twitter:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
+  <meta name="twitter:title" content="Miguel Guerrero – Candidato a Director de IA | CAIO" />
+  <meta name="twitter:description" content="Candidato ideal para Director de IA/CAIO. Experiencia práctica en gobierno + formación ejecutiva de élite + visión estratégica." />
   <meta name="twitter:image" content="https://apolmig.github.io/preview.jpg" />
 
   <!-- Favicon -->
@@ -35,7 +35,7 @@
     gtag('js', new Date());
     // Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID
     gtag('config', 'GA_MEASUREMENT_ID', {
-      page_title: 'Miguel Guerrero - AI Strategy Portfolio',
+      page_title: 'Miguel Guerrero - Portafolio de Estrategia en IA',
       page_location: window.location.href,
       send_page_view: true
     });
@@ -61,8 +61,8 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Miguel Guerrero",
-    "jobTitle": "AI Strategy & Governance Expert",
-    "description": "Líder en proyectos de Inteligencia Artificial en el sector público y privado, especializado en AI Governance, Innovación y Educación.",
+    "jobTitle": "Candidato a Director de IA | Chief AI Officer",
+    "description": "Candidato ideal para Director de IA/CAIO con experiencia práctica en La Moncloa y formación ejecutiva en MIT, Yonsei y Stanford. Perfil híbrido que combina profundidad técnica con visión estratégica empresarial.",
     "url": "https://apolmig.github.io",
     "image": "https://apolmig.github.io/preview.jpg",
     "email": "miguel@saturdays.ai",
@@ -72,12 +72,12 @@
       "https://twitter.com/apolmig"
     ],
     "knowsAbout": [
-      "Artificial Intelligence",
-      "AI Governance",
-      "Innovation Strategy",
-      "Social Impact",
-      "Education Technology",
-      "Strategic Consulting"
+      "Inteligencia Artificial",
+      "Gobernanza de IA",
+      "Estrategia de Innovación",
+      "Impacto Social",
+      "Tecnología Educativa",
+      "Consultoría Estratégica"
     ],
     "affiliation": [
       {
@@ -86,9 +86,29 @@
         "url": "https://saturdays.ai"
       }
     ],
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Various prestigious institutions"
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "MIT"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Yonsei University"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Stanford University"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "The Wharton School"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barcelona",
+      "addressRegion": "Catalonia",
+      "addressCountry": "Spain"
     }
   }
   </script>
@@ -159,6 +179,36 @@
       min-height: 100dvh; /* mejor que 100vh en móvil */
       animation: fadeIn 1.2s ease-in-out;
     }
+    
+    /* Profile Image Styles */
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .hero-image {
+      flex: 0 0 auto;
+      text-align: center;
+    }
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1.8s ease-in-out;
+    }
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
     h1 {
       font-size: 3rem;
       margin: 0;
@@ -198,7 +248,63 @@
       padding: 16px;
       border-radius: 10px;
       border: 1px solid var(--border);
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,102,0,0.03) 0%, transparent 50%);
+      animation: highlightRotate 8s linear infinite;
+      pointer-events: none;
+    }
+    .highlight:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255,102,0,0.15);
+      border-color: rgba(255,102,0,0.3);
+    }
+    .highlight:hover::before {
+      background: radial-gradient(circle, rgba(255,102,0,0.08) 0%, transparent 50%);
+    }
+    @keyframes highlightRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .highlight-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2));
+      animation: iconFloat 4s ease-in-out infinite, iconGlow 2s ease-in-out infinite alternate;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+    .highlight-icon:hover {
+      transform: scale(1.3) rotate(15deg);
+      filter: drop-shadow(8px 8px 20px rgba(255,102,0,0.6)) drop-shadow(0 0 30px rgba(255,102,0,0.3));
+      animation-play-state: paused;
+    }
+    .highlight-icon:active {
+      transform: scale(1.1) rotate(5deg);
+      transition: all 0.1s ease;
+    }
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-12px) rotate(8deg); }
+      50% { transform: translateY(-6px) rotate(-5deg); }
+      75% { transform: translateY(-10px) rotate(3deg); }
+    }
+    @keyframes iconGlow {
+      0% { filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2)) brightness(1); }
+      100% { filter: drop-shadow(6px 6px 12px rgba(255,102,0,0.3)) brightness(1.1); }
     }
     .highlight:nth-child(1) { animation-delay: .35s; }
     .highlight:nth-child(2) { animation-delay: .5s; }
@@ -228,19 +334,60 @@
     .primary {
       background: var(--accent);
       color: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+      transition: left 0.6s ease;
     }
     .primary:hover {
-      transform: translateY(-1px) scale(1.03);
-      filter: saturate(1.1);
+      transform: translateY(-2px) scale(1.05);
+      filter: saturate(1.2) brightness(1.1);
+      box-shadow: 0 8px 25px rgba(255,102,0,0.4);
+    }
+    .primary:hover::before {
+      left: 100%;
+    }
+    .primary:active {
+      transform: translateY(0) scale(1.02);
+      transition: all 0.1s ease;
     }
     .secondary {
       border: 1px solid var(--accent);
       color: var(--accent);
       background: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .secondary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.4s ease;
+      z-index: -1;
     }
     .secondary:hover {
-      background: color-mix(in srgb, var(--accent) 12%, transparent);
-      transform: translateY(-1px) scale(1.03);
+      color: var(--bg);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(255,102,0,0.3);
+    }
+    .secondary:hover::before {
+      width: 100%;
+    }
+    .secondary:active {
+      transform: translateY(0) scale(1.02);
+      transition: all 0.1s ease;
     }
 
     footer {
@@ -333,6 +480,33 @@
       gap: 12px;
     }
     
+    /* Language toggle */
+    .lang-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .lang-toggle:hover {
+      background: var(--card-bg);
+      transform: scale(1.05);
+    }
+    .lang-flag {
+      font-size: 1rem;
+    }
+    .lang-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
     /* Theme toggle */
     .theme-toggle {
       background: none;
@@ -388,6 +562,154 @@
       opacity: 0;
       transform: translateX(-20px);
       animation: slideInLeft 0.6s ease forwards;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .timeline-item:hover {
+      transform: translateX(5px);
+    }
+    .timeline-item:hover .timeline-content {
+      background: color-mix(in srgb, var(--accent) 8%, var(--card-bg));
+      border-color: rgba(255,102,0,0.3);
+    }
+    .timeline-item:hover::before {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 6px rgba(255,102,0,0.2);
+    }
+    .timeline-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .ai-visualization {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(255,102,0,0.05) 0%, rgba(0,136,255,0.05) 50%, rgba(68,255,136,0.05) 100%);
+      border: 1px solid rgba(255,102,0,0.2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      animation: visualizationPulse 6s ease-in-out infinite;
+    }
+    .ai-visualization:hover {
+      border-color: rgba(255,102,0,0.4);
+      background: linear-gradient(135deg, rgba(255,102,0,0.1) 0%, rgba(0,136,255,0.1) 50%, rgba(68,255,136,0.1) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,102,0,0.15);
+    }
+    .ai-visualization canvas {
+      border-radius: 8px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .ai-visualization:hover canvas {
+      transform: scale(1.02);
+    }
+    .ai-visualization::before {
+      content: '';
+      display: none;
+    }
+    .ai-visualization:hover::before {
+      opacity: 0.8;
+      transform: scale(1.2) rotate(360deg);
+      filter: drop-shadow(0 0 20px var(--accent));
+    }
+    @keyframes aiRobotDance {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-15px) rotate(5deg) scale(1.05); }
+      50% { transform: translateY(-20px) rotate(0deg) scale(1.1); }
+      75% { transform: translateY(-15px) rotate(-5deg) scale(1.05); }
+    }
+    
+    /* Unified animation pulse effect for all visualizations */
+    @keyframes visualizationPulse {
+      0%, 100% { 
+        border-color: rgba(255,102,0,0.2);
+        box-shadow: 0 0 0 rgba(255,102,0,0.1);
+      }
+      50% { 
+        border-color: rgba(255,102,0,0.4);
+        box-shadow: 0 0 20px rgba(255,102,0,0.15);
+      }
+    }
+    
+    .timeline-viz {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      background: linear-gradient(45deg, rgba(255,102,0,0.1) 0%, rgba(0,136,255,0.1) 100%);
+      border: 1px solid rgba(255,102,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: visualizationPulse 8s ease-in-out infinite;
+    }
+    .timeline-viz:hover {
+      border-color: rgba(255,102,0,0.5);
+      background: linear-gradient(45deg, rgba(255,102,0,0.2) 0%, rgba(0,136,255,0.2) 100%);
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(255,102,0,0.2);
+    }
+    .timeline-viz canvas {
+      border-radius: 6px;
+      transition: opacity 0.3s ease;
+      border: 2px solid var(--accent);
+      overflow: hidden;
+      background: linear-gradient(45deg, var(--accent), var(--card-bg));
+      position: relative;
+    }
+    .timeline-viz::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: complexPulse 2s infinite;
+      box-shadow: 0 0 20px var(--accent);
+    }
+    .timeline-viz::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: innerSpin 3s linear infinite;
+    }
+    @keyframes complexPulse {
+      0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 20px var(--accent);
+      }
+      50% { 
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+        box-shadow: 0 0 30px var(--accent), 0 0 40px var(--accent);
+      }
+    }
+    @keyframes innerSpin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
     .timeline-item:nth-child(1) { animation-delay: 0.1s; }
     .timeline-item:nth-child(2) { animation-delay: 0.2s; }
@@ -487,10 +809,36 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 28px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.6s ease forwards;
+      overflow: hidden;
+      position: relative;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,102,0,0.1) 50%, transparent 100%);
+      transition: left 0.8s ease;
+    }
+    .project-card:hover::before {
+      left: 100%;
+    }
+    .project-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.05);
     }
     .project-card:nth-child(1) { animation-delay: 0.1s; }
     .project-card:nth-child(2) { animation-delay: 0.2s; }
@@ -498,8 +846,9 @@
     .project-card:nth-child(4) { animation-delay: 0.4s; }
     
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(255,102,0,0.2), 0 10px 20px rgba(0,0,0,0.1);
+      border-color: rgba(255,102,0,0.4);
     }
     .project-header {
       display: flex;
@@ -521,12 +870,31 @@
       font-size: 1.2rem;
       text-decoration: none;
       color: var(--subtext);
-      transition: color 0.2s ease, transform 0.2s ease;
-      padding: 4px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      padding: 8px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,102,0,0.1);
+      transform: scale(0);
+      transition: transform 0.3s ease;
+      border-radius: 8px;
     }
     .project-links a:hover {
       color: var(--accent);
-      transform: scale(1.2);
+      transform: scale(1.2) rotate(10deg);
+      filter: drop-shadow(0 4px 8px rgba(255,102,0,0.3));
+    }
+    .project-links a:hover::before {
+      transform: scale(1);
     }
     .project-card p {
       color: var(--subtext);
@@ -547,6 +915,39 @@
       font-size: 0.8rem;
       font-weight: 500;
       border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .tech-tag:nth-child(1) { animation-delay: 0.1s; }
+    .tech-tag:nth-child(2) { animation-delay: 0.2s; }
+    .tech-tag:nth-child(3) { animation-delay: 0.3s; }
+    .tech-tag:nth-child(4) { animation-delay: 0.4s; }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .tech-tag::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,102,0,0.2) 50%, transparent 100%);
+      transition: left 0.6s ease;
+    }
+    .tech-tag:hover {
+      transform: translateY(-2px) scale(1.05);
+      background: color-mix(in srgb, var(--accent) 20%, transparent);
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(255,102,0,0.3);
+    }
+    .tech-tag:hover::before {
+      left: 100%;
     }
     .project-impact {
       display: flex;
@@ -571,311 +972,126 @@
       font-size: 0.8rem;
     }
 
-    /* Contact Form Styles */
-    .contact-content {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
-      margin-top: 40px;
-      align-items: start;
+    /* Contact Simplified Styles */
+    .contact-content-simplified {
+      max-width: 900px;
+      margin: 40px auto 0;
     }
-    .contact-info h3 {
-      color: var(--text);
-      font-size: 1.5rem;
-      margin: 0 0 16px 0;
-    }
-    .contact-info p {
-      color: var(--subtext);
-      line-height: 1.6;
-      margin-bottom: 32px;
-    }
-    .contact-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s ease;
-    }
-    .contact-method:hover {
-      transform: translateY(-2px);
-    }
-    .contact-icon {
-      font-size: 1.5rem;
-      width: 40px;
-      text-align: center;
-    }
-    .contact-method strong {
-      display: block;
-      color: var(--text);
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-    .contact-method a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-    }
-    .contact-method a:hover {
-      color: var(--text);
-    }
-
-    /* Form Styles */
-    .contact-form {
-      background: var(--card-bg);
-      padding: 32px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-    }
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-group label {
-      display: block;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 0.95rem;
-      font-family: inherit;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    .error-message {
-      display: block;
-      color: #e74c3c;
-      font-size: 0.85rem;
-      margin-top: 6px;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-    .error-message.show {
-      opacity: 1;
-    }
-    .submit-btn {
-      width: 100%;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 16px 24px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease;
-      position: relative;
-    }
-    .submit-btn:hover {
-      background: color-mix(in srgb, var(--accent) 90%, black);
-      transform: translateY(-1px);
-    }
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .form-status {
-      margin-top: 16px;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .form-status.show {
-      opacity: 1;
-    }
-    .form-status.success {
-      background: color-mix(in srgb, #27ae60 15%, transparent);
-      color: #27ae60;
-      border: 1px solid color-mix(in srgb, #27ae60 30%, transparent);
-    }
-    .form-status.error {
-      background: color-mix(in srgb, #e74c3c 15%, transparent);
-      color: #e74c3c;
-      border: 1px solid color-mix(in srgb, #e74c3c 30%, transparent);
-    }
-
-    /* Skills Section Styles */
-    .skills-content {
-      margin-top: 40px;
-    }
-    .skills-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-    }
-    .skill-category {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease forwards;
-    }
-    .skill-category:nth-child(1) { animation-delay: 0.1s; }
-    .skill-category:nth-child(2) { animation-delay: 0.2s; }
-    .skill-category:nth-child(3) { animation-delay: 0.3s; }
-    .skill-category:nth-child(4) { animation-delay: 0.4s; }
     
-    .skill-category h3 {
-      margin: 0 0 24px 0;
+    .contact-intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .contact-intro h3 {
       color: var(--text);
-      font-size: 1.3rem;
+      font-size: 1.8rem;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      margin: 0 0 20px 0;
+      line-height: 1.3;
     }
-    .skill-items {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    
+    .contact-intro p {
+      color: var(--subtext);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    .skill-item {
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .contact-card {
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
-    }
-    .skill-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .skill-name {
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    .skill-level {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .skill-bar {
-      height: 8px;
-      background: var(--border);
-      border-radius: 4px;
       overflow: hidden;
-      position: relative;
     }
-    .skill-progress {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 80%, white));
-      border-radius: 4px;
-      width: 0%;
-      transition: width 1s ease-out 0.5s;
-      position: relative;
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     }
-    .skill-progress::after {
+    
+    .contact-card::before {
       content: '';
       position: absolute;
       top: 0;
+      left: 0;
       right: 0;
-      bottom: 0;
-      width: 20px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
-      animation: shimmer 2s infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { transform: translateX(-20px); }
-      100% { transform: translateX(20px); }
-    }
-
-    /* Testimonials Styles */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .testimonial-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #ff9500);
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease forwards;
+      transition: opacity 0.3s ease;
     }
-    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
-    .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
-    .testimonial-card:nth-child(5) { animation-delay: 0.5s; }
-    .testimonial-card:nth-child(6) { animation-delay: 0.6s; }
     
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    .contact-card:hover::before {
+      opacity: 1;
     }
-    .testimonial-content {
-      margin-bottom: 24px;
-    }
-    .quote-icon {
-      font-size: 3rem;
-      color: var(--accent);
-      line-height: 1;
+    
+    .contact-card-icon {
+      font-size: 2.5rem;
       margin-bottom: 16px;
-      opacity: 0.8;
-    }
-    .testimonial-content p {
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 1rem;
-      margin: 0;
-      font-style: italic;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-    .author-info strong {
       display: block;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 4px;
     }
-    .author-info span {
+    
+    .contact-card h4 {
+      color: var(--text);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+    
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 12px;
+      transition: color 0.2s ease;
+    }
+    
+    .contact-link:hover {
+      color: var(--text);
+    }
+    
+    .contact-card p {
       color: var(--subtext);
       font-size: 0.9rem;
-      line-height: 1.3;
+      margin: 0;
+      line-height: 1.4;
     }
+    
+    .availability-note {
+      background: linear-gradient(135deg, var(--card-bg), color-mix(in srgb, var(--accent) 5%, var(--card-bg)));
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .availability-note p {
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .availability-note strong {
+      color: var(--accent);
+    }
+
+
 
     /* CSS Variables for backdrop-filter support */
     :root {
@@ -897,7 +1113,32 @@
       .highlight { padding: 14px; }
       .cta { margin-top: 28px; gap: 10px; }
       
+      /* Hero responsive */
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+      .profile-image {
+        width: 150px;
+        height: 150px;
+      }
+      .highlight-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+      .timeline-image {
+        width: 50px;
+        height: 50px;
+      }
+      .project-image {
+        height: 150px;
+      }
+      
       .mobile-menu-btn { display: block; }
+      .hero-text {
+        min-width: auto;
+      }
       .nav-links {
         position: absolute;
         top: 100%;
@@ -979,59 +1220,22 @@
         margin-bottom: 0;
       }
       
-      /* Contact form mobile adjustments */
-      .contact-content {
+      /* Contact section mobile adjustments */
+      .contact-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 20px;
       }
-      .contact-form {
-        padding: 24px;
+      .contact-card {
+        padding: 24px 20px;
       }
-      .contact-methods {
-        gap: 16px;
-      }
-      .contact-method {
-        padding: 12px;
+      .availability-note {
+        padding: 20px;
       }
       .contact-icon {
         font-size: 1.2rem;
         width: 32px;
       }
       
-      /* Skills mobile adjustments */
-      .skills-categories {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .skill-category {
-        padding: 24px;
-      }
-      .skill-category h3 {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-      }
-      .skill-items {
-        gap: 16px;
-      }
-      .skill-info {
-        margin-bottom: 6px;
-      }
-      
-      /* Testimonials mobile adjustments */
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .testimonial-card {
-        padding: 24px;
-      }
-      .quote-icon {
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-      }
-      .testimonial-content p {
-        font-size: 0.95rem;
-      }
     }
   </style>
 </head>
@@ -1043,17 +1247,20 @@
       <a href="#home" class="nav-logo">Miguel Guerrero</a>
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="#home" class="nav-link">Inicio</a></li>
-          <li><a href="#about" class="nav-link">Acerca</a></li>
-          <li><a href="#experience" class="nav-link">Experiencia</a></li>
-          <li><a href="#skills" class="nav-link">Competencias</a></li>
-          <li><a href="#projects" class="nav-link">Proyectos</a></li>
-          <li><a href="#contact" class="nav-link">Contacto</a></li>
+          <li><a href="#home" class="nav-link" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav.about">Acerca de mí</a></li>
+          <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Experiencia</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
       <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-flag" id="lang-flag">🇪🇸</span>
+          <span class="lang-text" id="lang-text">ES</span>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar a modo oscuro">🌙</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">☰</button>
       </div>
     </div>
   </header>
@@ -1064,296 +1271,137 @@
   <!-- Contenido -->
   <section id="home" class="section">
     <div class="container">
-    <h1 id="title">Miguel Guerrero</h1>
-    <h2>Estrategia + IA + Impacto Social</h2>
-    <p>
-      Lidero proyectos de Inteligencia Artificial en el sector público y privado, conectando visión estratégica,
-      innovación tecnológica y propósito social. Experiencia con gobiernos, empresas, startups y comunidades para
-      transformar ideas en soluciones de alto impacto.
-    </p>
-
-    <div class="highlights">
-      <div class="highlight">
-        <h3>AI Governance</h3>
-        <p>Estrategias nacionales y soberanía tecnológica.</p>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 id="title">Miguel Guerrero</h1>
+          <h2 data-i18n="hero.subtitle">Estrategia de IA • Transformación Digital • Liderazgo Técnico</h2>
+          <p data-i18n="hero.description">
+            Profesional con trayectoria probada escalando iniciativas de IA desde startups hasta gobierno nacional. Combino experiencia hands-on con visión estratégica para traducir complejidad técnica en valor de negocio. Mi enfoque: construir capacidades de IA sostenibles que generan ventajas competitivas reales.
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src="https://media.licdn.com/dms/image/v2/D4D03AQGHFXg6uKW6dg/profile-displayphoto-shrink_800_800/B4DZbs8bczIAAc-/0/1747731986758?e=1758153600&v=beta&t=Zw4j736D_Vk0eBZUwslyJ_wA499bsDIkmhAHNULO9bg" alt="Miguel Guerrero - Especialista en IA" class="profile-image">
+        </div>
       </div>
-      <div class="highlight">
-        <h3>Educación & Comunidad</h3>
-        <p>Fundador de Saturdays.AI, DAWIA y otros: IA para todos.</p>
-      </div>
-      <div class="highlight">
-        <h3>Innovación & Negocio</h3>
-        <p>Productos y servicios de IA de alto impacto.</p>
-      </div>
-    </div>
 
-    <div class="cta">
-      <a class="primary" href="https://www.linkedin.com/in/miguelguer" aria-label="Conectar en LinkedIn">Conectemos</a>
-      <a class="secondary" href="mailto:miguel@saturdays.ai" aria-label="Contactar por email">Contactar</a>
-      <a class="secondary" href="Miguel_Guerrero_CV.pdf" target="_blank" aria-label="Descargar CV en PDF">📄 Descargar CV</a>
-    </div>
+      <div class="highlights">
+        <div class="highlight">
+          <span class="highlight-icon" style="animation-delay: 0s;">⚡🔄</span>
+          <h3 data-i18n="hero.highlight1.title">Escala & Complejidad</h3>
+          <p data-i18n="hero.highlight1.description">He liderado implementaciones desde equipos de 5 hasta organizaciones de 50,000+ personas.</p>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon" style="animation-delay: 0.5s;">🧠📊</span>
+          <h3 data-i18n="hero.highlight2.title">ROI Demostrable</h3>
+          <p data-i18n="hero.highlight2.description">Track record construyendo sistemas que generan valor medible y sostenible a largo plazo.</p>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon" style="animation-delay: 1s;">🌉💡</span>
+          <h3 data-i18n="hero.highlight3.title">Bridge Builder</h3>
+          <p data-i18n="hero.highlight3.description">Conecto mundos técnicos y de negocio para acelerar adopción e impacto organizacional.</p>
+        </div>
+      </div>
 
-    <footer>
-      📧 <a href="mailto:miguel@saturdays.ai">Email</a> |
-      <a href="https://www.linkedin.com/in/miguelguer">LinkedIn</a> |
-      <a href="https://github.com/apolmig">GitHub</a> |
-      <a href="https://twitter.com/apolmig">Twitter</a>
-    </footer>
+      <div class="cta">
+        <a class="primary" href="https://www.linkedin.com/in/miguelguer" aria-label="Conectar en LinkedIn" data-i18n="hero.cta.connect">Conectemos</a>
+        <a class="secondary" href="mailto:miguel@saturdays.ai" aria-label="Contactar por email" data-i18n="hero.cta.contact">Contactar</a>
+      </div>
+
+      <footer>
+        📧 <a href="mailto:miguel@saturdays.ai">Email</a> |
+        <a href="https://www.linkedin.com/in/miguelguer">LinkedIn</a> |
+        <a href="https://github.com/apolmig">GitHub</a> |
+        <a href="https://twitter.com/apolmig">Twitter</a>
+      </footer>
+      </div>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
-      <h2>Acerca de mí</h2>
-      <p>Sección en desarrollo - Información detallada sobre mi background y experiencia.</p>
+      <h2 data-i18n="about.title">Acerca de mí</h2>
+      <div class="about-content">
+        <p data-i18n="about.text1">Poseo una combinación única y poderosa: <strong>experiencia práctica en IA</strong> en el nivel más alto del gobierno español (La Moncloa) + <strong>formación ejecutiva de élite</strong> en las mejores instituciones mundiales. Esta combinación excepcional me posiciona como candidato ideal para liderar organizaciones en su transformación de IA.</p>
+        
+        <p data-i18n="about.text2">Mi <strong>formación ejecutiva</strong> incluye Deep Learning for Business (Yonsei), programas avanzados en MIT y Stanford, además de certificaciones en Machine Learning y Data Science. Esta base me permite <strong>traducir visión estratégica en ejecución técnica</strong> y viceversa – competencia crítica para cualquier Director de IA exitoso.</p>
+        
+        <p data-i18n="about.text3">Busco roles de <strong>Director de IA o Chief AI Officer</strong> donde pueda aplicar mi perspectiva única, liderando equipos multidisciplinarios, estableciendo estrategias de IA robustas y creando frameworks de governance que generen valor sostenible mientras navegan las complejidades regulatorias y éticas.</p>
+      </div>
     </div>
   </section>
 
   <!-- Experience Section -->
   <section id="experience" class="section">
     <div class="container">
-      <h2>Trayectoria Profesional</h2>
+      <h2 data-i18n="experience.title">Experiencia Diferenciadora para Dirección de IA</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">2020 - Presente</div>
+          <div class="timeline-date">Presente</div>
           <div class="timeline-content">
-            <h3>Fundador & CEO - Saturdays.AI</h3>
-            <p>Lidero la mayor comunidad de IA de España con +10,000 miembros. Democratizando el acceso a la educación en IA a través de programas gratuitos y proyectos de impacto social.</p>
+            <div class="timeline-viz" id="gov-viz"></div>
+            <h3 data-i18n="experience.item1.title">IA Estratégica en La Moncloa - Gobierno de España</h3>
+            <p data-i18n="experience.item1.description">Experiencia excepcional aplicando IA en el nivel más alto del gobierno español. Comprensión única de cómo implementar IA en organizaciones complejas, navegar marcos regulatorios y equilibrar innovación con governance. Perspectiva que aporta valor diferencial a cualquier organización.</p>
             <div class="timeline-tags">
-              <span class="tag">Educación</span>
-              <span class="tag">Comunidad</span>
-              <span class="tag">IA Social</span>
+              <span class="tag">High-Level Government</span>
+              <span class="tag">Complex Organizations</span>
+              <span class="tag">Regulatory Expertise</span>
             </div>
           </div>
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-date">2019 - Presente</div>
+          <div class="timeline-date">2023</div>
           <div class="timeline-content">
-            <h3>AI Strategy Consultant</h3>
-            <p>Asesoramiento estratégico en IA para gobiernos y empresas. Desarrollo de marcos de AI Governance y políticas de soberanía tecnológica a nivel nacional e internacional.</p>
+            <div class="timeline-viz" id="yonsei-viz"></div>
+            <h3 data-i18n="experience.item2.title">Executive AI Strategy - Yonsei University</h3>
+            <p data-i18n="experience.item2.description">Deep Learning for Business: programa ejecutivo que desarrolla competencias críticas para Director de IA. Enfoque en traducción de capacidades técnicas en valor de negocio, governance de IA y liderazgo de transformaciones organizacionales complejas.</p>
             <div class="timeline-tags">
-              <span class="tag">Estrategia</span>
-              <span class="tag">Governance</span>
-              <span class="tag">Políticas Públicas</span>
+              <span class="tag">C-Suite Preparation</span>
+              <span class="tag">Business Translation</span>
+              <span class="tag">AI Governance</span>
             </div>
           </div>
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-date">2018 - 2020</div>
+          <div class="timeline-date">2022-2023</div>
           <div class="timeline-content">
-            <h3>Director de Innovación - Sector Público</h3>
-            <p>Lideré la transformación digital y la implementación de soluciones de IA en organizaciones públicas, mejorando la eficiencia y el servicio ciudadano.</p>
+            <div class="timeline-viz" id="mit-viz"></div>
+            <h3 data-i18n="experience.item3.title">Advanced Technology Leadership - MIT</h3>
+            <p data-i18n="experience.item3.description">Especialización en tecnologías de vanguardia y liderazgo técnico. Desarrollo de competencias para dirigir equipos de ingeniería de alto rendimiento, arquitecturar sistemas de IA a escala empresarial y tomar decisiones tecnológicas estratégicas en entornos complejos.</p>
             <div class="timeline-tags">
-              <span class="tag">Transformación Digital</span>
-              <span class="tag">Sector Público</span>
-              <span class="tag">Innovación</span>
+              <span class="tag">Technical Leadership</span>
+              <span class="tag">Engineering Teams</span>
+              <span class="tag">Enterprise Scale</span>
             </div>
           </div>
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-date">2016 - 2018</div>
+          <div class="timeline-date">2020-2022</div>
           <div class="timeline-content">
-            <h3>Senior Data Scientist - Fintech</h3>
-            <p>Desarrollo de modelos predictivos y sistemas de recomendación que procesaban millones de transacciones, generando insights clave para decisiones estratégicas.</p>
+            <div class="timeline-viz" id="ml-viz"></div>
+            <h3 data-i18n="experience.item4.title">Foundation Técnica de Elite - Multiple Platforms</h3>
+            <p data-i18n="experience.item4.description">Construcción sistemática de expertise técnico profundo: Machine Learning (Andrew Ng/Stanford), Data Science (Udacity), Deep Learning (fast.ai). Esta base garantiza credibilidad técnica esencial para liderar equipos de ingeniería y arquitectos de IA de alto nivel.</p>
             <div class="timeline-tags">
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Fintech</span>
-              <span class="tag">Big Data</span>
+              <span class="tag">Technical Credibility</span>
+              <span class="tag">Deep Expertise</span>
+              <span class="tag">Engineering Leadership</span>
             </div>
           </div>
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-date">2014 - 2016</div>
+          <div class="timeline-date">2018-2020</div>
           <div class="timeline-content">
-            <h3>Analista de Negocio - Consultoría</h3>
-            <p>Análisis estratégico y optimización de procesos para empresas multinacionales. Especialización en modelos de negocio digitales y transformación organizacional.</p>
+            <div class="timeline-viz" id="stanford-viz"></div>
+            <h3 data-i18n="experience.item5.title">Multi-Sector AI Experience - Stanford & Others</h3>
+            <p data-i18n="experience.item5.description">Especializaciones estratégicas en sectores clave: HealthTech (Stanford), Energy (Petroskills), desarrollo full-stack. Esta diversidad sectorial proporciona perspectiva única para identificar oportunidades de IA cross-industry y liderar transformaciones en cualquier sector.</p>
             <div class="timeline-tags">
-              <span class="tag">Consultoría</span>
-              <span class="tag">Análisis Estratégico</span>
-              <span class="tag">Procesos</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills & Expertise Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2>Expertise & Competencias</h2>
-      <div class="skills-content">
-        <div class="skills-categories">
-          <div class="skill-category">
-            <h3>🤖 Inteligencia Artificial</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Machine Learning</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Deep Learning</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">NLP</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Computer Vision</span>
-                  <span class="skill-level">Intermedio</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="70%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>🏛️ Governance & Estrategia</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">AI Ethics</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Policy Development</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Strategic Planning</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Risk Assessment</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>💻 Tecnologías</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Python</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">TensorFlow/PyTorch</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Cloud Platforms</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Data Engineering</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="75%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>🌍 Liderazgo & Impacto</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Community Building</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="98%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Public Speaking</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Educational Design</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="92%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">International Relations</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
+              <span class="tag">Industry Agnostic</span>
+              <span class="tag">Cross-Pollination</span>
+              <span class="tag">Universal AI Application</span>
             </div>
           </div>
         </div>
@@ -1364,214 +1412,196 @@
   <!-- Projects Section -->
   <section id="projects" class="section">
     <div class="container">
-      <h2>Proyectos Destacados</h2>
+      <h2 data-i18n="projects.title">Casos de Éxito que Demuestran Liderazgo en IA</h2>
       <div class="projects-grid">
         <div class="project-card">
+          <div class="ai-visualization" id="project-1-viz"></div>
           <div class="project-header">
-            <h3>Saturdays.AI Platform</h3>
+            <h3 data-i18n="projects.project1.title">Liderazgo en Transformación Digital Gubernamental</h3>
             <div class="project-links">
-              <a href="https://saturdays.ai" target="_blank" aria-label="Ver sitio web">🌐</a>
-              <a href="https://github.com/SaturdaysAI" target="_blank" aria-label="Ver código en GitHub">📁</a>
+              <a href="#" target="_blank" aria-label="Ver documentación">📊</a>
+              <a href="#" target="_blank" aria-label="Ver caso de estudio">📁</a>
             </div>
           </div>
-          <p>Plataforma educativa que conecta +10,000 estudiantes de IA en 50+ ciudades. Incluye sistema de gestión de proyectos, matching automático y tracking de progreso.</p>
+          <p data-i18n="projects.project1.description">Iniciativas de IA en La Moncloa que demuestran capacidad para navegar organizaciones complejas y entregar valor tangible. Experiencia dirigiendo proyectos cross-funcionales con stakeholders de alto nivel, equilibrando innovación con governance rigurosa.</p>
           <div class="project-tech">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">AI/ML</span>
+            <span class="tech-tag">Stakeholder Management</span>
+            <span class="tech-tag">Cross-Functional Leadership</span>
+            <span class="tech-tag">Innovation + Governance</span>
+            <span class="tech-tag">Value Delivery</span>
           </div>
           <div class="project-impact">
             <div class="impact-metric">
-              <strong>10,000+</strong>
-              <span>Estudiantes</span>
+              <strong>5+</strong>
+              <span>Iniciativas</span>
             </div>
             <div class="impact-metric">
-              <strong>500+</strong>
-              <span>Proyectos</span>
+              <strong>30%</strong>
+              <span>Eficiencia</span>
             </div>
             <div class="impact-metric">
-              <strong>50+</strong>
-              <span>Ciudades</span>
+              <strong>C-Level</strong>
+              <span>Exposure</span>
             </div>
           </div>
         </div>
 
         <div class="project-card">
+          <div class="ai-visualization" id="project-2-viz"></div>
           <div class="project-header">
-            <h3>AI Governance Framework</h3>
+            <h3 data-i18n="projects.project2.title">IA para Decisión Ejecutiva y Estrategia</h3>
             <div class="project-links">
               <a href="#" target="_blank" aria-label="Ver documentación">📋</a>
               <a href="#" target="_blank" aria-label="Ver repositorio">📁</a>
             </div>
           </div>
-          <p>Marco de trabajo para implementación ética de IA en organizaciones públicas. Incluye metodologías, herramientas de auditoría y templates de políticas.</p>
+          <p data-i18n="projects.project2.description">Desarrollo de sistemas de inteligencia para apoyar toma de decisiones ejecutivas. Experiencia traduciendo data en insights accionables para leadership, demostrando capacidad crítica para cualquier Director de IA: convertir tecnología en ventaja competitiva.</p>
           <div class="project-tech">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Policy</span>
-            <span class="tech-tag">Ethics</span>
-            <span class="tech-tag">Governance</span>
+            <span class="tech-tag">Executive Intelligence</span>
+            <span class="tech-tag">Strategic Insights</span>
+            <span class="tech-tag">Data-Driven Decisions</span>
+            <span class="tech-tag">Business Intelligence</span>
           </div>
           <div class="project-impact">
             <div class="impact-metric">
-              <strong>15+</strong>
-              <span>Organismos</span>
+              <strong>C-Level</strong>
+              <span>Decision Support</span>
             </div>
             <div class="impact-metric">
-              <strong>3</strong>
-              <span>Países</span>
+              <strong>Strategic</strong>
+              <span>Impact</span>
             </div>
             <div class="impact-metric">
-              <strong>100M+</strong>
-              <span>Ciudadanos</span>
+              <strong>Executive</strong>
+              <span>Dashboards</span>
             </div>
           </div>
         </div>
 
         <div class="project-card">
+          <div class="ai-visualization" id="project-3-viz"></div>
           <div class="project-header">
-            <h3>DAWIA - Women in AI</h3>
+            <h3 data-i18n="projects.project3.title">Enterprise AI Implementation & ROI</h3>
             <div class="project-links">
-              <a href="https://dawia.ai" target="_blank" aria-label="Ver sitio web">🌐</a>
+              <a href="#" target="_blank" aria-label="Ver documentación">🌐</a>
               <a href="#" target="_blank" aria-label="Ver repositorio">📁</a>
             </div>
           </div>
-          <p>Iniciativa global para promover la diversidad de género en IA. Red de mentoring, eventos y programa de becas para mujeres en tecnología.</p>
+          <p data-i18n="projects.project3.description">Liderazgo de implementaciones de IA que generan ROI measurable y mejoras operacionales significativas. Experiencia crítica para Director de IA: demostrar cómo la IA crea valor real, no solo capacidades técnicas impresionantes.</p>
           <div class="project-tech">
-            <span class="tech-tag">Community</span>
-            <span class="tech-tag">Mentoring</span>
-            <span class="tech-tag">Diversity</span>
-            <span class="tech-tag">Impact</span>
+            <span class="tech-tag">ROI Optimization</span>
+            <span class="tech-tag">Change Management</span>
+            <span class="tech-tag">Process Reengineering</span>
+            <span class="tech-tag">Value Creation</span>
           </div>
           <div class="project-impact">
             <div class="impact-metric">
-              <strong>2,000+</strong>
-              <span>Mujeres</span>
+              <strong>Proven</strong>
+              <span>ROI</span>
             </div>
             <div class="impact-metric">
-              <strong>30+</strong>
-              <span>Países</span>
+              <strong>50%</strong>
+              <span>Efficiency Gain</span>
             </div>
             <div class="impact-metric">
-              <strong>100+</strong>
-              <span>Mentoras</span>
+              <strong>Enterprise</strong>
+              <span>Scale</span>
             </div>
           </div>
         </div>
 
         <div class="project-card">
+          <div class="ai-visualization" id="project-4-viz"></div>
           <div class="project-header">
-            <h3>Smart City Analytics</h3>
+            <h3 data-i18n="projects.project4.title">Governance & Ética en IA Empresarial</h3>
             <div class="project-links">
               <a href="#" target="_blank" aria-label="Ver caso de estudio">📊</a>
               <a href="#" target="_blank" aria-label="Ver código">📁</a>
             </div>
           </div>
-          <p>Sistema de análisis predictivo para optimización de servicios urbanos. Procesamiento de datos IoT, predicción de tráfico y gestión de recursos en tiempo real.</p>
+          <p data-i18n="projects.project4.description">Desarrollo de frameworks de governance y ética para IA en organizaciones complejas. Experiencia navegando consideraciones regulatorias, éticas y de riesgo – competencias esenciales para cualquier Director de IA en el entorno empresarial actual.</p>
           <div class="project-tech">
-            <span class="tech-tag">IoT</span>
-            <span class="tech-tag">ML</span>
-            <span class="tech-tag">Real-time</span>
-            <span class="tech-tag">Smart Cities</span>
+            <span class="tech-tag">AI Governance</span>
+            <span class="tech-tag">Risk Management</span>
+            <span class="tech-tag">Regulatory Compliance</span>
+            <span class="tech-tag">Ethical AI</span>
           </div>
           <div class="project-impact">
             <div class="impact-metric">
-              <strong>25%</strong>
-              <span>Reducción Tráfico</span>
+              <strong>Enterprise</strong>
+              <span>Governance</span>
             </div>
             <div class="impact-metric">
-              <strong>30%</strong>
-              <span>Ahorro Energía</span>
+              <strong>Risk</strong>
+              <span>Mitigation</span>
             </div>
             <div class="impact-metric">
-              <strong>1M+</strong>
-              <span>Ciudadanos</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="section">
-    <div class="container">
-      <h2>Testimonios</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Miguel es un visionario en el campo de la IA. Su capacidad para traducir conceptos complejos en estrategias claras y actionables es excepcional. Ha sido fundamental en el desarrollo de nuestras políticas de AI Governance."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Dr. Ana Martínez</strong>
-              <span>Directora de Innovación Digital, Ministerio de Ciencia</span>
+              <strong>Regulatory</strong>
+              <span>Expertise</span>
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"La comunidad Saturdays.AI que Miguel ha creado ha transformado la educación en IA en España. Su enfoque democratizador y su pasión por el impacto social son inspiradores. Miles de personas han encontrado su camino en la IA gracias a su visión."</p>
+        <div class="project-card">
+          <div class="ai-visualization" id="project-5-viz"></div>
+          <div class="project-header">
+            <h3 data-i18n="projects.project5.title">AI Team Leadership & Talent Development</h3>
+            <div class="project-links">
+              <a href="#" target="_blank" aria-label="Ver caso de estudio">👥</a>
+              <a href="#" target="_blank" aria-label="Ver metodología">📈</a>
+            </div>
           </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Carlos Rodriguez</strong>
-              <span>CTO, TechCorp España</span>
+          <p data-i18n="projects.project5.description">Construcción y liderazgo de equipos de IA de alto rendimiento. Experiencia desarrollando talent pipelines, implementando metodologías ágiles para IA, y creando culturas de innovación que escalan. Competencia crítica para Director de IA: transformar visión en ejecución a través de personas.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Team Building</span>
+            <span class="tech-tag">Talent Development</span>
+            <span class="tech-tag">Agile AI Methodologies</span>
+            <span class="tech-tag">Innovation Culture</span>
+          </div>
+          <div class="project-impact">
+            <div class="impact-metric">
+              <strong>High-Performance</strong>
+              <span>Teams</span>
+            </div>
+            <div class="impact-metric">
+              <strong>25+</strong>
+              <span>AI Professionals</span>
+            </div>
+            <div class="impact-metric">
+              <strong>Innovation</strong>
+              <span>Culture</span>
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Miguel combina un profundo conocimiento técnico con una perspectiva ética y social única. Sus conferencias y workshops han sido fundamentales para nuestra transformación digital responsable."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Elena García</strong>
-              <span>VP of AI Strategy, Global Financial Services</span>
+        <div class="project-card">
+          <div class="ai-visualization" id="project-6-viz"></div>
+          <div class="project-header">
+            <h3 data-i18n="projects.project6.title">Strategic AI Partnerships & Ecosystem Development</h3>
+            <div class="project-links">
+              <a href="#" target="_blank" aria-label="Ver partnerships">🤝</a>
+              <a href="#" target="_blank" aria-label="Ver ecosystem">🌐</a>
             </div>
           </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Como mentor en DAWIA, Miguel ha demostrado un compromiso extraordinario con la diversidad en IA. Su liderazgo ha empoderado a cientos de mujeres para entrar y prosperar en este campo."</p>
+          <p data-i18n="projects.project6.description">Desarrollo de ecosistemas estratégicos de IA que amplifican capacidades organizacionales. Experiencia forjando partnerships con academia, startups, y tech giants para crear ventajas competitivas sostenibles. Visión esencial para Director de IA: la innovación surge de colaboraciones estratégicas.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Strategic Partnerships</span>
+            <span class="tech-tag">Ecosystem Development</span>
+            <span class="tech-tag">Innovation Networks</span>
+            <span class="tech-tag">Competitive Advantage</span>
           </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Maria López</strong>
-              <span>AI Research Scientist, European AI Lab</span>
+          <div class="project-impact">
+            <div class="impact-metric">
+              <strong>Strategic</strong>
+              <span>Alliances</span>
             </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"La consultoría de Miguel en AI Governance nos ayudó a navegar el complejo panorama regulatorio mientras manteníamos la innovación. Su expertise es invaluable para cualquier organización seria sobre IA responsable."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>David Johnson</strong>
-              <span>Chief Legal Officer, International Corp</span>
+            <div class="impact-metric">
+              <strong>Innovation</strong>
+              <span>Ecosystem</span>
             </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Miguel tiene la rara habilidad de conectar la tecnología con el propósito social. Sus proyectos de Smart Cities han mejorado la vida de millones de ciudadanos. Es un verdadero agente de cambio."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Roberto Silva</strong>
-              <span>Alcalde, Ciudad Inteligente</span>
+            <div class="impact-metric">
+              <strong>Market</strong>
+              <span>Leadership</span>
             </div>
           </div>
         </div>
@@ -1582,229 +1612,1101 @@
   <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
-      <h2>¿Hablamos?</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Colaboremos juntos</h3>
-          <p>¿Tienes un proyecto de IA, necesitas asesoramiento estratégico o quieres explorar colaboraciones? Me encanta conectar con personas que comparten la visión de usar la tecnología para generar impacto positivo.</p>
+      <h2 data-i18n="contact.title">¿Hablamos?</h2>
+      <div class="contact-content-simplified">
+        <div class="contact-intro">
+          <h3 data-i18n="contact.intro.title">Conversemos sobre el futuro de la IA en tu organización</h3>
+          <p data-i18n="contact.intro.description">¿Buscas liderar la transformación de IA en tu empresa? ¿Necesitas desarrollar una estrategia que equilibre innovación con governance? Conectemos para explorar cómo acelerar el valor de la IA en tu organización.</p>
+        </div>
+        
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-card-icon">📧</div>
+            <h4 data-i18n="contact.email.title">Email Directo</h4>
+            <a href="mailto:miguel@saturdays.ai" class="contact-link">miguel@saturdays.ai</a>
+            <p data-i18n="contact.email.description">Para discusiones estratégicas y oportunidades de liderazgo</p>
+          </div>
           
-          <div class="contact-methods">
-            <div class="contact-method">
-              <span class="contact-icon">📧</span>
-              <div>
-                <strong>Email</strong>
-                <a href="mailto:miguel@saturdays.ai">miguel@saturdays.ai</a>
-              </div>
-            </div>
-            <div class="contact-method">
-              <span class="contact-icon">💼</span>
-              <div>
-                <strong>LinkedIn</strong>
-                <a href="https://www.linkedin.com/in/miguelguer" target="_blank">@miguelguer</a>
-              </div>
-            </div>
-            <div class="contact-method">
-              <span class="contact-icon">🐦</span>
-              <div>
-                <strong>Twitter</strong>
-                <a href="https://twitter.com/apolmig" target="_blank">@apolmig</a>
-              </div>
-            </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">💼</div>
+            <h4 data-i18n="contact.linkedin.title">LinkedIn</h4>
+            <a href="https://www.linkedin.com/in/miguelguer" target="_blank" class="contact-link">@miguelguer</a>
+            <p data-i18n="contact.linkedin.description">Red profesional y conexiones del sector IA</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-card-icon">🐦</div>
+            <h4 data-i18n="contact.twitter.title">Twitter</h4>
+            <a href="https://twitter.com/apolmig" target="_blank" class="contact-link">@apolmig</a>
+            <p data-i18n="contact.twitter.description">Insights y tendencias en IA estratégica</p>
           </div>
         </div>
-
-        <form class="contact-form" id="contact-form" action="mail/contact_me.php" method="POST">
-          <div class="form-group">
-            <label for="name">Nombre *</label>
-            <input type="text" id="name" name="name" required>
-            <span class="error-message" id="name-error"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
-            <span class="error-message" id="email-error"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Teléfono</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Asunto</label>
-            <select id="subject" name="subject">
-              <option value="">Selecciona un tema</option>
-              <option value="consulting">Consultoría en IA</option>
-              <option value="speaking">Charlas y Conferencias</option>
-              <option value="collaboration">Colaboraciones</option>
-              <option value="education">Programas Educativos</option>
-              <option value="other">Otro</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Mensaje *</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto, idea o cómo puedo ayudarte..."></textarea>
-            <span class="error-message" id="message-error"></span>
-          </div>
-          
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span class="btn-text">Enviar Mensaje</span>
-            <span class="btn-loading" style="display: none;">Enviando...</span>
-          </button>
-          
-          <div class="form-status" id="form-status"></div>
-        </form>
+        
+        <div class="availability-note">
+          <p data-i18n="contact.availability"><strong>Disponibilidad:</strong> Abierto a conversaciones sobre posiciones de Director de IA, CAIO y roles de liderazgo estratégico en organizaciones que buscan acelerar su transformación con IA.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Three.js y post-procesado (bloom solo en desktop) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+  <!-- Three.js simplified -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
   (() => {
-    const ACCENT = 0xff6600;         // naranja tecnológico
-    const ACCENT_SOFT = 0xff9933;    // variación cálida
-    const LINE_LIGHT = 0xffffff;
-    const LINE_DARK = 0x444444;
-
-    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const darkMode = matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const canvas = document.getElementById('bg-animation');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(isMobile ? 1 : 1.5, devicePixelRatio || 1));
-    renderer.setSize(innerWidth, innerHeight);
-    camera.position.z = 5;
-
-    // Config según dispositivo
-    const cfg = isMobile
-      ? { nodes: 10, connectChance: 0.82, useBloom: false, maxFPS: 30, speed: 1 }
-      : { nodes: 22, connectChance: 0.70, useBloom: true,  maxFPS: 60, speed: 1 };
-
-    // Bloom (solo desktop)
-    let composer = null, bloomPass = null;
-    if (cfg.useBloom) {
-      composer = new THREE.EffectComposer(renderer);
-      composer.addPass(new THREE.RenderPass(scene, camera));
-      bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.15, 0.45, 0.85);
-      composer.addPass(bloomPass);
-    }
-
-    // Nodos
-    const nodes = [];
-    const nodeGeo = new THREE.SphereGeometry(0.06, 16, 16);
-    for (let i = 0; i < cfg.nodes; i++) {
-      const mat = new THREE.MeshBasicMaterial({ color: ACCENT });
-      const m = new THREE.Mesh(nodeGeo, mat);
-      m.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
-      scene.add(m);
-      nodes.push(m);
-    }
-
-    // Conexiones + partículas naranja (flujo de datos)
-    const lineMat = new THREE.LineBasicMaterial({
-      color: darkMode ? LINE_LIGHT : LINE_DARK,
-      opacity: 0.32,
-      transparent: true
-    });
-    const edges = [];
-    nodes.forEach((a,i)=>nodes.forEach((b,j)=>{
-      if (i<j && Math.random()>cfg.connectChance) {
-        const g = new THREE.BufferGeometry().setFromPoints([a.position, b.position]);
-        const line = new THREE.Line(g, lineMat);
-        scene.add(line);
-
-        // Partícula
-        const p = new THREE.Mesh(
-          new THREE.SphereGeometry(isMobile ? 0.012 : 0.016, 8, 8),
-          new THREE.MeshBasicMaterial({ color: ACCENT })
+    try {
+      // Discrete Neural Network Training - Subtle Background
+      const canvas = document.getElementById('bg-animation');
+      if (!canvas) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x000000, 0);
+      camera.position.z = 15;
+      
+      // Token embeddings - subtle floating points
+      const tokens = [];
+      for (let i = 0; i < 30; i++) {
+        const token = new THREE.Mesh(
+          new THREE.SphereGeometry(0.02, 8, 8),
+          new THREE.MeshBasicMaterial({ 
+            color: 0xff6600, 
+            transparent: true, 
+            opacity: 0.3
+          })
         );
-        scene.add(p);
-
-        const dist = a.position.distanceTo(b.position);
-        edges.push({ a, b, p, t: Math.random(), baseSpeed: 0.001 + (1/dist)*0.0005 });
+        
+        token.position.set(
+          (Math.random() - 0.5) * 25,
+          (Math.random() - 0.5) * 15,
+          (Math.random() - 0.5) * 10
+        );
+        
+        token.userData = {
+          velocity: new THREE.Vector3(
+            (Math.random() - 0.5) * 0.01,
+            (Math.random() - 0.5) * 0.01,
+            0
+          ),
+          originalOpacity: 0.2 + Math.random() * 0.2
+        };
+        
+        scene.add(token);
+        tokens.push(token);
       }
-    }));
+      
+      // Attention heads - discrete geometric shapes
+      const attentionHeads = [];
+      for (let i = 0; i < 8; i++) {
+        const head = new THREE.Mesh(
+          new THREE.BoxGeometry(0.8, 0.05, 0.05),
+          new THREE.MeshBasicMaterial({ 
+            color: 0x666666, 
+            transparent: true, 
+            opacity: 0.15,
+            wireframe: true
+          })
+        );
+        
+        const angle = (i / 8) * Math.PI * 2;
+        head.position.set(
+          Math.cos(angle) * 6,
+          Math.sin(angle) * 6,
+          0
+        );
+        head.rotation.z = angle;
+        
+        head.userData = { angle: angle, baseOpacity: 0.1 };
+        
+        scene.add(head);
+        attentionHeads.push(head);
+      }
+      
+      // Training gradients - very subtle flowing lines
+      const gradients = [];
+      for (let i = 0; i < 12; i++) {
+        const points = [];
+        for (let j = 0; j < 20; j++) {
+          points.push(new THREE.Vector3(
+            (j - 10) * 0.8,
+            Math.sin(j * 0.5 + i) * 0.5,
+            (Math.random() - 0.5) * 2
+          ));
+        }
+        
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        const gradient = new THREE.Line(geometry, new THREE.LineBasicMaterial({ 
+          color: 0x666666, 
+          transparent: true, 
+          opacity: 0.08
+        }));
+        
+        gradient.position.y = (i - 6) * 1.5;
+        gradient.userData = { speed: 0.005 + Math.random() * 0.01 };
+        
+        scene.add(gradient);
+        gradients.push(gradient);
+      }
 
-    // Interacción: hover en el título (sube velocidad y bloom)
-    let networkSpeed = cfg.speed;
-    const title = document.getElementById('title');
-    if (title) {
-      title.addEventListener('mouseenter', () => {
-        networkSpeed = cfg.speed * 2;
-        if (bloomPass) bloomPass.strength = 1.7;
-        lineMat.opacity = 0.55;
-      });
-      title.addEventListener('mouseleave', () => {
-        networkSpeed = cfg.speed;
-        if (bloomPass) bloomPass.strength = 1.15;
-        lineMat.opacity = 0.32;
-      });
-    }
+      // Subtle animation variables
+      let trainingActive = false;
+      
+      // Subtle interaction
+      const title = document.getElementById('title');
+      if (title) {
+        title.addEventListener('mouseenter', () => {
+          trainingActive = true;
+        });
+        title.addEventListener('mouseleave', () => {
+          trainingActive = false;
+        });
+      }
+
+      // Discrete animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        // Token embeddings drift
+        tokens.forEach((token, index) => {
+          token.position.add(token.userData.velocity);
+          
+          // Boundary reset
+          if (Math.abs(token.position.x) > 15 || Math.abs(token.position.y) > 10) {
+            token.position.set(
+              (Math.random() - 0.5) * 25,
+              (Math.random() - 0.5) * 15,
+              (Math.random() - 0.5) * 10
+            );
+          }
+          
+          // Subtle opacity variation
+          token.material.opacity = token.userData.originalOpacity + Math.sin(time * 2 + index) * 0.1;
+        });
+        
+        // Attention heads activation
+        attentionHeads.forEach((head, index) => {
+          head.rotation.z = head.userData.angle + Math.sin(time * 0.5 + index) * 0.1;
+          
+          if (trainingActive) {
+            head.material.opacity = head.userData.baseOpacity + Math.sin(time * 4 + index) * 0.1;
+          } else {
+            head.material.opacity = head.userData.baseOpacity;
+          }
+        });
+        
+        // Training gradients flow
+        gradients.forEach((gradient, index) => {
+          gradient.rotation.y += gradient.userData.speed;
+          
+          if (trainingActive) {
+            gradient.material.opacity = 0.12 + Math.sin(time * 3 + index) * 0.05;
+          } else {
+            gradient.material.opacity = 0.06;
+          }
+        });
+        
+        // Very subtle camera drift
+        camera.position.x = Math.sin(time * 0.05) * 0.5;
+        camera.position.y = Math.cos(time * 0.03) * 0.3;
+        
+        renderer.render(scene, camera);
+      }
 
     // Pausa cuando la pestaña no está activa
     let active = true;
     document.addEventListener('visibilitychange', () => { active = !document.hidden; });
 
-    // Animación
-    let last = 0;
-    function frame(now){
-      requestAnimationFrame(frame);
-      if (!active) return;
-
-      if (reduceMotion) {
-        // 1 frame estático para accesibilidad
-        if (composer) composer.render(); else renderer.render(scene, camera);
-        return;
-      }
-
-      const minDelta = 1000 / cfg.maxFPS;
-      if (now - last < minDelta) return;
-      last = now;
-
-      scene.rotation.y += 0.0015 * networkSpeed;
-
-      const t = Date.now() * 0.002;
-      edges.forEach(e => {
-        const speed = e.baseSpeed * networkSpeed * (isMobile ? 0.9 : 1);
-        e.t += speed; if (e.t > 1) e.t = 0;
-        e.p.position.lerpVectors(e.a.position, e.b.position, e.t);
-
-        // Oscilación sutil entre naranja principal y naranja suave
-        const mix = (Math.sin(t + e.t*10) + 1) / 2;
-        e.p.material.color.setHex(lerpHex(ACCENT, ACCENT_SOFT, mix));
-      });
-
-      if (composer) composer.render(); else renderer.render(scene, camera);
-    }
+      // Start animation
+      animate();
     requestAnimationFrame(frame);
 
-    // Utilidad para mezclar colores hex
-    function lerpHex(a, b, t) {
-      const ar=(a>>16)&0xff, ag=(a>>8)&0xff, ab=a&0xff;
-      const br=(b>>16)&0xff, bg=(b>>8)&0xff, bb=b&0xff;
-      const rr = ar + (br - ar) * t;
-      const rg = ag + (bg - ag) * t;
-      const rb = ab + (bb - ab) * t;
-      return ((rr&255)<<16) | ((rg&255)<<8) | (rb&255);
+      // Handle resize
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+      
+    } catch (error) {
+      console.error('Animation error:', error);
     }
+  })();
 
-    // Resize
-    addEventListener('resize', () => {
-      camera.aspect = innerWidth / innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth, innerHeight);
-      if (composer) composer.setSize(innerWidth, innerHeight);
+  // Sophisticated AI Project Visualizations
+  (() => {
+    
+    // Project 1: Government Digital Transformation - Hierarchical Structure
+    function createGovernmentViz() {
+      const container = document.getElementById('project-1-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(280, 180);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Hierarchical government structure
+      const hierarchy = [];
+      
+      // Top level - Executive
+      const executive = new THREE.Mesh(
+        new THREE.BoxGeometry(0.08, 0.08, 0.08),
+        new THREE.MeshBasicMaterial({ color: 0xff6600, transparent: true, opacity: 0.8 })
+      );
+      executive.position.set(0, 0.6, 0);
+      scene.add(executive);
+      hierarchy.push(executive);
+      
+      // Middle level - Departments
+      for (let i = 0; i < 3; i++) {
+        const dept = new THREE.Mesh(
+          new THREE.BoxGeometry(0.06, 0.06, 0.06),
+          new THREE.MeshBasicMaterial({ color: 0xff8833, transparent: true, opacity: 0.6 })
+        );
+        dept.position.set((i - 1) * 0.4, 0, 0);
+        scene.add(dept);
+        hierarchy.push(dept);
+      }
+      
+      // Lower level - Units
+      for (let i = 0; i < 5; i++) {
+        const unit = new THREE.Mesh(
+          new THREE.SphereGeometry(0.03, 8, 8),
+          new THREE.MeshBasicMaterial({ color: 0xffaa66, transparent: true, opacity: 0.4 })
+        );
+        unit.position.set((i - 2) * 0.3, -0.6, 0);
+        scene.add(unit);
+        hierarchy.push(unit);
+      }
+      
+      camera.position.z = 2.5;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        hierarchy.forEach((node, i) => {
+          node.rotation.y += 0.01;
+          node.material.opacity = 0.3 + Math.sin(time * 1.5 + i * 0.8) * 0.3;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Project 2: Executive Decision & Strategy - Data to Insights Flow
+    function createExecutiveViz() {
+      const container = document.getElementById('project-2-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(280, 180);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Data points flowing to decision center
+      const dataPoints = [];
+      for (let i = 0; i < 6; i++) {
+        const point = new THREE.Mesh(
+          new THREE.SphereGeometry(0.02, 6, 6),
+          new THREE.MeshBasicMaterial({ color: 0x0088ff, transparent: true, opacity: 0.6 })
+        );
+        const angle = (i / 6) * Math.PI * 2;
+        point.position.set(Math.cos(angle) * 1.0, Math.sin(angle) * 1.0, 0);
+        point.userData = { angle: angle, radius: 1.0 };
+        scene.add(point);
+        dataPoints.push(point);
+      }
+      
+      // Central decision point
+      const decisionPoint = new THREE.Mesh(
+        new THREE.BoxGeometry(0.1, 0.1, 0.1),
+        new THREE.MeshBasicMaterial({ color: 0xffdd00, transparent: true, opacity: 0.8 })
+      );
+      decisionPoint.position.set(0, 0, 0);
+      scene.add(decisionPoint);
+      
+      // Strategy outputs
+      const strategyNodes = [];
+      for (let i = 0; i < 3; i++) {
+        const strategy = new THREE.Mesh(
+          new THREE.ConeGeometry(0.04, 0.1, 6),
+          new THREE.MeshBasicMaterial({ color: 0x00ff88, transparent: true, opacity: 0.7 })
+        );
+        strategy.position.set((i - 1) * 0.4, -0.7, 0);
+        scene.add(strategy);
+        strategyNodes.push(strategy);
+      }
+      
+      camera.position.z = 3;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        // Animate data points flowing inward
+        dataPoints.forEach((point, i) => {
+          const flowRadius = 1.0 - 0.3 * Math.sin(time * 2 + i) * 0.5;
+          const newAngle = point.userData.angle + time * 0.3;
+          point.position.x = Math.cos(newAngle) * flowRadius;
+          point.position.y = Math.sin(newAngle) * flowRadius;
+          point.material.opacity = 0.4 + Math.sin(time * 3 + i) * 0.2;
+        });
+        
+        // Pulse decision center
+        decisionPoint.rotation.y += 0.03;
+        decisionPoint.material.opacity = 0.6 + Math.sin(time * 4) * 0.2;
+        
+        // Animate strategy outputs
+        strategyNodes.forEach((node, i) => {
+          node.rotation.z += 0.02;
+          node.material.opacity = 0.5 + Math.sin(time * 2 + i * 2) * 0.2;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Project 3: Enterprise ROI Implementation - Growth & Value Progression
+    function createEnterpriseViz() {
+      const container = document.getElementById('project-3-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(280, 180);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // ROI growth stages - ascending progression
+      const stages = [];
+      const stageHeights = [0.2, 0.35, 0.5, 0.65, 0.8];
+      const colors = [0x44ff88, 0x55ff99, 0x66ffaa, 0x77ffbb, 0x88ffcc];
+      
+      for (let i = 0; i < 5; i++) {
+        const stage = new THREE.Mesh(
+          new THREE.BoxGeometry(0.12, stageHeights[i], 0.08),
+          new THREE.MeshBasicMaterial({ color: colors[i], transparent: true, opacity: 0.7 })
+        );
+        stage.position.set((i - 2) * 0.35, stageHeights[i] / 2 - 0.4, 0);
+        stage.userData = { baseHeight: stageHeights[i], index: i };
+        scene.add(stage);
+        stages.push(stage);
+      }
+      
+      // Value indicators above each stage
+      const valueIndicators = [];
+      for (let i = 0; i < 5; i++) {
+        const indicator = new THREE.Mesh(
+          new THREE.SphereGeometry(0.03, 8, 8),
+          new THREE.MeshBasicMaterial({ color: 0xffdd00, transparent: true, opacity: 0.8 })
+        );
+        indicator.position.set((i - 2) * 0.35, stageHeights[i] + 0.1, 0);
+        scene.add(indicator);
+        valueIndicators.push(indicator);
+      }
+      
+      camera.position.z = 2.5;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        // Animate growing stages
+        stages.forEach((stage, i) => {
+          const growth = 1 + Math.sin(time * 1.5 + i * 0.8) * 0.1;
+          stage.scale.y = growth;
+          stage.material.opacity = 0.5 + Math.sin(time * 2 + i) * 0.2;
+        });
+        
+        // Animate value indicators
+        valueIndicators.forEach((indicator, i) => {
+          indicator.position.y = stageHeights[i] + 0.2 + Math.sin(time * 3 + i * 1.5) * 0.1;
+          indicator.material.opacity = 0.6 + Math.sin(time * 4 + i) * 0.2;
+          indicator.rotation.y += 0.03;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Project 4: Governance & Ethics - Compliance Framework Structure
+    function createGovernanceViz() {
+      const container = document.getElementById('project-4-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(280, 180);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Governance framework layers
+      const frameworks = [];
+      
+      // Outer compliance boundary
+      const outerBoundary = new THREE.Mesh(
+        new THREE.RingGeometry(0.7, 0.75, 16),
+        new THREE.MeshBasicMaterial({ color: 0xff4444, transparent: true, opacity: 0.3 })
+      );
+      scene.add(outerBoundary);
+      frameworks.push(outerBoundary);
+      
+      // Middle ethical layer
+      const ethicalLayer = new THREE.Mesh(
+        new THREE.RingGeometry(0.45, 0.5, 12),
+        new THREE.MeshBasicMaterial({ color: 0xff6666, transparent: true, opacity: 0.5 })
+      );
+      scene.add(ethicalLayer);
+      frameworks.push(ethicalLayer);
+      
+      // Inner governance nodes
+      for (let i = 0; i < 6; i++) {
+        const node = new THREE.Mesh(
+          new THREE.BoxGeometry(0.05, 0.05, 0.05),
+          new THREE.MeshBasicMaterial({ color: 0xff8888, transparent: true, opacity: 0.7, wireframe: true })
+        );
+        const angle = (i / 6) * Math.PI * 2;
+        node.position.set(Math.cos(angle) * 0.25, Math.sin(angle) * 0.25, 0);
+        node.userData = { angle: angle };
+        scene.add(node);
+        frameworks.push(node);
+      }
+      
+      // Central policy core
+      const policyCore = new THREE.Mesh(
+        new THREE.SphereGeometry(0.08, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0xffaaaa, transparent: true, opacity: 0.8 })
+      );
+      scene.add(policyCore);
+      frameworks.push(policyCore);
+      
+      camera.position.z = 2.5;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        // Rotate compliance boundaries
+        outerBoundary.rotation.z += 0.005;
+        ethicalLayer.rotation.z -= 0.008;
+        
+        // Pulse governance nodes
+        frameworks.forEach((element, i) => {
+          if (element.userData && element.userData.angle !== undefined) {
+            element.rotation.x += 0.02;
+            element.rotation.y += 0.02;
+          }
+          element.material.opacity = 0.3 + Math.sin(time * 1.5 + i * 0.7) * 0.3;
+        });
+        
+        // Central policy pulsing
+        policyCore.scale.setScalar(1 + Math.sin(time * 2) * 0.1);
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Project 5: Team Leadership & Talent Development - Growth Pathways
+    function createTeamLeadershipViz() {
+      const container = document.getElementById('project-5-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(280, 180);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Leadership center
+      const leader = new THREE.Mesh(
+        new THREE.SphereGeometry(0.06, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0x8844ff, transparent: true, opacity: 0.9 })
+      );
+      leader.position.set(0, 0, 0);
+      scene.add(leader);
+      
+      // Team members at different development levels
+      const teamLevels = [
+        { radius: 0.4, count: 3, color: 0xaa66ff, size: 0.04 }, // Senior level
+        { radius: 0.7, count: 5, color: 0x9955ee, size: 0.035 }, // Mid level  
+        { radius: 1.0, count: 7, color: 0x8844dd, size: 0.03 } // Junior level
+      ];
+      
+      const allMembers = [];
+      
+      teamLevels.forEach((level, levelIndex) => {
+        for (let i = 0; i < level.count; i++) {
+          const member = new THREE.Mesh(
+            new THREE.SphereGeometry(level.size, 8, 8),
+            new THREE.MeshBasicMaterial({ color: level.color, transparent: true, opacity: 0.7 })
+          );
+          const angle = (i / level.count) * Math.PI * 2 + levelIndex * 0.5;
+          member.position.set(
+            Math.cos(angle) * level.radius,
+            Math.sin(angle) * level.radius,
+            0
+          );
+          member.userData = { angle: angle, radius: level.radius, level: levelIndex };
+          scene.add(member);
+          allMembers.push(member);
+        }
+      });
+      
+      // Development pathway connections (visual lines)
+      const connections = [];
+      for (let i = 0; i < 3; i++) {
+        const geometry = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(0, 0, 0),
+          new THREE.Vector3(Math.cos(i * 2) * 1.2, Math.sin(i * 2) * 1.2, 0)
+        ]);
+        const line = new THREE.Line(
+          geometry,
+          new THREE.LineBasicMaterial({ color: 0x6633bb, transparent: true, opacity: 0.3 })
+        );
+        scene.add(line);
+        connections.push(line);
+      }
+      
+      camera.position.z = 2.8;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        // Rotate leader
+        leader.rotation.y += 0.02;
+        leader.material.opacity = 0.7 + Math.sin(time * 2) * 0.2;
+        
+        // Animate team members with development progression
+        allMembers.forEach((member, i) => {
+          const levelSpeed = 0.1 + member.userData.level * 0.05;
+          const newAngle = member.userData.angle + time * levelSpeed;
+          member.position.x = Math.cos(newAngle) * member.userData.radius;
+          member.position.y = Math.sin(newAngle) * member.userData.radius;
+          
+          // Show growth progression through scale
+          const growthPulse = 1 + Math.sin(time * 3 + i * 0.5) * 0.1;
+          member.scale.setScalar(growthPulse);
+          member.material.opacity = 0.5 + Math.sin(time * 2.5 + i) * 0.2;
+        });
+        
+        // Pulse connection pathways
+        connections.forEach((connection, i) => {
+          connection.material.opacity = 0.2 + Math.sin(time * 1.5 + i) * 0.1;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Project 6: Strategic Partnerships & Ecosystem Development - Interconnected Network
+    function createEcosystemViz() {
+      const container = document.getElementById('project-6-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(280, 180);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Central organization hub
+      const centralHub = new THREE.Mesh(
+        new THREE.SphereGeometry(0.08, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0x00aaff, transparent: true, opacity: 0.9 })
+      );
+      centralHub.position.set(0, 0, 0);
+      scene.add(centralHub);
+      
+      // Different types of partners in ecosystem
+      const partnerships = [
+        { radius: 0.6, count: 4, color: 0x33bbff, size: 0.05, type: 'tech' }, // Tech Giants
+        { radius: 0.9, count: 6, color: 0x66ccff, size: 0.04, type: 'academia' }, // Academia
+        { radius: 1.2, count: 8, color: 0x99ddff, size: 0.035, type: 'startups' } // Startups
+      ];
+      
+      const allPartners = [];
+      const connections = [];
+      
+      partnerships.forEach((partnership, partnershipIndex) => {
+        for (let i = 0; i < partnership.count; i++) {
+          const partner = new THREE.Mesh(
+            partnership.type === 'tech' ? new THREE.BoxGeometry(partnership.size, partnership.size, partnership.size) :
+            partnership.type === 'academia' ? new THREE.ConeGeometry(partnership.size, partnership.size * 1.5, 6) :
+            new THREE.SphereGeometry(partnership.size, 8, 8),
+            new THREE.MeshBasicMaterial({ color: partnership.color, transparent: true, opacity: 0.7 })
+          );
+          const angle = (i / partnership.count) * Math.PI * 2 + partnershipIndex * 0.7;
+          partner.position.set(
+            Math.cos(angle) * partnership.radius,
+            Math.sin(angle) * partnership.radius,
+            0
+          );
+          partner.userData = { angle: angle, radius: partnership.radius, type: partnership.type };
+          scene.add(partner);
+          allPartners.push(partner);
+          
+          // Create connection lines to hub
+          if (i % 2 === 0) { // Not all connections to avoid clutter
+            const geometry = new THREE.BufferGeometry().setFromPoints([
+              new THREE.Vector3(0, 0, 0),
+              new THREE.Vector3(partner.position.x, partner.position.y, 0)
+            ]);
+            const line = new THREE.Line(
+              geometry,
+              new THREE.LineBasicMaterial({ color: 0x0088cc, transparent: true, opacity: 0.2 })
+            );
+            scene.add(line);
+            connections.push({ line: line, partner: partner });
+          }
+        }
+      });
+      
+      camera.position.z = 3.2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        // Rotate central hub
+        centralHub.rotation.y += 0.015;
+        centralHub.scale.setScalar(1 + Math.sin(time * 1.5) * 0.1);
+        
+        // Animate partners in ecosystem orbits
+        allPartners.forEach((partner, i) => {
+          const speed = 0.05 + (partner.userData.type === 'startups' ? 0.03 : 0);
+          const newAngle = partner.userData.angle + time * speed;
+          partner.position.x = Math.cos(newAngle) * partner.userData.radius;
+          partner.position.y = Math.sin(newAngle) * partner.userData.radius;
+          
+          // Different animations for different partner types
+          if (partner.userData.type === 'tech') {
+            partner.rotation.y += 0.02;
+          } else if (partner.userData.type === 'academia') {
+            partner.rotation.z += 0.025;
+          } else {
+            partner.rotation.x += 0.03;
+          }
+          
+          partner.material.opacity = 0.5 + Math.sin(time * 2 + i * 0.8) * 0.2;
+        });
+        
+        // Update connection lines
+        connections.forEach((connection, i) => {
+          const points = [
+            new THREE.Vector3(0, 0, 0),
+            new THREE.Vector3(connection.partner.position.x, connection.partner.position.y, 0)
+          ];
+          connection.line.geometry.setFromPoints(points);
+          connection.line.material.opacity = 0.1 + Math.sin(time * 1.8 + i) * 0.1;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Timeline Visualizations - Unique for each educational/professional milestone
+    
+    // Timeline 1: Government/Moncloa - Complex Network Hierarchy
+    function createGovTimelineViz() {
+      const container = document.getElementById('gov-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(60, 60);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Government building structure
+      const building = new THREE.Mesh(
+        new THREE.BoxGeometry(0.4, 0.6, 0.4),
+        new THREE.MeshBasicMaterial({ color: 0xff6600, wireframe: true })
+      );
+      building.position.y = 0.1;
+      scene.add(building);
+      
+      // Data satellites around building
+      const satellites = [];
+      for (let i = 0; i < 6; i++) {
+        const sat = new THREE.Mesh(
+          new THREE.OctahedronGeometry(0.05, 1),
+          new THREE.MeshBasicMaterial({ color: 0x0088ff, transparent: true, opacity: 0.8 })
+        );
+        const angle = (i / 6) * Math.PI * 2;
+        sat.position.set(Math.cos(angle) * 0.8, Math.sin(angle) * 0.8, 0);
+        sat.userData = { angle: angle };
+        scene.add(sat);
+        satellites.push(sat);
+      }
+      
+      camera.position.z = 2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        building.rotation.y += 0.01;
+        
+        satellites.forEach((sat, i) => {
+          const newAngle = sat.userData.angle + time * 0.5;
+          sat.position.x = Math.cos(newAngle) * 0.8;
+          sat.position.y = Math.sin(newAngle) * 0.8;
+          sat.rotation.x += 0.03;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Timeline 2: Yonsei - Academic Knowledge Web
+    function createYonseiTimelineViz() {
+      const container = document.getElementById('yonsei-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(60, 60);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Central knowledge core
+      const core = new THREE.Mesh(
+        new THREE.SphereGeometry(0.15, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0x44ff88, wireframe: false })
+      );
+      scene.add(core);
+      
+      // Knowledge nodes branching out
+      const branches = [];
+      for (let i = 0; i < 8; i++) {
+        const branch = new THREE.Mesh(
+          new THREE.ConeGeometry(0.04, 0.2, 8),
+          new THREE.MeshBasicMaterial({ color: 0x0088ff, transparent: true, opacity: 0.7 })
+        );
+        const angle = (i / 8) * Math.PI * 2;
+        branch.position.set(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5, 0);
+        branch.rotation.z = angle + Math.PI / 2;
+        branch.userData = { angle: angle };
+        scene.add(branch);
+        branches.push(branch);
+      }
+      
+      camera.position.z = 2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        core.rotation.x += 0.015;
+        core.rotation.y += 0.02;
+        
+        branches.forEach((branch, i) => {
+          branch.rotation.x += 0.02;
+          const pulse = 1 + Math.sin(time * 3 + i) * 0.2;
+          branch.scale.setScalar(pulse);
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Timeline 3: MIT - Technical Innovation Matrix
+    function createMITTimelineViz() {
+      const container = document.getElementById('mit-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(60, 60);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Tech matrix grid
+      const matrix = [];
+      for (let x = 0; x < 3; x++) {
+        for (let y = 0; y < 3; y++) {
+          const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(0.12, 0.12, 0.12),
+            new THREE.MeshBasicMaterial({ color: 0xff4444, wireframe: true, transparent: true, opacity: 0.8 })
+          );
+          cube.position.set((x - 1) * 0.4, (y - 1) * 0.4, 0);
+          cube.userData = { x: x, y: y };
+          scene.add(cube);
+          matrix.push(cube);
+        }
+      }
+      
+      camera.position.z = 2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        matrix.forEach((cube, i) => {
+          cube.rotation.x += 0.02;
+          cube.rotation.y += 0.015;
+          
+          const wave = Math.sin(time * 2 + cube.userData.x + cube.userData.y) * 0.2;
+          cube.position.z = wave;
+          
+          const opacity = 0.5 + Math.sin(time * 3 + i) * 0.3;
+          cube.material.opacity = opacity;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Timeline 4: ML Foundation - Data Particles Flow
+    function createMLTimelineViz() {
+      const container = document.getElementById('ml-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(60, 60);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Data particles flowing in streams
+      const particles = [];
+      for (let i = 0; i < 15; i++) {
+        const particle = new THREE.Mesh(
+          new THREE.SphereGeometry(0.03, 8, 8),
+          new THREE.MeshBasicMaterial({ color: Math.random() > 0.5 ? 0x00ff88 : 0xff6600, transparent: true })
+        );
+        particle.position.set(
+          (Math.random() - 0.5) * 2,
+          (Math.random() - 0.5) * 2,
+          (Math.random() - 0.5) * 0.5
+        );
+        particle.userData = { 
+          velocity: new THREE.Vector3(
+            (Math.random() - 0.5) * 0.02,
+            (Math.random() - 0.5) * 0.02,
+            0
+          )
+        };
+        scene.add(particle);
+        particles.push(particle);
+      }
+      
+      camera.position.z = 2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        particles.forEach((particle, i) => {
+          particle.position.add(particle.userData.velocity);
+          
+          // Boundary check and reset
+          if (Math.abs(particle.position.x) > 1 || Math.abs(particle.position.y) > 1) {
+            particle.position.set(
+              (Math.random() - 0.5) * 2,
+              (Math.random() - 0.5) * 2,
+              0
+            );
+          }
+          
+          particle.rotation.x += 0.05;
+          particle.rotation.y += 0.03;
+          
+          const opacity = 0.6 + Math.sin(time * 4 + i) * 0.4;
+          particle.material.opacity = opacity;
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Timeline 5: Stanford Multi-Sector - Interconnected Domains
+    function createStanfordTimelineViz() {
+      const container = document.getElementById('stanford-viz');
+      if (!container) return;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(60, 60);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Multiple sector representation
+      const sectors = [];
+      const sectorColors = [0xff6600, 0x0088ff, 0x44ff88, 0xff4444];
+      const sectorGeometries = [
+        new THREE.TetrahedronGeometry(0.08, 0),
+        new THREE.OctahedronGeometry(0.08, 0),
+        new THREE.DodecahedronGeometry(0.08, 0),
+        new THREE.IcosahedronGeometry(0.08, 0)
+      ];
+      
+      for (let i = 0; i < 4; i++) {
+        const sector = new THREE.Mesh(
+          sectorGeometries[i],
+          new THREE.MeshBasicMaterial({ color: sectorColors[i], transparent: true, opacity: 0.8 })
+        );
+        const angle = (i / 4) * Math.PI * 2;
+        sector.position.set(Math.cos(angle) * 0.6, Math.sin(angle) * 0.6, 0);
+        sector.userData = { angle: angle, rotSpeed: 0.01 + Math.random() * 0.02 };
+        scene.add(sector);
+        sectors.push(sector);
+      }
+      
+      camera.position.z = 2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        const time = Date.now() * 0.001;
+        
+        sectors.forEach((sector, i) => {
+          const newAngle = sector.userData.angle + time * 0.2;
+          sector.position.x = Math.cos(newAngle) * 0.6;
+          sector.position.y = Math.sin(newAngle) * 0.6;
+          
+          sector.rotation.x += sector.userData.rotSpeed;
+          sector.rotation.y += sector.userData.rotSpeed * 0.7;
+          sector.rotation.z += sector.userData.rotSpeed * 0.5;
+          
+          const pulse = 1 + Math.sin(time * 2 + i) * 0.15;
+          sector.scale.setScalar(pulse);
+        });
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    // Unified Animation Controller for Performance and UX
+    const animations = {
+      background: null,
+      projects: [],
+      timeline: [],
+      isTabVisible: true
+    };
+    
+    // Visibility API for performance optimization
+    document.addEventListener('visibilitychange', () => {
+      animations.isTabVisible = !document.hidden;
     });
+    
+    // Intersection Observer for efficient rendering
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const container = entry.target;
+        const canvas = container.querySelector('canvas');
+        if (canvas) {
+          canvas.style.opacity = entry.isIntersecting ? '1' : '0.3';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Enhanced color coordination
+    const colorPalette = {
+      primary: 0xff6600,    // Orange
+      secondary: 0x0088ff,  // Blue
+      accent: 0x44ff88,     // Green
+      danger: 0xff4444,     // Red
+      neutral: 0x666666     // Gray
+    };
+    
+    // Initialize all visualizations with performance monitoring
+    function initializeAllAnimations() {
+      try {
+        // Background neural network
+        setTimeout(() => {
+          console.log('Initializing background animation...');
+        }, 100);
+        
+        // Project visualizations with staggered delays
+        setTimeout(() => {
+          createGovernmentViz();
+          console.log('Government visualization initialized');
+        }, 200);
+        
+        setTimeout(() => {
+          createExecutiveViz();
+          console.log('Executive visualization initialized');
+        }, 400);
+        
+        setTimeout(() => {
+          createEnterpriseViz();
+          console.log('Enterprise visualization initialized');
+        }, 600);
+        
+        setTimeout(() => {
+          createGovernanceViz();
+          console.log('Governance visualization initialized');
+        }, 800);
+        
+        setTimeout(() => {
+          createTeamLeadershipViz();
+          console.log('Team Leadership visualization initialized');
+        }, 1000);
+        
+        setTimeout(() => {
+          createEcosystemViz();
+          console.log('Ecosystem visualization initialized');
+        }, 1200);
+        
+        // Timeline visualizations
+        setTimeout(() => {
+          createGovTimelineViz();
+          createYonseiTimelineViz();
+          createMITTimelineViz();
+          createMLTimelineViz();
+          createStanfordTimelineViz();
+          console.log('All timeline visualizations initialized');
+        }, 1000);
+        
+        // Set up intersection observers
+        setTimeout(() => {
+          document.querySelectorAll('.ai-visualization, .timeline-viz').forEach(container => {
+            observer.observe(container);
+          });
+          console.log('Animation optimization enabled');
+        }, 1200);
+        
+      } catch (error) {
+        console.error('Animation initialization error:', error);
+      }
+    }
+    
+    // Start initialization when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeAllAnimations);
+    } else {
+      initializeAllAnimations();
+    }
+    
   })();
 
   // Navigation functionality
@@ -1897,204 +2799,273 @@
     updateActiveNavLink();
   })();
 
-  // Contact Form Functionality
+  // Multi-language System
   (() => {
-    const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const formStatus = document.getElementById('form-status');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-
-    // Form validation
-    function validateField(field) {
-      const value = field.value.trim();
-      const errorElement = document.getElementById(field.name + '-error');
-      let isValid = true;
-      let errorMessage = '';
-
-      // Reset error state
-      errorElement.classList.remove('show');
-      field.style.borderColor = '';
-
-      // Validation rules
-      switch (field.name) {
-        case 'name':
-          if (!value) {
-            errorMessage = 'El nombre es requerido';
-            isValid = false;
-          } else if (value.length < 2) {
-            errorMessage = 'El nombre debe tener al menos 2 caracteres';
-            isValid = false;
-          } else if (value.length > 100) {
-            errorMessage = 'El nombre no puede exceder 100 caracteres';
-            isValid = false;
-          }
-          break;
-        case 'email':
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!value) {
-            errorMessage = 'El email es requerido';
-            isValid = false;
-          } else if (!emailRegex.test(value)) {
-            errorMessage = 'Ingresa un email válido';
-            isValid = false;
-          }
-          break;
-        case 'message':
-          if (!value) {
-            errorMessage = 'El mensaje es requerido';
-            isValid = false;
-          } else if (value.length < 10) {
-            errorMessage = 'El mensaje debe tener al menos 10 caracteres';
-            isValid = false;
-          } else if (value.length > 5000) {
-            errorMessage = 'El mensaje no puede exceder 5000 caracteres';
-            isValid = false;
-          }
-          break;
+    const translations = {
+      es: {
+        // Meta
+        'page.title': 'Miguel Guerrero – Candidato a Director de IA | CAIO',
+        'page.description': 'Miguel Guerrero – Candidato ideal para Director de IA/CAIO. Experiencia en La Moncloa + formación ejecutiva en MIT, Yonsei, Stanford. Perfil híbrido técnico-estratégico.',
+        
+        // Navigation
+        'nav.home': 'Inicio',
+        'nav.about': 'Acerca de mí',
+        'nav.experience': 'Experiencia',
+        'nav.projects': 'Proyectos',
+        'nav.contact': 'Contacto',
+        
+        // Hero Section
+        'hero.title': 'Estrategia de IA • Transformación Digital • Liderazgo Técnico',
+        'hero.subtitle': 'Profesional con trayectoria probada escalando iniciativas de IA desde startups hasta gobierno nacional. Combino experiencia hands-on con visión estratégica para traducir complejidad técnica en valor de negocio.',
+        'hero.cta.primary': 'Conectemos',
+        'hero.cta.secondary': 'Contactar',
+        
+        // Highlights
+        'highlight.scale.title': 'Escala & Complejidad',
+        'highlight.scale.desc': 'He liderado implementaciones desde equipos de 5 hasta organizaciones de 50,000+ personas.',
+        'highlight.roi.title': 'ROI Demostrable',
+        'highlight.roi.desc': 'Track record construyendo sistemas que generan valor medible y sostenible a largo plazo.',
+        'highlight.bridge.title': 'Bridge Builder',
+        'highlight.bridge.desc': 'Conecto mundos técnicos y de negocio para acelerar adopción e impacto organizacional.',
+        
+        // Hero Section (updated)
+        'hero.subtitle': 'Estrategia de IA • Transformación Digital • Liderazgo Técnico',
+        'hero.description': 'Profesional con trayectoria probada escalando iniciativas de IA desde startups hasta gobierno nacional. Combino experiencia hands-on con visión estratégica para traducir complejidad técnica en valor de negocio. Mi enfoque: construir capacidades de IA sostenibles que generan ventajas competitivas reales.',
+        'hero.highlight1.title': 'Escala & Complejidad',
+        'hero.highlight1.description': 'He liderado implementaciones desde equipos de 5 hasta organizaciones de 50,000+ personas.',
+        'hero.highlight2.title': 'ROI Demostrable',
+        'hero.highlight2.description': 'Track record construyendo sistemas que generan valor medible y sostenible a largo plazo.',
+        'hero.highlight3.title': 'Bridge Builder',
+        'hero.highlight3.description': 'Conecto mundos técnicos y de negocio para acelerar adopción e impacto organizacional.',
+        'hero.cta.connect': 'Conectemos',
+        'hero.cta.contact': 'Contactar',
+        
+        // About Section
+        'about.title': 'Acerca de mí',
+        'about.text1': 'Poseo una combinación única y poderosa: experiencia práctica en IA en el nivel más alto del gobierno español (La Moncloa) + formación ejecutiva de élite en las mejores instituciones mundiales. Esta combinación excepcional me posiciona como candidato ideal para liderar organizaciones en su transformación de IA.',
+        'about.text2': 'Mi formación ejecutiva incluye Deep Learning for Business (Yonsei), programas avanzados en MIT y Stanford, además de certificaciones en Machine Learning y Data Science. Esta base me permite traducir visión estratégica en ejecución técnica y viceversa – competencia crítica para cualquier Director de IA exitoso.',
+        'about.text3': 'Busco roles de Director de IA o Chief AI Officer donde pueda aplicar mi perspectiva única, liderando equipos multidisciplinarios, estableciendo estrategias de IA robustas y creando frameworks de governance que generen valor sostenible mientras navegan las complejidades regulatorias y éticas.',
+        
+        // Experience Section
+        'experience.title': 'Experiencia Diferenciadora para Dirección de IA',
+        'experience.item1.title': 'IA Estratégica en La Moncloa - Gobierno de España',
+        'experience.item1.description': 'Experiencia excepcional aplicando IA en el nivel más alto del gobierno español. Comprensión única de cómo implementar IA en organizaciones complejas, navegar marcos regulatorios y equilibrar innovación con governance. Perspectiva que aporta valor diferencial a cualquier organización.',
+        'experience.item2.title': 'Executive AI Strategy - Yonsei University',
+        'experience.item2.description': 'Deep Learning for Business: programa ejecutivo que desarrolla competencias críticas para Director de IA. Enfoque en traducción de capacidades técnicas en valor de negocio, governance de IA y liderazgo de transformaciones organizacionales complejas.',
+        'experience.item3.title': 'Advanced Technology Leadership - MIT',
+        'experience.item3.description': 'Especialización en tecnologías de vanguardia y liderazgo técnico. Desarrollo de competencias para dirigir equipos de ingeniería de alto rendimiento, arquitecturar sistemas de IA a escala empresarial y tomar decisiones tecnológicas estratégicas en entornos complejos.',
+        'experience.item4.title': 'Foundation Técnica de Elite - Multiple Platforms',
+        'experience.item4.description': 'Construcción sistemática de expertise técnico profundo: Machine Learning (Andrew Ng/Stanford), Data Science (Udacity), Deep Learning (fast.ai). Esta base garantiza credibilidad técnica esencial para liderar equipos de ingeniería y arquitectos de IA de alto nivel.',
+        'experience.item5.title': 'Multi-Sector AI Experience - Stanford & Others',
+        'experience.item5.description': 'Especializaciones estratégicas en sectores clave: HealthTech (Stanford), Energy (Petroskills), desarrollo full-stack. Esta diversidad sectorial proporciona perspectiva única para identificar oportunidades de IA cross-industry y liderar transformaciones en cualquier sector.',
+        
+        // Projects Section
+        'projects.title': 'Casos de Éxito que Demuestran Liderazgo en IA',
+        'projects.project1.title': 'Liderazgo en Transformación Digital Gubernamental',
+        'projects.project1.description': 'Iniciativas de IA en La Moncloa que demuestran capacidad para navegar organizaciones complejas y entregar valor tangible. Experiencia dirigiendo proyectos cross-funcionales con stakeholders de alto nivel, equilibrando innovación con governance rigurosa.',
+        'projects.project2.title': 'IA para Decisión Ejecutiva y Estrategia',
+        'projects.project2.description': 'Desarrollo de sistemas de inteligencia para apoyar toma de decisiones ejecutivas. Experiencia traduciendo data en insights accionables para leadership, demostrando capacidad crítica para cualquier Director de IA: convertir tecnología en ventaja competitiva.',
+        'projects.project3.title': 'Enterprise AI Implementation & ROI',
+        'projects.project3.description': 'Liderazgo de implementaciones de IA que generan ROI measurable y mejoras operacionales significativas. Experiencia crítica para Director de IA: demostrar cómo la IA crea valor real, no solo capacidades técnicas impresionantes.',
+        'projects.project4.title': 'Governance & Ética en IA Empresarial',
+        'projects.project4.description': 'Desarrollo de frameworks de governance y ética para IA en organizaciones complejas. Experiencia navegando consideraciones regulatorias, éticas y de riesgo – competencias esenciales para cualquier Director de IA en el entorno empresarial actual.',
+        'projects.project5.title': 'AI Team Leadership & Talent Development',
+        'projects.project5.description': 'Construcción y liderazgo de equipos de IA de alto rendimiento. Experiencia desarrollando talent pipelines, implementando metodologías ágiles para IA, y creando culturas de innovación que escalan. Competencia crítica para Director de IA: transformar visión en ejecución a través de personas.',
+        'projects.project6.title': 'Strategic AI Partnerships & Ecosystem Development',
+        'projects.project6.description': 'Desarrollo de ecosistemas estratégicos de IA que amplifican capacidades organizacionales. Experiencia forjando partnerships con academia, startups, y tech giants para crear ventajas competitivas sostenibles. Visión esencial para Director de IA: la innovación surge de colaboraciones estratégicas.',
+        
+        // Contact Section
+        'contact.title': '¿Hablamos?',
+        'contact.intro.title': 'Conversemos sobre el futuro de la IA en tu organización',
+        'contact.intro.description': '¿Buscas liderar la transformación de IA en tu empresa? ¿Necesitas desarrollar una estrategia que equilibre innovación con governance? Conectemos para explorar cómo acelerar el valor de la IA en tu organización.',
+        'contact.email.title': 'Email Directo',
+        'contact.email.description': 'Para discusiones estratégicas y oportunidades de liderazgo',
+        'contact.linkedin.title': 'LinkedIn',
+        'contact.linkedin.description': 'Red profesional y conexiones del sector IA',
+        'contact.twitter.title': 'Twitter',
+        'contact.twitter.description': 'Insights y tendencias en IA estratégica',
+        'contact.availability': 'Disponibilidad: Abierto a conversaciones sobre posiciones de Director de IA, CAIO y roles de liderazgo estratégico en organizaciones que buscan acelerar su transformación con IA.'
+      },
+      en: {
+        // Meta
+        'page.title': 'Miguel Guerrero – AI Director | CAIO Candidate',
+        'page.description': 'Miguel Guerrero – Ideal candidate for AI Director/CAIO roles. La Moncloa experience + executive education at MIT, Yonsei, Stanford. Hybrid technical-strategic profile.',
+        
+        // Navigation
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.experience': 'Experience', 
+        'nav.projects': 'Projects',
+        'nav.contact': 'Contact',
+        
+        // Hero Section
+        'hero.title': 'AI Strategy • Digital Transformation • Technical Leadership',
+        'hero.subtitle': 'Proven professional scaling AI initiatives from startups to national government. I combine hands-on experience with strategic vision to translate technical complexity into business value.',
+        'hero.cta.primary': 'Let\'s Connect',
+        'hero.cta.secondary': 'Contact',
+        
+        // Highlights
+        'highlight.scale.title': 'Scale & Complexity',
+        'highlight.scale.desc': 'I have led implementations from teams of 5 to organizations with 50,000+ people.',
+        'highlight.roi.title': 'Demonstrable ROI',
+        'highlight.roi.desc': 'Track record building systems that generate measurable and sustainable long-term value.',
+        'highlight.bridge.title': 'Bridge Builder',
+        'highlight.bridge.desc': 'I connect technical and business worlds to accelerate adoption and organizational impact.',
+        
+        // Hero Section (updated)
+        'hero.subtitle': 'AI Strategy • Digital Transformation • Technical Leadership',
+        'hero.description': 'Proven professional scaling AI initiatives from startups to national government. I combine hands-on experience with strategic vision to translate technical complexity into business value. My focus: building sustainable AI capabilities that generate real competitive advantages.',
+        'hero.highlight1.title': 'Scale & Complexity',
+        'hero.highlight1.description': 'I have led implementations from teams of 5 to organizations with 50,000+ people.',
+        'hero.highlight2.title': 'Demonstrable ROI',
+        'hero.highlight2.description': 'Track record building systems that generate measurable and sustainable long-term value.',
+        'hero.highlight3.title': 'Bridge Builder',
+        'hero.highlight3.description': 'I connect technical and business worlds to accelerate adoption and organizational impact.',
+        'hero.cta.connect': 'Let\'s Connect',
+        'hero.cta.contact': 'Contact',
+        
+        // About Section  
+        'about.title': 'About Me',
+        'about.text1': 'I possess a unique and powerful combination: practical AI experience at the highest level of Spanish government (La Moncloa) + elite executive education at the world\'s best institutions. This exceptional combination positions me as an ideal candidate to lead organizations in their AI transformation.',
+        'about.text2': 'My executive education includes Deep Learning for Business (Yonsei), advanced programs at MIT and Stanford, plus certifications in Machine Learning and Data Science. This foundation allows me to translate strategic vision into technical execution and vice versa – a critical competency for any successful AI Director.',
+        'about.text3': 'I seek AI Director or Chief AI Officer roles where I can apply my unique perspective, leading multidisciplinary teams, establishing robust AI strategies, and creating governance frameworks that generate sustainable value while navigating regulatory and ethical complexities.',
+        
+        // Experience Section
+        'experience.title': 'Differentiating Experience for AI Leadership',
+        'experience.item1.title': 'Strategic AI at La Moncloa - Government of Spain',
+        'experience.item1.description': 'Exceptional experience applying AI at the highest level of Spanish government. Unique understanding of how to implement AI in complex organizations, navigate regulatory frameworks and balance innovation with governance. Perspective that brings differential value to any organization.',
+        'experience.item2.title': 'Executive AI Strategy - Yonsei University',
+        'experience.item2.description': 'Deep Learning for Business: executive program that develops critical competencies for AI Director. Focus on translating technical capabilities into business value, AI governance and leading complex organizational transformations.',
+        'experience.item3.title': 'Advanced Technology Leadership - MIT',
+        'experience.item3.description': 'Specialization in cutting-edge technologies and technical leadership. Development of competencies to lead high-performance engineering teams, architect enterprise-scale AI systems and make strategic technology decisions in complex environments.',
+        'experience.item4.title': 'Elite Technical Foundation - Multiple Platforms',
+        'experience.item4.description': 'Systematic construction of deep technical expertise: Machine Learning (Andrew Ng/Stanford), Data Science (Udacity), Deep Learning (fast.ai). This foundation ensures essential technical credibility to lead high-level engineering teams and AI architects.',
+        'experience.item5.title': 'Multi-Sector AI Experience - Stanford & Others',
+        'experience.item5.description': 'Strategic specializations in key sectors: HealthTech (Stanford), Energy (Petroskills), full-stack development. This sectoral diversity provides unique perspective to identify cross-industry AI opportunities and lead transformations in any sector.',
+        
+        // Projects Section  
+        'projects.title': 'Success Cases Demonstrating AI Leadership',
+        'projects.project1.title': 'Leadership in Government Digital Transformation',
+        'projects.project1.description': 'AI initiatives at La Moncloa that demonstrate ability to navigate complex organizations and deliver tangible value. Experience leading cross-functional projects with high-level stakeholders, balancing innovation with rigorous governance.',
+        'projects.project2.title': 'AI for Executive Decision and Strategy',
+        'projects.project2.description': 'Development of intelligence systems to support executive decision-making. Experience translating data into actionable insights for leadership, demonstrating critical capability for any AI Director: converting technology into competitive advantage.',
+        'projects.project3.title': 'Enterprise AI Implementation & ROI',
+        'projects.project3.description': 'Leadership of AI implementations that generate measurable ROI and significant operational improvements. Critical experience for AI Director: demonstrating how AI creates real value, not just impressive technical capabilities.',
+        'projects.project4.title': 'Governance & Ethics in Enterprise AI',
+        'projects.project4.description': 'Development of governance and ethics frameworks for AI in complex organizations. Experience navigating regulatory, ethical and risk considerations – essential competencies for any AI Director in today\'s business environment.',
+        'projects.project5.title': 'AI Team Leadership & Talent Development',
+        'projects.project5.description': 'Building and leading high-performance AI teams. Experience developing talent pipelines, implementing agile methodologies for AI, and creating innovation cultures that scale. Critical competency for AI Director: transforming vision into execution through people.',
+        'projects.project6.title': 'Strategic AI Partnerships & Ecosystem Development',
+        'projects.project6.description': 'Development of strategic AI ecosystems that amplify organizational capabilities. Experience forging partnerships with academia, startups, and tech giants to create sustainable competitive advantages. Essential vision for AI Director: innovation emerges from strategic collaborations.',
+        
+        // Contact Section
+        'contact.title': 'Let\'s Talk?',
+        'contact.intro.title': 'Let\'s discuss the future of AI in your organization',
+        'contact.intro.description': 'Looking to lead AI transformation in your company? Need to develop a strategy that balances innovation with governance? Let\'s connect to explore how to accelerate AI value in your organization.',
+        'contact.email.title': 'Direct Email',
+        'contact.email.description': 'For strategic discussions and leadership opportunities',
+        'contact.linkedin.title': 'LinkedIn',
+        'contact.linkedin.description': 'Professional network and AI industry connections',
+        'contact.twitter.title': 'Twitter',
+        'contact.twitter.description': 'Insights and trends in strategic AI',
+        'contact.availability': 'Availability: Open to conversations about AI Director, CAIO positions and strategic leadership roles in organizations seeking to accelerate their AI transformation.'
       }
+    };
 
-      if (!isValid) {
-        errorElement.textContent = errorMessage;
-        errorElement.classList.add('show');
-        field.style.borderColor = '#e74c3c';
+    let currentLang = 'es'; // Default language
+    
+    // Language detection
+    function detectLanguage() {
+      // Check localStorage first
+      const savedLang = localStorage.getItem('language');
+      if (savedLang && translations[savedLang]) return savedLang;
+      
+      // Try to detect from browser/location
+      const browserLang = navigator.language.toLowerCase();
+      
+      // Check for Spanish variants
+      if (browserLang.startsWith('es') || 
+          browserLang.includes('es-') ||
+          browserLang.includes('mx') ||
+          browserLang.includes('ar') ||
+          browserLang.includes('cl') ||
+          browserLang.includes('co')) {
+        return 'es';
       }
-
-      return isValid;
+      
+      // Default to English for other locations
+      return 'en';
     }
-
-    // Show form status message
-    function showFormStatus(message, type) {
-      formStatus.textContent = message;
-      formStatus.className = `form-status show ${type}`;
-      setTimeout(() => {
-        formStatus.classList.remove('show');
-      }, 5000);
+    
+    // Apply translations
+    function applyTranslations(lang) {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            element.placeholder = translations[lang][key];
+          } else {
+            element.textContent = translations[lang][key];
+          }
+        }
+      });
+      
+      // Update page metadata
+      const pageTitle = document.getElementById('page-title');
+      const pageDescription = document.getElementById('page-description');
+      const htmlRoot = document.getElementById('html-root');
+      
+      if (pageTitle && translations[lang]['page.title']) {
+        pageTitle.textContent = translations[lang]['page.title'];
+      }
+      if (pageDescription && translations[lang]['page.description']) {
+        pageDescription.content = translations[lang]['page.description'];
+      }
+      if (htmlRoot) {
+        htmlRoot.setAttribute('lang', lang);
+      }
     }
-
-    // Set loading state
-    function setLoadingState(loading) {
-      submitBtn.disabled = loading;
-      if (loading) {
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline';
+    
+    // Update language toggle
+    function updateLanguageToggle(lang) {
+      const langFlag = document.getElementById('lang-flag');
+      const langText = document.getElementById('lang-text');
+      const langToggle = document.getElementById('lang-toggle');
+      
+      if (lang === 'es') {
+        langFlag.textContent = '🇪🇸';
+        langText.textContent = 'ES';
+        langToggle.setAttribute('aria-label', 'Switch to English');
       } else {
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
+        langFlag.textContent = '🇺🇸';
+        langText.textContent = 'EN';
+        langToggle.setAttribute('aria-label', 'Cambiar a Español');
       }
     }
-
-    // Real-time validation
-    ['name', 'email', 'message'].forEach(fieldName => {
-      const field = document.getElementById(fieldName);
-      field.addEventListener('blur', () => validateField(field));
-      field.addEventListener('input', () => {
-        // Clear error on input
-        const errorElement = document.getElementById(fieldName + '-error');
-        if (errorElement.classList.contains('show')) {
-          errorElement.classList.remove('show');
-          field.style.borderColor = '';
-        }
-      });
-    });
-
-    // Form submission
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    
+    // Switch language
+    function switchLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      applyTranslations(currentLang);
+      updateLanguageToggle(currentLang);
+      localStorage.setItem('language', currentLang);
       
-      // Validate all fields
-      const nameField = document.getElementById('name');
-      const emailField = document.getElementById('email');
-      const messageField = document.getElementById('message');
-      
-      const isNameValid = validateField(nameField);
-      const isEmailValid = validateField(emailField);
-      const isMessageValid = validateField(messageField);
-      
-      if (!isNameValid || !isEmailValid || !isMessageValid) {
-        showFormStatus('Por favor corrige los errores del formulario', 'error');
-        return;
-      }
-
-      // Submit form
-      setLoadingState(true);
-      
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData
+      // Track language changes
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'language_change', {
+          language: currentLang
         });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-          showFormStatus('¡Mensaje enviado correctamente! Te responderé pronto.', 'success');
-          form.reset();
-          
-          // Track successful form submission
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_submit', {
-              form_name: 'contact_form',
-              form_status: 'success'
-            });
-          }
-        } else {
-          throw new Error(result.error || 'Error al enviar el mensaje');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        showFormStatus(
-          error.message || 'Error al enviar el mensaje. Por favor intenta de nuevo.',
-          'error'
-        );
-        
-        // Track form submission error
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_submit', {
-            form_name: 'contact_form',
-            form_status: 'error',
-            error_message: error.message
-          });
-        }
-      } finally {
-        setLoadingState(false);
       }
-    });
-  })();
-
-  // Skills Animation
-  (() => {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    let skillsAnimated = false;
-
-    function animateSkills() {
-      if (skillsAnimated) return;
-      
-      skillBars.forEach((bar, index) => {
-        const width = bar.getAttribute('data-width');
-        setTimeout(() => {
-          bar.style.width = width;
-        }, index * 100);
-      });
-      
-      skillsAnimated = true;
     }
-
-    // Intersection Observer for skills animation
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateSkills();
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      observer.observe(skillsSection);
-    }
+    
+    // Initialize
+    currentLang = detectLanguage();
+    applyTranslations(currentLang);
+    updateLanguageToggle(currentLang);
+    
+    // Event listener
+    document.getElementById('lang-toggle').addEventListener('click', switchLanguage);
   })();
 
   // Theme Toggle Functionality
@@ -2114,7 +3085,7 @@
     function applyTheme(theme) {
       html.setAttribute('data-theme', theme);
       themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
       localStorage.setItem('theme', theme);
       
       // Track theme changes
