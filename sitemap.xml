@@ -1,20 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://apolmig.github.io/</loc>
-    <priority>0</priority>
+    <loc>https://apolmig.github.io/</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
-  
   <url>
-    <loc>http://apolmig.github.io/categories/</loc>
-    <priority>0</priority>
+    <loc>https://apolmig.github.io/docs/</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
-  
-  <url>
-    <loc>http://apolmig.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
 </urlset>

@@ -27,6 +27,72 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID
+    gtag('config', 'GA_MEASUREMENT_ID', {
+      page_title: 'Miguel Guerrero - AI Strategy Portfolio',
+      page_location: window.location.href,
+      send_page_view: true
+    });
+    
+    // Track resume downloads
+    document.addEventListener('DOMContentLoaded', function() {
+      const resumeLink = document.querySelector('a[href="Miguel_Guerrero_CV.pdf"]');
+      if (resumeLink) {
+        resumeLink.addEventListener('click', function() {
+          gtag('event', 'file_download', {
+            file_name: 'Miguel_Guerrero_CV.pdf',
+            file_extension: '.pdf',
+            link_text: this.textContent
+          });
+        });
+      }
+    });
+  </script>
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Miguel Guerrero",
+    "jobTitle": "AI Strategy & Governance Expert",
+    "description": "Líder en proyectos de Inteligencia Artificial en el sector público y privado, especializado en AI Governance, Innovación y Educación.",
+    "url": "https://apolmig.github.io",
+    "image": "https://apolmig.github.io/preview.jpg",
+    "email": "miguel@saturdays.ai",
+    "sameAs": [
+      "https://www.linkedin.com/in/miguelguer",
+      "https://github.com/apolmig",
+      "https://twitter.com/apolmig"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "AI Governance",
+      "Innovation Strategy",
+      "Social Impact",
+      "Education Technology",
+      "Strategic Consulting"
+    ],
+    "affiliation": [
+      {
+        "@type": "Organization",
+        "name": "Saturdays.AI",
+        "url": "https://saturdays.ai"
+      }
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Various prestigious institutions"
+    }
+  }
+  </script>
+
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -39,14 +105,28 @@
       --card-bg: #f5f5f5;
       --border: #dddddd;
     }
+    
+    /* Dark theme */
+    [data-theme="dark"] {
+      --accent: #ff6600; /* mantenemos naranja también en dark */
+      --bg: #0a0a0a;
+      --text: #f5f5f5;
+      --subtext: #cccccc;
+      --card-bg: #111111;
+      --border: #222222;
+      --bg-rgb: 10, 10, 10;
+    }
+    
+    /* Auto dark mode fallback */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --accent: #ff6600; /* mantenemos naranja también en dark */
+      :root:not([data-theme="light"]) {
+        --accent: #ff6600;
         --bg: #0a0a0a;
         --text: #f5f5f5;
         --subtext: #cccccc;
         --card-bg: #111111;
         --border: #222222;
+        --bg-rgb: 10, 10, 10;
       }
     }
     * { box-sizing: border-box; }
@@ -183,6 +263,630 @@
     @keyframes slideDown { from { transform: translateY(-16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     @keyframes fadeUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
+    /* Navigation */
+    .nav-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(var(--bg-rgb), 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 12px 0;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .nav-header.visible {
+      transform: translateY(0);
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    /* Navigation actions */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    /* Theme toggle */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .theme-toggle:hover {
+      background: var(--card-bg);
+      transform: scale(1.05);
+    }
+    
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+    
+    /* Section spacing for nav */
+    .section {
+      padding-top: 80px;
+      margin-top: -80px;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 40px;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideInLeft 0.6s ease forwards;
+    }
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -47px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--accent);
+    }
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .timeline-content {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-content:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 10px 8px 0;
+      border-color: transparent var(--card-bg) transparent transparent;
+    }
+    .timeline-content h3 {
+      margin: 0 0 12px 0;
+      color: var(--text);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .timeline-content p {
+      margin: 0 0 16px 0;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .tag {
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+
+    /* Animation for timeline */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .project-header h3 {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+    .project-links a {
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--subtext);
+      transition: color 0.2s ease, transform 0.2s ease;
+      padding: 4px;
+    }
+    .project-links a:hover {
+      color: var(--accent);
+      transform: scale(1.2);
+    }
+    .project-card p {
+      color: var(--subtext);
+      line-height: 1.6;
+      margin: 0 0 20px 0;
+    }
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tech-tag {
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+    .project-impact {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .impact-metric {
+      text-align: center;
+      flex: 1;
+    }
+    .impact-metric strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .impact-metric span {
+      color: var(--subtext);
+      font-size: 0.8rem;
+    }
+
+    /* Contact Form Styles */
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      margin-top: 40px;
+      align-items: start;
+    }
+    .contact-info h3 {
+      color: var(--text);
+      font-size: 1.5rem;
+      margin: 0 0 16px 0;
+    }
+    .contact-info p {
+      color: var(--subtext);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease;
+    }
+    .contact-method:hover {
+      transform: translateY(-2px);
+    }
+    .contact-icon {
+      font-size: 1.5rem;
+      width: 40px;
+      text-align: center;
+    }
+    .contact-method strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .contact-method a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .contact-method a:hover {
+      color: var(--text);
+    }
+
+    /* Form Styles */
+    .contact-form {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .error-message {
+      display: block;
+      color: #e74c3c;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .error-message.show {
+      opacity: 1;
+    }
+    .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      position: relative;
+    }
+    .submit-btn:hover {
+      background: color-mix(in srgb, var(--accent) 90%, black);
+      transform: translateY(-1px);
+    }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .form-status.show {
+      opacity: 1;
+    }
+    .form-status.success {
+      background: color-mix(in srgb, #27ae60 15%, transparent);
+      color: #27ae60;
+      border: 1px solid color-mix(in srgb, #27ae60 30%, transparent);
+    }
+    .form-status.error {
+      background: color-mix(in srgb, #e74c3c 15%, transparent);
+      color: #e74c3c;
+      border: 1px solid color-mix(in srgb, #e74c3c 30%, transparent);
+    }
+
+    /* Skills Section Styles */
+    .skills-content {
+      margin-top: 40px;
+    }
+    .skills-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .skill-category:nth-child(1) { animation-delay: 0.1s; }
+    .skill-category:nth-child(2) { animation-delay: 0.2s; }
+    .skill-category:nth-child(3) { animation-delay: 0.3s; }
+    .skill-category:nth-child(4) { animation-delay: 0.4s; }
+    
+    .skill-category h3 {
+      margin: 0 0 24px 0;
+      color: var(--text);
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .skill-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .skill-item {
+      position: relative;
+    }
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .skill-name {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .skill-level {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .skill-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 80%, white));
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1s ease-out 0.5s;
+      position: relative;
+    }
+    .skill-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 20px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-20px); }
+      100% { transform: translateX(20px); }
+    }
+
+    /* Testimonials Styles */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+    .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+    .testimonial-card:nth-child(5) { animation-delay: 0.5s; }
+    .testimonial-card:nth-child(6) { animation-delay: 0.6s; }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    .testimonial-content {
+      margin-bottom: 24px;
+    }
+    .quote-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+    .testimonial-content p {
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 1rem;
+      margin: 0;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .author-info strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .author-info span {
+      color: var(--subtext);
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    /* CSS Variables for backdrop-filter support */
+    :root {
+      --bg-rgb: 255, 255, 255;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-rgb: 10, 10, 10;
+      }
+    }
+
     /* Responsive móvil */
     @media (max-width: 768px) {
       .container { min-height: auto; padding: 30px 16px; }
@@ -192,16 +896,174 @@
       .highlights { gap: 18px; margin-top: 28px; }
       .highlight { padding: 14px; }
       .cta { margin-top: 28px; gap: 10px; }
+      
+      .mobile-menu-btn { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      /* Timeline mobile adjustments */
+      .timeline {
+        padding-left: 20px;
+        margin: 30px auto;
+      }
+      .timeline::before {
+        left: 10px;
+      }
+      .timeline-item {
+        padding-left: 30px;
+        margin-bottom: 30px;
+      }
+      .timeline-item::before {
+        left: -37px;
+        width: 10px;
+        height: 10px;
+      }
+      .timeline-content {
+        padding: 18px;
+      }
+      .timeline-content::before {
+        left: -8px;
+        border-width: 6px 8px 6px 0;
+      }
+      .tag {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+      }
+      
+      /* Projects mobile adjustments */
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 30px;
+      }
+      .project-card {
+        padding: 20px;
+      }
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .project-header h3 {
+        font-size: 1.2rem;
+      }
+      .project-impact {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .impact-metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+      }
+      .impact-metric strong {
+        margin-bottom: 0;
+      }
+      
+      /* Contact form mobile adjustments */
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .contact-form {
+        padding: 24px;
+      }
+      .contact-methods {
+        gap: 16px;
+      }
+      .contact-method {
+        padding: 12px;
+      }
+      .contact-icon {
+        font-size: 1.2rem;
+        width: 32px;
+      }
+      
+      /* Skills mobile adjustments */
+      .skills-categories {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .skill-category {
+        padding: 24px;
+      }
+      .skill-category h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+      .skill-items {
+        gap: 16px;
+      }
+      .skill-info {
+        margin-bottom: 6px;
+      }
+      
+      /* Testimonials mobile adjustments */
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .testimonial-card {
+        padding: 24px;
+      }
+      .quote-icon {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+      }
+      .testimonial-content p {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
+  <header class="nav-header" id="nav-header">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">Miguel Guerrero</a>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-link">Inicio</a></li>
+          <li><a href="#about" class="nav-link">Acerca</a></li>
+          <li><a href="#experience" class="nav-link">Experiencia</a></li>
+          <li><a href="#skills" class="nav-link">Competencias</a></li>
+          <li><a href="#projects" class="nav-link">Proyectos</a></li>
+          <li><a href="#contact" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
   <!-- Fondo animado -->
   <canvas id="bg-animation" aria-hidden="true"></canvas>
 
   <!-- Contenido -->
-  <div class="container">
+  <section id="home" class="section">
+    <div class="container">
     <h1 id="title">Miguel Guerrero</h1>
     <h2>Estrategia + IA + Impacto Social</h2>
     <p>
@@ -228,6 +1090,7 @@
     <div class="cta">
       <a class="primary" href="https://www.linkedin.com/in/miguelguer" aria-label="Conectar en LinkedIn">Conectemos</a>
       <a class="secondary" href="mailto:miguel@saturdays.ai" aria-label="Contactar por email">Contactar</a>
+      <a class="secondary" href="Miguel_Guerrero_CV.pdf" target="_blank" aria-label="Descargar CV en PDF">📄 Descargar CV</a>
     </div>
 
     <footer>
@@ -236,7 +1099,566 @@
       <a href="https://github.com/apolmig">GitHub</a> |
       <a href="https://twitter.com/apolmig">Twitter</a>
     </footer>
-  </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>Acerca de mí</h2>
+      <p>Sección en desarrollo - Información detallada sobre mi background y experiencia.</p>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Trayectoria Profesional</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2020 - Presente</div>
+          <div class="timeline-content">
+            <h3>Fundador & CEO - Saturdays.AI</h3>
+            <p>Lidero la mayor comunidad de IA de España con +10,000 miembros. Democratizando el acceso a la educación en IA a través de programas gratuitos y proyectos de impacto social.</p>
+            <div class="timeline-tags">
+              <span class="tag">Educación</span>
+              <span class="tag">Comunidad</span>
+              <span class="tag">IA Social</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2019 - Presente</div>
+          <div class="timeline-content">
+            <h3>AI Strategy Consultant</h3>
+            <p>Asesoramiento estratégico en IA para gobiernos y empresas. Desarrollo de marcos de AI Governance y políticas de soberanía tecnológica a nivel nacional e internacional.</p>
+            <div class="timeline-tags">
+              <span class="tag">Estrategia</span>
+              <span class="tag">Governance</span>
+              <span class="tag">Políticas Públicas</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2018 - 2020</div>
+          <div class="timeline-content">
+            <h3>Director de Innovación - Sector Público</h3>
+            <p>Lideré la transformación digital y la implementación de soluciones de IA en organizaciones públicas, mejorando la eficiencia y el servicio ciudadano.</p>
+            <div class="timeline-tags">
+              <span class="tag">Transformación Digital</span>
+              <span class="tag">Sector Público</span>
+              <span class="tag">Innovación</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2016 - 2018</div>
+          <div class="timeline-content">
+            <h3>Senior Data Scientist - Fintech</h3>
+            <p>Desarrollo de modelos predictivos y sistemas de recomendación que procesaban millones de transacciones, generando insights clave para decisiones estratégicas.</p>
+            <div class="timeline-tags">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Fintech</span>
+              <span class="tag">Big Data</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2014 - 2016</div>
+          <div class="timeline-content">
+            <h3>Analista de Negocio - Consultoría</h3>
+            <p>Análisis estratégico y optimización de procesos para empresas multinacionales. Especialización en modelos de negocio digitales y transformación organizacional.</p>
+            <div class="timeline-tags">
+              <span class="tag">Consultoría</span>
+              <span class="tag">Análisis Estratégico</span>
+              <span class="tag">Procesos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Expertise Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2>Expertise & Competencias</h2>
+      <div class="skills-content">
+        <div class="skills-categories">
+          <div class="skill-category">
+            <h3>🤖 Inteligencia Artificial</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Machine Learning</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Deep Learning</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">NLP</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Computer Vision</span>
+                  <span class="skill-level">Intermedio</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>🏛️ Governance & Estrategia</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">AI Ethics</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Policy Development</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Strategic Planning</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Risk Assessment</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>💻 Tecnologías</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Python</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">TensorFlow/PyTorch</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Cloud Platforms</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Data Engineering</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>🌍 Liderazgo & Impacto</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Community Building</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="98%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Public Speaking</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Educational Design</span>
+                  <span class="skill-level">Experto</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="92%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">International Relations</span>
+                  <span class="skill-level">Avanzado</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Proyectos Destacados</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Saturdays.AI Platform</h3>
+            <div class="project-links">
+              <a href="https://saturdays.ai" target="_blank" aria-label="Ver sitio web">🌐</a>
+              <a href="https://github.com/SaturdaysAI" target="_blank" aria-label="Ver código en GitHub">📁</a>
+            </div>
+          </div>
+          <p>Plataforma educativa que conecta +10,000 estudiantes de IA en 50+ ciudades. Incluye sistema de gestión de proyectos, matching automático y tracking de progreso.</p>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">AI/ML</span>
+          </div>
+          <div class="project-impact">
+            <div class="impact-metric">
+              <strong>10,000+</strong>
+              <span>Estudiantes</span>
+            </div>
+            <div class="impact-metric">
+              <strong>500+</strong>
+              <span>Proyectos</span>
+            </div>
+            <div class="impact-metric">
+              <strong>50+</strong>
+              <span>Ciudades</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>AI Governance Framework</h3>
+            <div class="project-links">
+              <a href="#" target="_blank" aria-label="Ver documentación">📋</a>
+              <a href="#" target="_blank" aria-label="Ver repositorio">📁</a>
+            </div>
+          </div>
+          <p>Marco de trabajo para implementación ética de IA en organizaciones públicas. Incluye metodologías, herramientas de auditoría y templates de políticas.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Policy</span>
+            <span class="tech-tag">Ethics</span>
+            <span class="tech-tag">Governance</span>
+          </div>
+          <div class="project-impact">
+            <div class="impact-metric">
+              <strong>15+</strong>
+              <span>Organismos</span>
+            </div>
+            <div class="impact-metric">
+              <strong>3</strong>
+              <span>Países</span>
+            </div>
+            <div class="impact-metric">
+              <strong>100M+</strong>
+              <span>Ciudadanos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>DAWIA - Women in AI</h3>
+            <div class="project-links">
+              <a href="https://dawia.ai" target="_blank" aria-label="Ver sitio web">🌐</a>
+              <a href="#" target="_blank" aria-label="Ver repositorio">📁</a>
+            </div>
+          </div>
+          <p>Iniciativa global para promover la diversidad de género en IA. Red de mentoring, eventos y programa de becas para mujeres en tecnología.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Community</span>
+            <span class="tech-tag">Mentoring</span>
+            <span class="tech-tag">Diversity</span>
+            <span class="tech-tag">Impact</span>
+          </div>
+          <div class="project-impact">
+            <div class="impact-metric">
+              <strong>2,000+</strong>
+              <span>Mujeres</span>
+            </div>
+            <div class="impact-metric">
+              <strong>30+</strong>
+              <span>Países</span>
+            </div>
+            <div class="impact-metric">
+              <strong>100+</strong>
+              <span>Mentoras</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Smart City Analytics</h3>
+            <div class="project-links">
+              <a href="#" target="_blank" aria-label="Ver caso de estudio">📊</a>
+              <a href="#" target="_blank" aria-label="Ver código">📁</a>
+            </div>
+          </div>
+          <p>Sistema de análisis predictivo para optimización de servicios urbanos. Procesamiento de datos IoT, predicción de tráfico y gestión de recursos en tiempo real.</p>
+          <div class="project-tech">
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">ML</span>
+            <span class="tech-tag">Real-time</span>
+            <span class="tech-tag">Smart Cities</span>
+          </div>
+          <div class="project-impact">
+            <div class="impact-metric">
+              <strong>25%</strong>
+              <span>Reducción Tráfico</span>
+            </div>
+            <div class="impact-metric">
+              <strong>30%</strong>
+              <span>Ahorro Energía</span>
+            </div>
+            <div class="impact-metric">
+              <strong>1M+</strong>
+              <span>Ciudadanos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <h2>Testimonios</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Miguel es un visionario en el campo de la IA. Su capacidad para traducir conceptos complejos en estrategias claras y actionables es excepcional. Ha sido fundamental en el desarrollo de nuestras políticas de AI Governance."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Dr. Ana Martínez</strong>
+              <span>Directora de Innovación Digital, Ministerio de Ciencia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"La comunidad Saturdays.AI que Miguel ha creado ha transformado la educación en IA en España. Su enfoque democratizador y su pasión por el impacto social son inspiradores. Miles de personas han encontrado su camino en la IA gracias a su visión."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Carlos Rodriguez</strong>
+              <span>CTO, TechCorp España</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Miguel combina un profundo conocimiento técnico con una perspectiva ética y social única. Sus conferencias y workshops han sido fundamentales para nuestra transformación digital responsable."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Elena García</strong>
+              <span>VP of AI Strategy, Global Financial Services</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Como mentor en DAWIA, Miguel ha demostrado un compromiso extraordinario con la diversidad en IA. Su liderazgo ha empoderado a cientos de mujeres para entrar y prosperar en este campo."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Maria López</strong>
+              <span>AI Research Scientist, European AI Lab</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"La consultoría de Miguel en AI Governance nos ayudó a navegar el complejo panorama regulatorio mientras manteníamos la innovación. Su expertise es invaluable para cualquier organización seria sobre IA responsable."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>David Johnson</strong>
+              <span>Chief Legal Officer, International Corp</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Miguel tiene la rara habilidad de conectar la tecnología con el propósito social. Sus proyectos de Smart Cities han mejorado la vida de millones de ciudadanos. Es un verdadero agente de cambio."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Roberto Silva</strong>
+              <span>Alcalde, Ciudad Inteligente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>¿Hablamos?</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Colaboremos juntos</h3>
+          <p>¿Tienes un proyecto de IA, necesitas asesoramiento estratégico o quieres explorar colaboraciones? Me encanta conectar con personas que comparten la visión de usar la tecnología para generar impacto positivo.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <span class="contact-icon">📧</span>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:miguel@saturdays.ai">miguel@saturdays.ai</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <span class="contact-icon">💼</span>
+              <div>
+                <strong>LinkedIn</strong>
+                <a href="https://www.linkedin.com/in/miguelguer" target="_blank">@miguelguer</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <span class="contact-icon">🐦</span>
+              <div>
+                <strong>Twitter</strong>
+                <a href="https://twitter.com/apolmig" target="_blank">@apolmig</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" action="mail/contact_me.php" method="POST">
+          <div class="form-group">
+            <label for="name">Nombre *</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error-message" id="name-error"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message" id="email-error"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Asunto</label>
+            <select id="subject" name="subject">
+              <option value="">Selecciona un tema</option>
+              <option value="consulting">Consultoría en IA</option>
+              <option value="speaking">Charlas y Conferencias</option>
+              <option value="collaboration">Colaboraciones</option>
+              <option value="education">Programas Educativos</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Mensaje *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto, idea o cómo puedo ayudarte..."></textarea>
+            <span class="error-message" id="message-error"></span>
+          </div>
+          
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <span class="btn-text">Enviar Mensaje</span>
+            <span class="btn-loading" style="display: none;">Enviando...</span>
+          </button>
+          
+          <div class="form-status" id="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
 
   <!-- Three.js y post-procesado (bloom solo en desktop) -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
@@ -383,6 +1805,345 @@
       renderer.setSize(innerWidth, innerHeight);
       if (composer) composer.setSize(innerWidth, innerHeight);
     });
+  })();
+
+  // Navigation functionality
+  (() => {
+    const navHeader = document.getElementById('nav-header');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+    const navLinkElements = document.querySelectorAll('.nav-link');
+    let lastScrollY = window.scrollY;
+
+    // Show/hide navigation on scroll
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        navHeader.classList.add('visible');
+      } else {
+        navHeader.classList.remove('visible');
+      }
+      
+      lastScrollY = currentScrollY;
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.contains('open');
+      mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+      mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+    }
+
+    // Smooth scroll to sections
+    function smoothScrollTo(targetId) {
+      const target = document.getElementById(targetId);
+      if (target) {
+        const offsetTop = target.offsetTop - 80; // Account for nav height
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Update active nav link based on scroll position
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('.section');
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinkElements.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', () => {
+      handleScroll();
+      updateActiveNavLink();
+    });
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Navigation link clicks
+    navLinkElements.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        smoothScrollTo(targetId);
+        
+        // Close mobile menu if open
+        if (navLinks.classList.contains('open')) {
+          toggleMobileMenu();
+        }
+      });
+    });
+
+    // Initialize
+    handleScroll();
+    updateActiveNavLink();
+  })();
+
+  // Contact Form Functionality
+  (() => {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+    // Form validation
+    function validateField(field) {
+      const value = field.value.trim();
+      const errorElement = document.getElementById(field.name + '-error');
+      let isValid = true;
+      let errorMessage = '';
+
+      // Reset error state
+      errorElement.classList.remove('show');
+      field.style.borderColor = '';
+
+      // Validation rules
+      switch (field.name) {
+        case 'name':
+          if (!value) {
+            errorMessage = 'El nombre es requerido';
+            isValid = false;
+          } else if (value.length < 2) {
+            errorMessage = 'El nombre debe tener al menos 2 caracteres';
+            isValid = false;
+          } else if (value.length > 100) {
+            errorMessage = 'El nombre no puede exceder 100 caracteres';
+            isValid = false;
+          }
+          break;
+        case 'email':
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!value) {
+            errorMessage = 'El email es requerido';
+            isValid = false;
+          } else if (!emailRegex.test(value)) {
+            errorMessage = 'Ingresa un email válido';
+            isValid = false;
+          }
+          break;
+        case 'message':
+          if (!value) {
+            errorMessage = 'El mensaje es requerido';
+            isValid = false;
+          } else if (value.length < 10) {
+            errorMessage = 'El mensaje debe tener al menos 10 caracteres';
+            isValid = false;
+          } else if (value.length > 5000) {
+            errorMessage = 'El mensaje no puede exceder 5000 caracteres';
+            isValid = false;
+          }
+          break;
+      }
+
+      if (!isValid) {
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add('show');
+        field.style.borderColor = '#e74c3c';
+      }
+
+      return isValid;
+    }
+
+    // Show form status message
+    function showFormStatus(message, type) {
+      formStatus.textContent = message;
+      formStatus.className = `form-status show ${type}`;
+      setTimeout(() => {
+        formStatus.classList.remove('show');
+      }, 5000);
+    }
+
+    // Set loading state
+    function setLoadingState(loading) {
+      submitBtn.disabled = loading;
+      if (loading) {
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+      } else {
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      }
+    }
+
+    // Real-time validation
+    ['name', 'email', 'message'].forEach(fieldName => {
+      const field = document.getElementById(fieldName);
+      field.addEventListener('blur', () => validateField(field));
+      field.addEventListener('input', () => {
+        // Clear error on input
+        const errorElement = document.getElementById(fieldName + '-error');
+        if (errorElement.classList.contains('show')) {
+          errorElement.classList.remove('show');
+          field.style.borderColor = '';
+        }
+      });
+    });
+
+    // Form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Validate all fields
+      const nameField = document.getElementById('name');
+      const emailField = document.getElementById('email');
+      const messageField = document.getElementById('message');
+      
+      const isNameValid = validateField(nameField);
+      const isEmailValid = validateField(emailField);
+      const isMessageValid = validateField(messageField);
+      
+      if (!isNameValid || !isEmailValid || !isMessageValid) {
+        showFormStatus('Por favor corrige los errores del formulario', 'error');
+        return;
+      }
+
+      // Submit form
+      setLoadingState(true);
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          showFormStatus('¡Mensaje enviado correctamente! Te responderé pronto.', 'success');
+          form.reset();
+          
+          // Track successful form submission
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+              form_name: 'contact_form',
+              form_status: 'success'
+            });
+          }
+        } else {
+          throw new Error(result.error || 'Error al enviar el mensaje');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        showFormStatus(
+          error.message || 'Error al enviar el mensaje. Por favor intenta de nuevo.',
+          'error'
+        );
+        
+        // Track form submission error
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_submit', {
+            form_name: 'contact_form',
+            form_status: 'error',
+            error_message: error.message
+          });
+        }
+      } finally {
+        setLoadingState(false);
+      }
+    });
+  })();
+
+  // Skills Animation
+  (() => {
+    const skillBars = document.querySelectorAll('.skill-progress');
+    let skillsAnimated = false;
+
+    function animateSkills() {
+      if (skillsAnimated) return;
+      
+      skillBars.forEach((bar, index) => {
+        const width = bar.getAttribute('data-width');
+        setTimeout(() => {
+          bar.style.width = width;
+        }, index * 100);
+      });
+      
+      skillsAnimated = true;
+    }
+
+    // Intersection Observer for skills animation
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSkills();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(skillsSection);
+    }
+  })();
+
+  // Theme Toggle Functionality
+  (() => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Get saved theme or detect system preference
+    function getInitialTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) return savedTheme;
+      
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    
+    // Apply theme
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      localStorage.setItem('theme', theme);
+      
+      // Track theme changes
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'theme_change', {
+          theme_mode: theme
+        });
+      }
+    }
+    
+    // Toggle theme
+    function toggleTheme() {
+      const currentTheme = html.getAttribute('data-theme') || getInitialTheme();
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+    
+    // Initialize theme
+    applyTheme(getInitialTheme());
+    
+    // Event listener
+    themeToggle.addEventListener('click', toggleTheme);
   })();
   </script>
 </body>

@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://apolmig.github.io/sitemap.xml
+
+# Disallow temporary and development files
+Disallow: /bower_components/
+Disallow: /node_modules/
+Disallow: /vendor/
+Disallow: /scss/
+Disallow: /sass/
+Disallow: /gulpfile.js
+Disallow: /package.json
+Disallow: /bower.json
+Disallow: /*.min.js$
+Disallow: /*.min.css$
+
+# Disallow old/backup files
+Disallow: /index_OLD
+Disallow: /index_OLD2
+Disallow: /proto-element.html
+
+# Allow important assets
+Allow: /css/
+Allow: /js/
+Allow: /img/
+Allow: /fonts/
+Allow: /favicon.png
+Allow: /preview.jpg

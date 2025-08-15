@@ -1,45 +1,42 @@
 {
-  "title": "Freelancer",
-  "name": "startbootstrap-freelancer",
-  "version": "4.0.0-beta",
-  "description": "A freelancer portfolio HTML theme for Bootstrap.",
+  "title": "Miguel Guerrero Portfolio",
+  "name": "miguel-guerrero-portfolio",
+  "version": "2.0.0",
+  "description": "Miguel Guerrero personal portfolio - AI Strategy, Governance & Social Impact",
   "keywords": [
-    "css",
-    "sass",
-    "html",
-    "responsive",
-    "theme",
-    "template"
+    "portfolio",
+    "ai",
+    "strategy",
+    "governance",
+    "social-impact",
+    "personal-website"
   ],
-  "homepage": "https://startbootstrap.com/template-overviews/freelancer",
-  "bugs": {
-    "url": "https://github.com/BlackrockDigital/startbootstrap-freelancer/issues",
-    "email": "feedback@startbootstrap.com"
-  },
+  "homepage": "https://apolmig.github.io",
   "license": "MIT",
-  "author": "Start Bootstrap",
-  "contributors": [
-    "David Miller (http://davidmiller.io/)"
-  ],
+  "author": "Miguel Guerrero <miguel@saturdays.ai>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BlackrockDigital/startbootstrap-freelancer.git"
+    "url": "https://github.com/apolmig/apolmig.github.io.git"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta",
-    "font-awesome": "4.7.0",
-    "jquery": "^3.2.1",
-    "jquery.easing": "^1.4.1",
-    "popper.js": "^1.11.1"
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "bootstrap": "^5.3.2"
   },
   "devDependencies": {
-    "browser-sync": "2.18.13",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "3.7.0",
-    "gulp-filter": "^5.0.1",
-    "gulp-header": "1.8.9",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "3.0.0"
+    "browser-sync": "^3.0.2",
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.69.0"
+  },
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp dev",
+    "serve": "browser-sync start --server --files '*.html, css/*.css, js/*.js'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
