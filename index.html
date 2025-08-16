@@ -1651,190 +1651,153 @@
     </div>
   </section>
 
-  <!-- Three.js simplified -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js y post-procesado (bloom solo en desktop) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
   <script>
   (() => {
-    try {
-      // Discrete Neural Network Training - Subtle Background
-      const canvas = document.getElementById('bg-animation');
-      if (!canvas) return;
-      
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x000000, 0);
-      camera.position.z = 15;
-      
-      // Token embeddings - subtle floating points
-      const tokens = [];
-      for (let i = 0; i < 30; i++) {
-        const token = new THREE.Mesh(
-          new THREE.SphereGeometry(0.02, 8, 8),
-          new THREE.MeshBasicMaterial({ 
-            color: 0xff6600, 
-            transparent: true, 
-            opacity: 0.3
-          })
-        );
-        
-        token.position.set(
-          (Math.random() - 0.5) * 25,
-          (Math.random() - 0.5) * 15,
-          (Math.random() - 0.5) * 10
-        );
-        
-        token.userData = {
-          velocity: new THREE.Vector3(
-            (Math.random() - 0.5) * 0.01,
-            (Math.random() - 0.5) * 0.01,
-            0
-          ),
-          originalOpacity: 0.2 + Math.random() * 0.2
-        };
-        
-        scene.add(token);
-        tokens.push(token);
-      }
-      
-      // Attention heads - discrete geometric shapes
-      const attentionHeads = [];
-      for (let i = 0; i < 8; i++) {
-        const head = new THREE.Mesh(
-          new THREE.BoxGeometry(0.8, 0.05, 0.05),
-          new THREE.MeshBasicMaterial({ 
-            color: 0x666666, 
-            transparent: true, 
-            opacity: 0.15,
-            wireframe: true
-          })
-        );
-        
-        const angle = (i / 8) * Math.PI * 2;
-        head.position.set(
-          Math.cos(angle) * 6,
-          Math.sin(angle) * 6,
-          0
-        );
-        head.rotation.z = angle;
-        
-        head.userData = { angle: angle, baseOpacity: 0.1 };
-        
-        scene.add(head);
-        attentionHeads.push(head);
-      }
-      
-      // Training gradients - very subtle flowing lines
-      const gradients = [];
-      for (let i = 0; i < 12; i++) {
-        const points = [];
-        for (let j = 0; j < 20; j++) {
-          points.push(new THREE.Vector3(
-            (j - 10) * 0.8,
-            Math.sin(j * 0.5 + i) * 0.5,
-            (Math.random() - 0.5) * 2
-          ));
-        }
-        
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        const gradient = new THREE.Line(geometry, new THREE.LineBasicMaterial({ 
-          color: 0x666666, 
-          transparent: true, 
-          opacity: 0.08
-        }));
-        
-        gradient.position.y = (i - 6) * 1.5;
-        gradient.userData = { speed: 0.005 + Math.random() * 0.01 };
-        
-        scene.add(gradient);
-        gradients.push(gradient);
-      }
+    const ACCENT = 0xff6600;         // naranja tecnológico
+    const ACCENT_SOFT = 0xff9933;    // variación cálida
+    const LINE_LIGHT = 0xffffff;
+    const LINE_DARK = 0x444444;
 
-      // Subtle animation variables
-      let trainingActive = false;
-      
-      // Subtle interaction
-      const title = document.getElementById('title');
-      if (title) {
-        title.addEventListener('mouseenter', () => {
-          trainingActive = true;
-        });
-        title.addEventListener('mouseleave', () => {
-          trainingActive = false;
-        });
-      }
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const darkMode = matchMedia('(prefers-color-scheme: dark)').matches;
 
-      // Discrete animation loop
-      function animate() {
-        requestAnimationFrame(animate);
-        const time = Date.now() * 0.001;
-        
-        // Token embeddings drift
-        tokens.forEach((token, index) => {
-          token.position.add(token.userData.velocity);
-          
-          // Boundary reset
-          if (Math.abs(token.position.x) > 15 || Math.abs(token.position.y) > 10) {
-            token.position.set(
-              (Math.random() - 0.5) * 25,
-              (Math.random() - 0.5) * 15,
-              (Math.random() - 0.5) * 10
-            );
-          }
-          
-          // Subtle opacity variation
-          token.material.opacity = token.userData.originalOpacity + Math.sin(time * 2 + index) * 0.1;
-        });
-        
-        // Attention heads activation
-        attentionHeads.forEach((head, index) => {
-          head.rotation.z = head.userData.angle + Math.sin(time * 0.5 + index) * 0.1;
-          
-          if (trainingActive) {
-            head.material.opacity = head.userData.baseOpacity + Math.sin(time * 4 + index) * 0.1;
-          } else {
-            head.material.opacity = head.userData.baseOpacity;
-          }
-        });
-        
-        // Training gradients flow
-        gradients.forEach((gradient, index) => {
-          gradient.rotation.y += gradient.userData.speed;
-          
-          if (trainingActive) {
-            gradient.material.opacity = 0.12 + Math.sin(time * 3 + index) * 0.05;
-          } else {
-            gradient.material.opacity = 0.06;
-          }
-        });
-        
-        // Very subtle camera drift
-        camera.position.x = Math.sin(time * 0.05) * 0.5;
-        camera.position.y = Math.cos(time * 0.03) * 0.3;
-        
-        renderer.render(scene, camera);
+    const canvas = document.getElementById('bg-animation');
+    if (!canvas) return;
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(isMobile ? 1 : 1.5, devicePixelRatio || 1));
+    renderer.setSize(innerWidth, innerHeight);
+    camera.position.z = 5;
+
+    // Config según dispositivo
+    const cfg = isMobile
+      ? { nodes: 10, connectChance: 0.82, useBloom: false, maxFPS: 30, speed: 1 }
+      : { nodes: 22, connectChance: 0.70, useBloom: true,  maxFPS: 60, speed: 1 };
+
+    // Bloom (solo desktop)
+    let composer = null, bloomPass = null;
+    if (cfg.useBloom) {
+      composer = new THREE.EffectComposer(renderer);
+      composer.addPass(new THREE.RenderPass(scene, camera));
+      bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.15, 0.45, 0.85);
+      composer.addPass(bloomPass);
+    }
+
+    // Nodos
+    const nodes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.06, 16, 16);
+    for (let i = 0; i < cfg.nodes; i++) {
+      const mat = new THREE.MeshBasicMaterial({ color: ACCENT });
+      const m = new THREE.Mesh(nodeGeo, mat);
+      m.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
+      scene.add(m);
+      nodes.push(m);
+    }
+
+    // Conexiones + partículas naranja (flujo de datos)
+    const lineMat = new THREE.LineBasicMaterial({
+      color: darkMode ? LINE_LIGHT : LINE_DARK,
+      opacity: 0.32,
+      transparent: true
+    });
+    const edges = [];
+    nodes.forEach((a,i)=>nodes.forEach((b,j)=>{
+      if (i<j && Math.random()>cfg.connectChance) {
+        const g = new THREE.BufferGeometry().setFromPoints([a.position, b.position]);
+        const line = new THREE.Line(g, lineMat);
+        scene.add(line);
+
+        // Partícula
+        const p = new THREE.Mesh(
+          new THREE.SphereGeometry(isMobile ? 0.012 : 0.016, 8, 8),
+          new THREE.MeshBasicMaterial({ color: ACCENT })
+        );
+        scene.add(p);
+
+        const dist = a.position.distanceTo(b.position);
+        edges.push({ a, b, p, t: Math.random(), baseSpeed: 0.001 + (1/dist)*0.0005 });
       }
+    }));
+
+    // Interacción: hover en el título (sube velocidad y bloom)
+    let networkSpeed = cfg.speed;
+    const title = document.getElementById('title');
+    if (title) {
+      title.addEventListener('mouseenter', () => {
+        networkSpeed = cfg.speed * 2;
+        if (bloomPass) bloomPass.strength = 1.7;
+        lineMat.opacity = 0.55;
+      });
+      title.addEventListener('mouseleave', () => {
+        networkSpeed = cfg.speed;
+        if (bloomPass) bloomPass.strength = 1.15;
+        lineMat.opacity = 0.32;
+      });
+    }
 
     // Pausa cuando la pestaña no está activa
     let active = true;
     document.addEventListener('visibilitychange', () => { active = !document.hidden; });
 
-      // Start animation
-      animate();
+    // Animación
+    let last = 0;
+    function frame(now){
+      requestAnimationFrame(frame);
+      if (!active) return;
+
+      if (reduceMotion) {
+        // 1 frame estático para accesibilidad
+        if (composer) composer.render(); else renderer.render(scene, camera);
+        return;
+      }
+
+      const minDelta = 1000 / cfg.maxFPS;
+      if (now - last < minDelta) return;
+      last = now;
+
+      scene.rotation.y += 0.0015 * networkSpeed;
+
+      const t = Date.now() * 0.002;
+      edges.forEach(e => {
+        const speed = e.baseSpeed * networkSpeed * (isMobile ? 0.9 : 1);
+        e.t += speed; if (e.t > 1) e.t = 0;
+        e.p.position.lerpVectors(e.a.position, e.b.position, e.t);
+
+        // Oscilación sutil entre naranja principal y naranja suave
+        const mix = (Math.sin(t + e.t*10) + 1) / 2;
+        e.p.material.color.setHex(lerpHex(ACCENT, ACCENT_SOFT, mix));
+      });
+
+      if (composer) composer.render(); else renderer.render(scene, camera);
+    }
     requestAnimationFrame(frame);
 
-      // Handle resize
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-      
-    } catch (error) {
-      console.error('Animation error:', error);
+    // Utilidad para mezclar colores hex
+    function lerpHex(a, b, t) {
+      const ar=(a>>16)&0xff, ag=(a>>8)&0xff, ab=a&0xff;
+      const br=(b>>16)&0xff, bg=(b>>8)&0xff, bb=b&0xff;
+      const rr = ar + (br - ar) * t;
+      const rg = ag + (bg - ag) * t;
+      const rb = ab + (bb - ab) * t;
+      return ((rr&255)<<16) | ((rg&255)<<8) | (rb&255);
     }
+
+    // Resize
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+      if (composer) composer.setSize(innerWidth, innerHeight);
+    });
   })();
 
   // Sophisticated AI Project Visualizations
