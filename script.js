@@ -46,8 +46,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Enhanced Intersection Observer for animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px 100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -64,8 +64,8 @@ const observer = new IntersectionObserver((entries) => {
 const animatedElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .contact-item, .merit-card');
 animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
     observer.observe(el);
 });
 
@@ -74,7 +74,7 @@ const animationStyles = `
     @keyframes slideInUp {
         from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
@@ -85,7 +85,7 @@ const animationStyles = `
     @keyframes fadeInScale {
         from {
             opacity: 0;
-            transform: scale(0.9);
+            transform: scale(0.95);
         }
         to {
             opacity: 1;
@@ -94,11 +94,11 @@ const animationStyles = `
     }
     
     .animate-in {
-        animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     
     .scale-in {
-        animation: fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 `;
 
@@ -250,8 +250,8 @@ const rippleStyles = `
     
     .section-reveal {
         opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .section-reveal.visible {
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: '0px 0px 150px 0px' });
     
     sections.forEach(section => {
         sectionObserver.observe(section);
@@ -305,14 +305,27 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add typing effect to hero title (disabled to prevent HTML display issues)
+// Add typing effect to hero title
 function typewriterEffect() {
-    // Disabled - was showing HTML markup instead of text
-    return;
+    const titleElement = document.querySelector('.hero-title');
+    if (!titleElement) return;
+    
+    const originalText = "AI Leadership for Organizational Transformation";
+    titleElement.textContent = '';
+    
+    let i = 0;
+    const timer = setInterval(() => {
+        if (i < originalText.length) {
+            titleElement.textContent += originalText.charAt(i);
+            i++;
+        } else {
+            clearInterval(timer);
+        }
+    }, 80);
 }
 
-// Initialize typewriter effect after a short delay (disabled)
-// setTimeout(typewriterEffect, 1000);
+// Initialize typewriter effect after a short delay
+setTimeout(typewriterEffect, 800);
 
 // Add floating animation to skill items
 function addFloatingAnimation() {
@@ -411,12 +424,12 @@ function addSectionRevealAnimations() {
                 entry.target.classList.add('revealed');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: '0px 0px 200px 0px' });
     
     sections.forEach(section => {
         section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         revealObserver.observe(section);
     });
 }
