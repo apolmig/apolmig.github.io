@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Guerrero - AI Leadership for Organizations</title>
+    <meta name="description" content="AI Advisor to Spain's Prime Minister | Founder of Saturdays.AI | Leading AI transformation in organizations worldwide">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#home" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Miguel Guerrero</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#merits" class="nav-link">Merits</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    AI Leadership for Organizational Transformation
+                <p class="hero-subtitle">
+                    AI Advisor to Spain's Prime Minister | Founder of Saturdays.AI
+                </p>
+                <p class="hero-description">
+                    Leading the AI revolution in organizations worldwide with a philosophy of 
+                    <strong>AI for All ⟺ AI for Good</strong>
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">30K+</span>
+                        <span class="stat-label">Students Trained</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">AI Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="#experience" class="btn btn-secondary">View Experience</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div id="ai-canvas-container" class="ai-visualization">
+                    <canvas id="ai-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Transforming Organizations Through AI</h2>
+                <p class="section-subtitle">
+                    Bridging the gap between cutting-edge AI technology and real-world organizational impact
+                </p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        As AI Advisor to Spain's Prime Minister, I spearhead national AI transformation initiatives, 
+                        focusing on Community, Applications, and Infrastructure to accelerate organizational AI adoption.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <h3>Strategic AI Leadership</h3>
+                            <p>Leading cross-functional teams to architect and deliver AI-driven solutions including autonomous agents, RAG workflows, and LLM orchestration across financial, infrastructure, and aerospace sectors.</p>
+                        </div>
+                        <div class="highlight">
+                            <h3>Educational Innovation</h3>
+                            <p>Teaching next-generation AI engineers at EPITECH and training 30,000+ professionals through Saturdays.AI bootcamps with 95% employment success rate.</p>
+                        </div>
+                        <div class="highlight">
+                            <h3>Social Impact Focus</h3>
+                            <p>Building AI solutions that matter - from combating memory loss in neurodegenerative diseases to supporting refugee integration and revolutionizing education.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-skills">
+                    <h3>Core Expertise</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-icon">🧠</span>
+                            <span class="skill-name">AI Strategy & Architecture</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🤖</span>
+                            <span class="skill-name">LLMs & Autonomous Agents</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🔗</span>
+                            <span class="skill-name">RAG & ML Orchestration</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">👥</span>
+                            <span class="skill-name">Cross-functional Leadership</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">⚖️</span>
+                            <span class="skill-name">Responsible AI</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🎓</span>
+                            <span class="skill-name">Talent Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Leadership Experience</h2>
+                <p class="section-subtitle">
+                    Driving AI transformation across government, enterprise, and education
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2025 - Present</div>
+                        <h3 class="timeline-title">AI Advisor</h3>
+                        <h4 class="timeline-company">La Moncloa - Spain's Office of the Prime Minister</h4>
+                        <p class="timeline-description">
+                            Spearheading national AI transformation initiatives focusing on Community, Applications, 
+                            and Infrastructure to accelerate AI adoption across Spanish organizations.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2018 - Present</div>
+                        <h3 class="timeline-title">Founder</h3>
+                        <h4 class="timeline-company">Saturdays.AI</h4>
+                        <p class="timeline-description">
+                            Built the world's largest AI education platform with 30K+ students across 10 countries. 
+                            Created 500+ social impact AI projects with 95% employment success rate.
+                        </p>
+                        <div class="timeline-achievements">
+                            <span class="achievement">30K+ Students</span>
+                            <span class="achievement">500+ AI Projects</span>
+                            <span class="achievement">95% Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2022 - 2025</div>
+                        <h3 class="timeline-title">Manager of Artificial Intelligence</h3>
+                        <h4 class="timeline-company">Stealth (Enterprise Consulting)</h4>
+                        <p class="timeline-description">
+                            Led AI transformation across financial, infrastructure, aerospace, and energy sectors. 
+                            Architected autonomous agents, RAG workflows, and LLM fine-tuning solutions.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2023 - 2024</div>
+                        <h3 class="timeline-title">CTO</h3>
+                        <h4 class="timeline-company">Tauniqo.ai (formerly TalentYou.ai)</h4>
+                        <p class="timeline-description">
+                            Led technical strategy and LLM-powered platform development to revolutionize 
+                            corporate training and talent management, scaling AI capabilities across enterprise clients.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2020 - 2025</div>
+                        <h3 class="timeline-title">Machine Learning & AIoT Teacher</h3>
+                        <h4 class="timeline-company">EPITECH - European Institute of Technology</h4>
+                        <p class="timeline-description">
+                            Teaching LLMs, ML, DL, AIoT, MLOps to CS undergraduate and graduate students, 
+                            shaping the next generation of AI engineers.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2019 - 2020</div>
+                        <h3 class="timeline-title">COO & Co-Founder</h3>
+                        <h4 class="timeline-company">Akademy.ai</h4>
+                        <p class="timeline-description">
+                            Co-founded and operated full-time intensive AI bootcamp with 95% employment success rate. 
+                            Acquired by Strive.school (YC S20), training AI engineers across Europe.
+                        </p>
+                        <div class="timeline-achievements">
+                            <span class="achievement">95% Success Rate</span>
+                            <span class="achievement">YC S20 Acquisition</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2015 - 2018</div>
+                        <h3 class="timeline-title">Project Manager - Digital Transformation</h3>
+                        <h4 class="timeline-company">Repsol</h4>
+                        <p class="timeline-description">
+                            Led digital transformation initiatives and business process optimization for enhanced decision-making. 
+                            Spearheaded digitalization projects across the organization, driving efficiency improvements and technological innovation.
+                        </p>
+                        <div class="timeline-achievements">
+                            <span class="achievement">Digital Innovation</span>
+                            <span class="achievement">Process Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2013 - 2014</div>
+                        <h3 class="timeline-title">Management Consultant</h3>
+                        <h4 class="timeline-company">Microsoft</h4>
+                        <p class="timeline-description">
+                            Microsoft 4 Afrika initiative via Wharton MBA. Screened and qualified cloud opportunities 
+                            for social and financial impact in frontier markets, focusing on Rwanda operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Impact Projects</h2>
+                <p class="section-subtitle">
+                    AI solutions that transform lives and organizations
+                </p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🎓</div>
+                    <h3 class="project-title">DAWIA</h3>
+                    <p class="project-description">
+                        The first official higher education initiative where AI acts as instructors, 
+                        revolutionizing how students learn and interact with educational content.
+                    </p>
+                    <a href="https://dawia.es/" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🏛️</div>
+                    <h3 class="project-title">FPIA</h3>
+                    <p class="project-description">
+                        Helping higher education institutions become AI-First, providing frameworks 
+                        and tools for institutional AI transformation.
+                    </p>
+                    <a href="https://fpia.es" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🧠</div>
+                    <h3 class="project-title">LazaroAI</h3>
+                    <p class="project-description">
+                        Preserving memories and combating forgetting caused by neurodegenerative diseases 
+                        through advanced AI memory assistance technology.
+                    </p>
+                    <a href="https://lazaro.ai" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🌍</div>
+                    <h3 class="project-title">RefugeesLive</h3>
+                    <p class="project-description">
+                        AI-powered tools to support refugee integration, providing language learning, 
+                        job matching, and cultural adaptation assistance.
+                    </p>
+                    <a href="https://refugees.live" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🎮</div>
+                    <h3 class="project-title">LearniaClub</h3>
+                    <p class="project-description">
+                        Educate Through Entertainment - transforming children's screen time into 
+                        meaningful learning experiences through AI-powered content.
+                    </p>
+                    <a href="https://www.learniaclub.com/" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🎯</div>
+                    <h3 class="project-title">AI Skills Lab</h3>
+                    <p class="project-description">
+                        Comprehensive AI education platform providing structured learning paths, 
+                        hands-on projects, and industry certifications for professionals and organizations.
+                    </p>
+                    <a href="https://aiskillslab.eu/" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">⚡</div>
+                    <h3 class="project-title">Energía en Acción</h3>
+                    <p class="project-description">
+                        Comprehensive energy transformation platform empowering consumers and businesses 
+                        to make informed energy decisions through data-driven insights and personalized recommendations.
+                    </p>
+                    <a href="https://energianaccion.org" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">💡</div>
+                    <h3 class="project-title">Escoge Tu Energía</h3>
+                    <p class="project-description">
+                        AI-powered energy comparison platform helping Spanish consumers optimize their electricity 
+                        and gas contracts through intelligent matching and real-time market analysis.
+                    </p>
+                    <a href="https://escogetuenergia.com" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">💰</div>
+                    <h3 class="project-title">YoAhorro</h3>
+                    <p class="project-description">
+                        Smart savings platform leveraging AI to analyze spending patterns and provide 
+                        personalized financial optimization recommendations for better money management.
+                    </p>
+                    <a href="https://yoahorro.org" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card featured">
+                    <div class="project-icon">🚀</div>
+                    <h3 class="project-title">Enterprise AI Transformation</h3>
+                    <p class="project-description">
+                        Leading AI initiatives across Fortune 500 companies in financial services, 
+                        infrastructure, aerospace, and energy sectors with measurable ROI.
+                    </p>
+                    <span class="project-link">Confidential Projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merits Section -->
+    <section id="merits" class="merits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Recognition & Merits</h2>
+                <p class="section-subtitle">
+                    Achievements and recognition in AI leadership and education
+                </p>
+            </div>
+            <div class="merits-grid">
+                <div class="merit-card">
+                    <div class="merit-icon">🏛️</div>
+                    <h3 class="merit-title">Government AI Advisor</h3>
+                    <p class="merit-description">
+                        Appointed as AI Advisor to Spain's Prime Minister, leading national AI transformation 
+                        initiatives at the highest level of government.
+                    </p>
+                    <div class="merit-year">2025</div>
+                </div>
+                <div class="merit-card featured-fellowship">
+                    <div class="merit-icon">🌍</div>
+                    <h3 class="merit-title">Global Fellowships & Recognition</h3>
+                    <p class="merit-description">
+                        <strong>Acumen Fellow</strong> - Selected for the prestigious global leadership program for social impact changemakers. 
+                        Also recognized as fast.ai International Fellow, HEC Excellence Fellow, Talentia Fellow, LaCaixa Fellow, 
+                        and TallerBigasLuna Fellow by leading institutions worldwide.
+                    </p>
+                    <div class="merit-year">Multiple</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">🏆</div>
+                    <h3 class="merit-title">Social Entrepreneurship Awards</h3>
+                    <p class="merit-description">
+                        Fundación Repsol "Transforma tu Energía" award for energy innovation and 
+                        Yuzz (Santander Bank) entrepreneurship award for outstanding startup initiatives.
+                    </p>
+                    <div class="merit-year">2019-2020</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">💼</div>
+                    <h3 class="merit-title">Enterprise AI Leadership</h3>
+                    <p class="merit-description">
+                        Led AI transformations across Fortune 500 companies in financial, infrastructure, 
+                        aerospace, and energy sectors with measurable ROI.
+                    </p>
+                    <div class="merit-year">2022-2025</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">🌱</div>
+                    <h3 class="merit-title">Social Impact Innovation</h3>
+                    <p class="merit-description">
+                        Created multiple AI solutions for social good: combating neurodegenerative diseases, 
+                        supporting refugee integration, and revolutionizing education.
+                    </p>
+                    <div class="merit-year">Ongoing</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">🎯</div>
+                    <h3 class="merit-title">Industry Recognition</h3>
+                    <p class="merit-description">
+                        Featured speaker and thought leader in AI conferences worldwide, recognized for 
+                        bridging the gap between cutting-edge research and practical implementation.
+                    </p>
+                    <div class="merit-year">2018-Present</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Transform Your Organization</h2>
+                <p class="section-subtitle">
+                    Ready to lead the AI revolution in your industry?
+                </p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <a href="mailto:miguel.guerrero.manchon@gmail.com">miguel.guerrero.manchon@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/miguelguer" target="_blank">linkedin.com/in/miguelguer</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-details">
+                            <h3>Languages</h3>
+                            <span>Spanish, Catalan, English, French</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <h3>Areas of Expertise</h3>
+                    <ul class="expertise-list">
+                        <li>AI Strategy & Organizational Transformation</li>
+                        <li>LLM Implementation & Fine-tuning</li>
+                        <li>Autonomous Agent Development</li>
+                        <li>RAG Systems & ML Orchestration</li>
+                        <li>Responsible AI & Ethics</li>
+                        <li>AI Education & Talent Development</li>
+                    </ul>
+                    <div class="cta-buttons">
+                        <a href="mailto:miguel.guerrero.manchon@gmail.com" class="btn btn-primary">Schedule Consultation</a>
+                        <a href="https://saturdays.ai" target="_blank" class="btn btn-secondary">Explore Saturdays.AI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Miguel Guerrero. AI for All ⟺ AI for Good</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://saturdays.ai" target="_blank">Saturdays.AI</a>
+                    <a href="https://www.linkedin.com/in/miguelguer" target="_blank">LinkedIn</a>
+                    <a href="mailto:miguel.guerrero.manchon@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="ai-animation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
