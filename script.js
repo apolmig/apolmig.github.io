@@ -305,27 +305,14 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add typing effect to hero title
+// Add typing effect to hero title (disabled to prevent HTML display issues)
 function typewriterEffect() {
-    const titleElement = document.querySelector('.hero-title');
-    if (!titleElement) return;
-    
-    const originalText = titleElement.innerHTML;
-    titleElement.innerHTML = '';
-    
-    let i = 0;
-    const timer = setInterval(() => {
-        if (i < originalText.length) {
-            titleElement.innerHTML += originalText.charAt(i);
-            i++;
-        } else {
-            clearInterval(timer);
-        }
-    }, 50);
+    // Disabled - was showing HTML markup instead of text
+    return;
 }
 
-// Initialize typewriter effect after a short delay
-setTimeout(typewriterEffect, 1000);
+// Initialize typewriter effect after a short delay (disabled)
+// setTimeout(typewriterEffect, 1000);
 
 // Add floating animation to skill items
 function addFloatingAnimation() {
