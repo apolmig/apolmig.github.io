@@ -1,2150 +1,509 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <!-- Meta básicos -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Miguel Guerrero – Estrategia + IA + Impacto</title>
-  <meta name="description" content="Miguel Guerrero – Estrategia, IA y proyectos de alto impacto en el sector público y privado. AI Governance, Innovación y Educación." />
-  <meta name="author" content="Miguel Guerrero" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Miguel Guerrero – Estrategia + IA + Impacto" />
-  <meta property="og:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://apolmig.github.io" />
-  <meta property="og:image" content="https://apolmig.github.io/preview.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Miguel Guerrero – Estrategia + IA + Impacto" />
-  <meta name="twitter:description" content="Proyectos de IA con visión estratégica, innovación tecnológica y propósito social." />
-  <meta name="twitter:image" content="https://apolmig.github.io/preview.jpg" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    // Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID
-    gtag('config', 'GA_MEASUREMENT_ID', {
-      page_title: 'Miguel Guerrero - AI Strategy Portfolio',
-      page_location: window.location.href,
-      send_page_view: true
-    });
-    
-    // Track resume downloads
-    document.addEventListener('DOMContentLoaded', function() {
-      const resumeLink = document.querySelector('a[href="Miguel_Guerrero_CV.pdf"]');
-      if (resumeLink) {
-        resumeLink.addEventListener('click', function() {
-          gtag('event', 'file_download', {
-            file_name: 'Miguel_Guerrero_CV.pdf',
-            file_extension: '.pdf',
-            link_text: this.textContent
-          });
-        });
-      }
-    });
-  </script>
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Miguel Guerrero",
-    "jobTitle": "AI Strategy & Governance Expert",
-    "description": "Líder en proyectos de Inteligencia Artificial en el sector público y privado, especializado en AI Governance, Innovación y Educación.",
-    "url": "https://apolmig.github.io",
-    "image": "https://apolmig.github.io/preview.jpg",
-    "email": "miguel@saturdays.ai",
-    "sameAs": [
-      "https://www.linkedin.com/in/miguelguer",
-      "https://github.com/apolmig",
-      "https://twitter.com/apolmig"
-    ],
-    "knowsAbout": [
-      "Artificial Intelligence",
-      "AI Governance",
-      "Innovation Strategy",
-      "Social Impact",
-      "Education Technology",
-      "Strategic Consulting"
-    ],
-    "affiliation": [
-      {
-        "@type": "Organization",
-        "name": "Saturdays.AI",
-        "url": "https://saturdays.ai"
-      }
-    ],
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Various prestigious institutions"
-    }
-  }
-  </script>
-
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --accent: #ff6600; /* Naranja tecnológico */
-      --bg: #ffffff;
-      --text: #111111;
-      --subtext: #555555;
-      --card-bg: #f5f5f5;
-      --border: #dddddd;
-    }
-    
-    /* Dark theme */
-    [data-theme="dark"] {
-      --accent: #ff6600; /* mantenemos naranja también en dark */
-      --bg: #0a0a0a;
-      --text: #f5f5f5;
-      --subtext: #cccccc;
-      --card-bg: #111111;
-      --border: #222222;
-      --bg-rgb: 10, 10, 10;
-    }
-    
-    /* Auto dark mode fallback */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --accent: #ff6600;
-        --bg: #0a0a0a;
-        --text: #f5f5f5;
-        --subtext: #cccccc;
-        --card-bg: #111111;
-        --border: #222222;
-        --bg-rgb: 10, 10, 10;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      transition: background .3s, color .3s;
-    }
-    /* Canvas de fondo */
-    canvas#bg-animation {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Contenido */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 100dvh; /* mejor que 100vh en móvil */
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-      color: var(--accent);
-      animation: slideDown .8s ease-in-out;
-      cursor: default;
-      letter-spacing: .2px;
-    }
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-top: 8px;
-      color: var(--subtext);
-      animation: slideDown 1s ease-in-out;
-    }
-    p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin-top: 20px;
-      line-height: 1.6;
-      color: var(--subtext);
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    .highlights {
-      display: flex;
-      gap: 40px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .highlight {
-      flex: 1;
-      min-width: 220px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1s ease forwards;
-      background: var(--card-bg);
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .highlight:nth-child(1) { animation-delay: .35s; }
-    .highlight:nth-child(2) { animation-delay: .5s; }
-    .highlight:nth-child(3) { animation-delay: .65s; }
-    .highlight h3 {
-      font-size: 1.05rem;
-      margin: 0 0 8px;
-      color: var(--accent);
-    }
-    .highlight:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.07); }
-
-    .cta {
-      margin-top: 50px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      animation: fadeIn 1.8s ease-in-out;
-    }
-    .cta a {
-      text-decoration: none;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
-    }
-    .primary {
-      background: var(--accent);
-      color: var(--bg);
-    }
-    .primary:hover {
-      transform: translateY(-1px) scale(1.03);
-      filter: saturate(1.1);
-    }
-    .secondary {
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      background: transparent;
-    }
-    .secondary:hover {
-      background: color-mix(in srgb, var(--accent) 12%, transparent);
-      transform: translateY(-1px) scale(1.03);
-    }
-
-    footer {
-      font-size: .95rem;
-      color: var(--subtext);
-      text-align: center;
-      margin-top: 48px;
-      animation: fadeIn 2.2s ease-in-out;
-    }
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      margin: 0 8px;
-      transition: color .2s ease;
-    }
-    footer a:hover { color: var(--text); }
-
-    /* Animaciones clave */
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideDown { from { transform: translateY(-16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes fadeUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-    /* Navigation */
-    .nav-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(var(--bg-rgb), 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      padding: 12px 0;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-    }
-    .nav-header.visible {
-      transform: translateY(0);
-    }
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--accent);
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover::after, .nav-links a.active::after {
-      width: 100%;
-    }
-    
-    /* Navigation actions */
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    /* Theme toggle */
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: var(--text);
-      transition: all 0.2s ease;
-    }
-    .theme-toggle:hover {
-      background: var(--card-bg);
-      transform: scale(1.05);
-    }
-    
-    /* Mobile menu */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text);
-      cursor: pointer;
-    }
-    
-    /* Section spacing for nav */
-    .section {
-      padding-top: 80px;
-      margin-top: -80px;
-    }
-
-    /* Timeline Styles */
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 40px auto;
-      padding-left: 30px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--accent);
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-      padding-left: 40px;
-      opacity: 0;
-      transform: translateX(-20px);
-      animation: slideInLeft 0.6s ease forwards;
-    }
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -47px;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid var(--bg);
-      box-shadow: 0 0 0 3px var(--accent);
-    }
-    .timeline-date {
-      font-size: 0.9rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .timeline-content {
-      background: var(--card-bg);
-      padding: 24px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      position: relative;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .timeline-content:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      left: -10px;
-      top: 20px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 8px 10px 8px 0;
-      border-color: transparent var(--card-bg) transparent transparent;
-    }
-    .timeline-content h3 {
-      margin: 0 0 12px 0;
-      color: var(--text);
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    .timeline-content p {
-      margin: 0 0 16px 0;
-      color: var(--subtext);
-      line-height: 1.5;
-    }
-    .timeline-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
-    }
-    .tag {
-      background: color-mix(in srgb, var(--accent) 15%, transparent);
-      color: var(--accent);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-    }
-
-    /* Animation for timeline */
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease forwards;
-    }
-    .project-card:nth-child(1) { animation-delay: 0.1s; }
-    .project-card:nth-child(2) { animation-delay: 0.2s; }
-    .project-card:nth-child(3) { animation-delay: 0.3s; }
-    .project-card:nth-child(4) { animation-delay: 0.4s; }
-    
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    }
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
-    }
-    .project-header h3 {
-      margin: 0;
-      color: var(--text);
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-    .project-links {
-      display: flex;
-      gap: 12px;
-    }
-    .project-links a {
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: var(--subtext);
-      transition: color 0.2s ease, transform 0.2s ease;
-      padding: 4px;
-    }
-    .project-links a:hover {
-      color: var(--accent);
-      transform: scale(1.2);
-    }
-    .project-card p {
-      color: var(--subtext);
-      line-height: 1.6;
-      margin: 0 0 20px 0;
-    }
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .tech-tag {
-      background: color-mix(in srgb, var(--accent) 10%, transparent);
-      color: var(--accent);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-    }
-    .project-impact {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-    .impact-metric {
-      text-align: center;
-      flex: 1;
-    }
-    .impact-metric strong {
-      display: block;
-      color: var(--accent);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .impact-metric span {
-      color: var(--subtext);
-      font-size: 0.8rem;
-    }
-
-    /* Contact Form Styles */
-    .contact-content {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
-      margin-top: 40px;
-      align-items: start;
-    }
-    .contact-info h3 {
-      color: var(--text);
-      font-size: 1.5rem;
-      margin: 0 0 16px 0;
-    }
-    .contact-info p {
-      color: var(--subtext);
-      line-height: 1.6;
-      margin-bottom: 32px;
-    }
-    .contact-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s ease;
-    }
-    .contact-method:hover {
-      transform: translateY(-2px);
-    }
-    .contact-icon {
-      font-size: 1.5rem;
-      width: 40px;
-      text-align: center;
-    }
-    .contact-method strong {
-      display: block;
-      color: var(--text);
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-    .contact-method a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-    }
-    .contact-method a:hover {
-      color: var(--text);
-    }
-
-    /* Form Styles */
-    .contact-form {
-      background: var(--card-bg);
-      padding: 32px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-    }
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-group label {
-      display: block;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 0.95rem;
-      font-family: inherit;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    .error-message {
-      display: block;
-      color: #e74c3c;
-      font-size: 0.85rem;
-      margin-top: 6px;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-    .error-message.show {
-      opacity: 1;
-    }
-    .submit-btn {
-      width: 100%;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 16px 24px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease;
-      position: relative;
-    }
-    .submit-btn:hover {
-      background: color-mix(in srgb, var(--accent) 90%, black);
-      transform: translateY(-1px);
-    }
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .form-status {
-      margin-top: 16px;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .form-status.show {
-      opacity: 1;
-    }
-    .form-status.success {
-      background: color-mix(in srgb, #27ae60 15%, transparent);
-      color: #27ae60;
-      border: 1px solid color-mix(in srgb, #27ae60 30%, transparent);
-    }
-    .form-status.error {
-      background: color-mix(in srgb, #e74c3c 15%, transparent);
-      color: #e74c3c;
-      border: 1px solid color-mix(in srgb, #e74c3c 30%, transparent);
-    }
-
-    /* Skills Section Styles */
-    .skills-content {
-      margin-top: 40px;
-    }
-    .skills-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-    }
-    .skill-category {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease forwards;
-    }
-    .skill-category:nth-child(1) { animation-delay: 0.1s; }
-    .skill-category:nth-child(2) { animation-delay: 0.2s; }
-    .skill-category:nth-child(3) { animation-delay: 0.3s; }
-    .skill-category:nth-child(4) { animation-delay: 0.4s; }
-    
-    .skill-category h3 {
-      margin: 0 0 24px 0;
-      color: var(--text);
-      font-size: 1.3rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .skill-items {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .skill-item {
-      position: relative;
-    }
-    .skill-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .skill-name {
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    .skill-level {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .skill-bar {
-      height: 8px;
-      background: var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    .skill-progress {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 80%, white));
-      border-radius: 4px;
-      width: 0%;
-      transition: width 1s ease-out 0.5s;
-      position: relative;
-    }
-    .skill-progress::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 20px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
-      animation: shimmer 2s infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { transform: translateX(-20px); }
-      100% { transform: translateX(20px); }
-    }
-
-    /* Testimonials Styles */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .testimonial-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease forwards;
-    }
-    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
-    .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
-    .testimonial-card:nth-child(5) { animation-delay: 0.5s; }
-    .testimonial-card:nth-child(6) { animation-delay: 0.6s; }
-    
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-    .testimonial-content {
-      margin-bottom: 24px;
-    }
-    .quote-icon {
-      font-size: 3rem;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 16px;
-      opacity: 0.8;
-    }
-    .testimonial-content p {
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 1rem;
-      margin: 0;
-      font-style: italic;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-    .author-info strong {
-      display: block;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-    .author-info span {
-      color: var(--subtext);
-      font-size: 0.9rem;
-      line-height: 1.3;
-    }
-
-    /* CSS Variables for backdrop-filter support */
-    :root {
-      --bg-rgb: 255, 255, 255;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-rgb: 10, 10, 10;
-      }
-    }
-
-    /* Responsive móvil */
-    @media (max-width: 768px) {
-      .container { min-height: auto; padding: 30px 16px; }
-      h1 { font-size: 2.25rem; line-height: 1.2; }
-      h2 { font-size: 1.15rem; margin-top: 6px; }
-      p { font-size: 1rem; margin-top: 14px; }
-      .highlights { gap: 18px; margin-top: 28px; }
-      .highlight { padding: 14px; }
-      .cta { margin-top: 28px; gap: 10px; }
-      
-      .mobile-menu-btn { display: block; }
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--bg);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-      }
-      .nav-links.open {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      /* Timeline mobile adjustments */
-      .timeline {
-        padding-left: 20px;
-        margin: 30px auto;
-      }
-      .timeline::before {
-        left: 10px;
-      }
-      .timeline-item {
-        padding-left: 30px;
-        margin-bottom: 30px;
-      }
-      .timeline-item::before {
-        left: -37px;
-        width: 10px;
-        height: 10px;
-      }
-      .timeline-content {
-        padding: 18px;
-      }
-      .timeline-content::before {
-        left: -8px;
-        border-width: 6px 8px 6px 0;
-      }
-      .tag {
-        font-size: 0.75rem;
-        padding: 3px 10px;
-      }
-      
-      /* Projects mobile adjustments */
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        margin-top: 30px;
-      }
-      .project-card {
-        padding: 20px;
-      }
-      .project-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-      .project-header h3 {
-        font-size: 1.2rem;
-      }
-      .project-impact {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .impact-metric {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-      }
-      .impact-metric strong {
-        margin-bottom: 0;
-      }
-      
-      /* Contact form mobile adjustments */
-      .contact-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .contact-form {
-        padding: 24px;
-      }
-      .contact-methods {
-        gap: 16px;
-      }
-      .contact-method {
-        padding: 12px;
-      }
-      .contact-icon {
-        font-size: 1.2rem;
-        width: 32px;
-      }
-      
-      /* Skills mobile adjustments */
-      .skills-categories {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .skill-category {
-        padding: 24px;
-      }
-      .skill-category h3 {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-      }
-      .skill-items {
-        gap: 16px;
-      }
-      .skill-info {
-        margin-bottom: 6px;
-      }
-      
-      /* Testimonials mobile adjustments */
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .testimonial-card {
-        padding: 24px;
-      }
-      .quote-icon {
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-      }
-      .testimonial-content p {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Guerrero - AI Leadership for Organizations</title>
+    <meta name="description" content="AI Advisor to Spain's Prime Minister | Founder of Saturdays.AI | Leading AI transformation in organizations worldwide">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#home" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Miguel Guerrero</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#merits" class="nav-link">Merits</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Navigation -->
-  <header class="nav-header" id="nav-header">
-    <div class="nav-container">
-      <a href="#home" class="nav-logo">Miguel Guerrero</a>
-      <nav>
-        <ul class="nav-links" id="nav-links">
-          <li><a href="#home" class="nav-link">Inicio</a></li>
-          <li><a href="#about" class="nav-link">Acerca</a></li>
-          <li><a href="#experience" class="nav-link">Experiencia</a></li>
-          <li><a href="#skills" class="nav-link">Competencias</a></li>
-          <li><a href="#projects" class="nav-link">Proyectos</a></li>
-          <li><a href="#contact" class="nav-link">Contacto</a></li>
-        </ul>
-      </nav>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-      </div>
-    </div>
-  </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    AI Leadership for Organizational Transformation
+                <p class="hero-subtitle">
+                    AI Advisor to Spain's Prime Minister | Founder of Saturdays.AI
+                </p>
+                <p class="hero-description">
+                    Leading the AI revolution in organizations worldwide with a philosophy of 
+                    <strong>AI for All ⟺ AI for Good</strong>
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">30K+</span>
+                        <span class="stat-label">Students Trained</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">AI Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="#experience" class="btn btn-secondary">View Experience</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div id="ai-canvas-container" class="ai-visualization">
+                    <canvas id="ai-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Fondo animado -->
-  <canvas id="bg-animation" aria-hidden="true"></canvas>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Transforming Organizations Through AI</h2>
+                <p class="section-subtitle">
+                    Bridging the gap between cutting-edge AI technology and real-world organizational impact
+                </p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        As AI Advisor to Spain's Prime Minister, I spearhead national AI transformation initiatives, 
+                        focusing on Community, Applications, and Infrastructure to accelerate organizational AI adoption.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <h3>Strategic AI Leadership</h3>
+                            <p>Leading cross-functional teams to architect and deliver AI-driven solutions including autonomous agents, RAG workflows, and LLM orchestration across financial, infrastructure, and aerospace sectors.</p>
+                        </div>
+                        <div class="highlight">
+                            <h3>Educational Innovation</h3>
+                            <p>Teaching next-generation AI engineers at EPITECH and training 30,000+ professionals through Saturdays.AI bootcamps with 95% employment success rate.</p>
+                        </div>
+                        <div class="highlight">
+                            <h3>Social Impact Focus</h3>
+                            <p>Building AI solutions that matter - from combating memory loss in neurodegenerative diseases to supporting refugee integration and revolutionizing education.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-skills">
+                    <h3>Core Expertise</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-icon">🧠</span>
+                            <span class="skill-name">AI Strategy & Architecture</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🤖</span>
+                            <span class="skill-name">LLMs & Autonomous Agents</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🔗</span>
+                            <span class="skill-name">RAG & ML Orchestration</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">👥</span>
+                            <span class="skill-name">Cross-functional Leadership</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">⚖️</span>
+                            <span class="skill-name">Responsible AI</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🎓</span>
+                            <span class="skill-name">Talent Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contenido -->
-  <section id="home" class="section">
-    <div class="container">
-    <h1 id="title">Miguel Guerrero</h1>
-    <h2>Estrategia + IA + Impacto Social</h2>
-    <p>
-      Lidero proyectos de Inteligencia Artificial en el sector público y privado, conectando visión estratégica,
-      innovación tecnológica y propósito social. Experiencia con gobiernos, empresas, startups y comunidades para
-      transformar ideas en soluciones de alto impacto.
-    </p>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Leadership Experience</h2>
+                <p class="section-subtitle">
+                    Driving AI transformation across government, enterprise, and education
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2025 - Present</div>
+                        <h3 class="timeline-title">AI Advisor</h3>
+                        <h4 class="timeline-company">La Moncloa - Spain's Office of the Prime Minister</h4>
+                        <p class="timeline-description">
+                            Spearheading national AI transformation initiatives focusing on Community, Applications, 
+                            and Infrastructure to accelerate AI adoption across Spanish organizations.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2018 - Present</div>
+                        <h3 class="timeline-title">Founder</h3>
+                        <h4 class="timeline-company">Saturdays.AI</h4>
+                        <p class="timeline-description">
+                            Built the world's largest AI education platform with 30K+ students across 10 countries. 
+                            Created 500+ social impact AI projects with 95% employment success rate.
+                        </p>
+                        <div class="timeline-achievements">
+                            <span class="achievement">30K+ Students</span>
+                            <span class="achievement">500+ AI Projects</span>
+                            <span class="achievement">95% Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2022 - 2025</div>
+                        <h3 class="timeline-title">Manager of Artificial Intelligence</h3>
+                        <h4 class="timeline-company">Stealth (Enterprise Consulting)</h4>
+                        <p class="timeline-description">
+                            Led AI transformation across financial, infrastructure, aerospace, and energy sectors. 
+                            Architected autonomous agents, RAG workflows, and LLM fine-tuning solutions.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2023 - 2024</div>
+                        <h3 class="timeline-title">CTO</h3>
+                        <h4 class="timeline-company">Tauniqo.ai (formerly TalentYou.ai)</h4>
+                        <p class="timeline-description">
+                            Led technical strategy and LLM-powered platform development to revolutionize 
+                            corporate training and talent management, scaling AI capabilities across enterprise clients.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2020 - 2025</div>
+                        <h3 class="timeline-title">Machine Learning & AIoT Teacher</h3>
+                        <h4 class="timeline-company">EPITECH - European Institute of Technology</h4>
+                        <p class="timeline-description">
+                            Teaching LLMs, ML, DL, AIoT, MLOps to CS undergraduate and graduate students, 
+                            shaping the next generation of AI engineers.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2019 - 2020</div>
+                        <h3 class="timeline-title">COO & Co-Founder</h3>
+                        <h4 class="timeline-company">Akademy.ai</h4>
+                        <p class="timeline-description">
+                            Co-founded and operated full-time intensive AI bootcamp with 95% employment success rate. 
+                            Acquired by Strive.school (YC S20), training AI engineers across Europe.
+                        </p>
+                        <div class="timeline-achievements">
+                            <span class="achievement">95% Success Rate</span>
+                            <span class="achievement">YC S20 Acquisition</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2015 - 2018</div>
+                        <h3 class="timeline-title">Project Manager - Digital Transformation</h3>
+                        <h4 class="timeline-company">Repsol</h4>
+                        <p class="timeline-description">
+                            Led digital transformation initiatives and business process optimization for enhanced decision-making. 
+                            Spearheaded digitalization projects across the organization, driving efficiency improvements and technological innovation.
+                        </p>
+                        <div class="timeline-achievements">
+                            <span class="achievement">Digital Innovation</span>
+                            <span class="achievement">Process Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">2013 - 2014</div>
+                        <h3 class="timeline-title">Management Consultant</h3>
+                        <h4 class="timeline-company">Microsoft</h4>
+                        <p class="timeline-description">
+                            Microsoft 4 Afrika initiative via Wharton MBA. Screened and qualified cloud opportunities 
+                            for social and financial impact in frontier markets, focusing on Rwanda operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="highlights">
-      <div class="highlight">
-        <h3>AI Governance</h3>
-        <p>Estrategias nacionales y soberanía tecnológica.</p>
-      </div>
-      <div class="highlight">
-        <h3>Educación & Comunidad</h3>
-        <p>Fundador de Saturdays.AI, DAWIA y otros: IA para todos.</p>
-      </div>
-      <div class="highlight">
-        <h3>Innovación & Negocio</h3>
-        <p>Productos y servicios de IA de alto impacto.</p>
-      </div>
-    </div>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Impact Projects</h2>
+                <p class="section-subtitle">
+                    AI solutions that transform lives and organizations
+                </p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🎓</div>
+                    <h3 class="project-title">DAWIA</h3>
+                    <p class="project-description">
+                        The first official higher education initiative where AI acts as instructors, 
+                        revolutionizing how students learn and interact with educational content.
+                    </p>
+                    <a href="https://dawia.es/" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🏛️</div>
+                    <h3 class="project-title">FPIA</h3>
+                    <p class="project-description">
+                        Helping higher education institutions become AI-First, providing frameworks 
+                        and tools for institutional AI transformation.
+                    </p>
+                    <a href="https://fpia.es" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🧠</div>
+                    <h3 class="project-title">LazaroAI</h3>
+                    <p class="project-description">
+                        Preserving memories and combating forgetting caused by neurodegenerative diseases 
+                        through advanced AI memory assistance technology.
+                    </p>
+                    <a href="https://lazaro.ai" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🌍</div>
+                    <h3 class="project-title">RefugeesLive</h3>
+                    <p class="project-description">
+                        AI-powered tools to support refugee integration, providing language learning, 
+                        job matching, and cultural adaptation assistance.
+                    </p>
+                    <a href="https://refugees.live" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🎮</div>
+                    <h3 class="project-title">LearniaClub</h3>
+                    <p class="project-description">
+                        Educate Through Entertainment - transforming children's screen time into 
+                        meaningful learning experiences through AI-powered content.
+                    </p>
+                    <a href="https://www.learniaclub.com/" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🎯</div>
+                    <h3 class="project-title">AI Skills Lab</h3>
+                    <p class="project-description">
+                        Comprehensive AI education platform providing structured learning paths, 
+                        hands-on projects, and industry certifications for professionals and organizations.
+                    </p>
+                    <a href="https://aiskillslab.eu/" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">⚡</div>
+                    <h3 class="project-title">Energía en Acción</h3>
+                    <p class="project-description">
+                        Comprehensive energy transformation platform empowering consumers and businesses 
+                        to make informed energy decisions through data-driven insights and personalized recommendations.
+                    </p>
+                    <a href="https://energianaccion.org" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">💡</div>
+                    <h3 class="project-title">Escoge Tu Energía</h3>
+                    <p class="project-description">
+                        AI-powered energy comparison platform helping Spanish consumers optimize their electricity 
+                        and gas contracts through intelligent matching and real-time market analysis.
+                    </p>
+                    <a href="https://escogetuenergia.com" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">💰</div>
+                    <h3 class="project-title">YoAhorro</h3>
+                    <p class="project-description">
+                        Smart savings platform leveraging AI to analyze spending patterns and provide 
+                        personalized financial optimization recommendations for better money management.
+                    </p>
+                    <a href="https://yoahorro.org" class="project-link" target="_blank">Visit Project →</a>
+                </div>
+                <div class="project-card featured">
+                    <div class="project-icon">🚀</div>
+                    <h3 class="project-title">Enterprise AI Transformation</h3>
+                    <p class="project-description">
+                        Leading AI initiatives across Fortune 500 companies in financial services, 
+                        infrastructure, aerospace, and energy sectors with measurable ROI.
+                    </p>
+                    <span class="project-link">Confidential Projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="cta">
-      <a class="primary" href="https://www.linkedin.com/in/miguelguer" aria-label="Conectar en LinkedIn">Conectemos</a>
-      <a class="secondary" href="mailto:miguel@saturdays.ai" aria-label="Contactar por email">Contactar</a>
-      <a class="secondary" href="Miguel_Guerrero_CV.pdf" target="_blank" aria-label="Descargar CV en PDF">📄 Descargar CV</a>
-    </div>
+    <!-- Merits Section -->
+    <section id="merits" class="merits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Recognition & Merits</h2>
+                <p class="section-subtitle">
+                    Achievements and recognition in AI leadership and education
+                </p>
+            </div>
+            <div class="merits-grid">
+                <div class="merit-card">
+                    <div class="merit-icon">🏛️</div>
+                    <h3 class="merit-title">Government AI Advisor</h3>
+                    <p class="merit-description">
+                        Appointed as AI Advisor to Spain's Prime Minister, leading national AI transformation 
+                        initiatives at the highest level of government.
+                    </p>
+                    <div class="merit-year">2025</div>
+                </div>
+                <div class="merit-card featured-fellowship">
+                    <div class="merit-icon">🌍</div>
+                    <h3 class="merit-title">Global Fellowships & Recognition</h3>
+                    <p class="merit-description">
+                        <strong>Acumen Fellow</strong> - Selected for the prestigious global leadership program for social impact changemakers. 
+                        Also recognized as fast.ai International Fellow, HEC Excellence Fellow, Talentia Fellow, LaCaixa Fellow, 
+                        and TallerBigasLuna Fellow by leading institutions worldwide.
+                    </p>
+                    <div class="merit-year">Multiple</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">🏆</div>
+                    <h3 class="merit-title">Social Entrepreneurship Awards</h3>
+                    <p class="merit-description">
+                        Fundación Repsol "Transforma tu Energía" award for energy innovation and 
+                        Yuzz (Santander Bank) entrepreneurship award for outstanding startup initiatives.
+                    </p>
+                    <div class="merit-year">2019-2020</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">💼</div>
+                    <h3 class="merit-title">Enterprise AI Leadership</h3>
+                    <p class="merit-description">
+                        Led AI transformations across Fortune 500 companies in financial, infrastructure, 
+                        aerospace, and energy sectors with measurable ROI.
+                    </p>
+                    <div class="merit-year">2022-2025</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">🌱</div>
+                    <h3 class="merit-title">Social Impact Innovation</h3>
+                    <p class="merit-description">
+                        Created multiple AI solutions for social good: combating neurodegenerative diseases, 
+                        supporting refugee integration, and revolutionizing education.
+                    </p>
+                    <div class="merit-year">Ongoing</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon">🎯</div>
+                    <h3 class="merit-title">Industry Recognition</h3>
+                    <p class="merit-description">
+                        Featured speaker and thought leader in AI conferences worldwide, recognized for 
+                        bridging the gap between cutting-edge research and practical implementation.
+                    </p>
+                    <div class="merit-year">2018-Present</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-      📧 <a href="mailto:miguel@saturdays.ai">Email</a> |
-      <a href="https://www.linkedin.com/in/miguelguer">LinkedIn</a> |
-      <a href="https://github.com/apolmig">GitHub</a> |
-      <a href="https://twitter.com/apolmig">Twitter</a>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Transform Your Organization</h2>
+                <p class="section-subtitle">
+                    Ready to lead the AI revolution in your industry?
+                </p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <a href="mailto:miguel.guerrero.manchon@gmail.com">miguel.guerrero.manchon@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/miguelguer" target="_blank">linkedin.com/in/miguelguer</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-details">
+                            <h3>Languages</h3>
+                            <span>Spanish, Catalan, English, French</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <h3>Areas of Expertise</h3>
+                    <ul class="expertise-list">
+                        <li>AI Strategy & Organizational Transformation</li>
+                        <li>LLM Implementation & Fine-tuning</li>
+                        <li>Autonomous Agent Development</li>
+                        <li>RAG Systems & ML Orchestration</li>
+                        <li>Responsible AI & Ethics</li>
+                        <li>AI Education & Talent Development</li>
+                    </ul>
+                    <div class="cta-buttons">
+                        <a href="mailto:miguel.guerrero.manchon@gmail.com" class="btn btn-primary">Schedule Consultation</a>
+                        <a href="https://saturdays.ai" target="_blank" class="btn btn-secondary">Explore Saturdays.AI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Miguel Guerrero. AI for All ⟺ AI for Good</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://saturdays.ai" target="_blank">Saturdays.AI</a>
+                    <a href="https://www.linkedin.com/in/miguelguer" target="_blank">LinkedIn</a>
+                    <a href="mailto:miguel.guerrero.manchon@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
     </footer>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>Acerca de mí</h2>
-      <p>Sección en desarrollo - Información detallada sobre mi background y experiencia.</p>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2>Trayectoria Profesional</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">2020 - Presente</div>
-          <div class="timeline-content">
-            <h3>Fundador & CEO - Saturdays.AI</h3>
-            <p>Lidero la mayor comunidad de IA de España con +10,000 miembros. Democratizando el acceso a la educación en IA a través de programas gratuitos y proyectos de impacto social.</p>
-            <div class="timeline-tags">
-              <span class="tag">Educación</span>
-              <span class="tag">Comunidad</span>
-              <span class="tag">IA Social</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-date">2019 - Presente</div>
-          <div class="timeline-content">
-            <h3>AI Strategy Consultant</h3>
-            <p>Asesoramiento estratégico en IA para gobiernos y empresas. Desarrollo de marcos de AI Governance y políticas de soberanía tecnológica a nivel nacional e internacional.</p>
-            <div class="timeline-tags">
-              <span class="tag">Estrategia</span>
-              <span class="tag">Governance</span>
-              <span class="tag">Políticas Públicas</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-date">2018 - 2020</div>
-          <div class="timeline-content">
-            <h3>Director de Innovación - Sector Público</h3>
-            <p>Lideré la transformación digital y la implementación de soluciones de IA en organizaciones públicas, mejorando la eficiencia y el servicio ciudadano.</p>
-            <div class="timeline-tags">
-              <span class="tag">Transformación Digital</span>
-              <span class="tag">Sector Público</span>
-              <span class="tag">Innovación</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-date">2016 - 2018</div>
-          <div class="timeline-content">
-            <h3>Senior Data Scientist - Fintech</h3>
-            <p>Desarrollo de modelos predictivos y sistemas de recomendación que procesaban millones de transacciones, generando insights clave para decisiones estratégicas.</p>
-            <div class="timeline-tags">
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Fintech</span>
-              <span class="tag">Big Data</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-date">2014 - 2016</div>
-          <div class="timeline-content">
-            <h3>Analista de Negocio - Consultoría</h3>
-            <p>Análisis estratégico y optimización de procesos para empresas multinacionales. Especialización en modelos de negocio digitales y transformación organizacional.</p>
-            <div class="timeline-tags">
-              <span class="tag">Consultoría</span>
-              <span class="tag">Análisis Estratégico</span>
-              <span class="tag">Procesos</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills & Expertise Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2>Expertise & Competencias</h2>
-      <div class="skills-content">
-        <div class="skills-categories">
-          <div class="skill-category">
-            <h3>🤖 Inteligencia Artificial</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Machine Learning</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Deep Learning</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">NLP</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Computer Vision</span>
-                  <span class="skill-level">Intermedio</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="70%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>🏛️ Governance & Estrategia</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">AI Ethics</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Policy Development</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Strategic Planning</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Risk Assessment</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>💻 Tecnologías</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Python</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">TensorFlow/PyTorch</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Cloud Platforms</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Data Engineering</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="75%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>🌍 Liderazgo & Impacto</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Community Building</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="98%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Public Speaking</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Educational Design</span>
-                  <span class="skill-level">Experto</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="92%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">International Relations</span>
-                  <span class="skill-level">Avanzado</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="85%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Proyectos Destacados</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Saturdays.AI Platform</h3>
-            <div class="project-links">
-              <a href="https://saturdays.ai" target="_blank" aria-label="Ver sitio web">🌐</a>
-              <a href="https://github.com/SaturdaysAI" target="_blank" aria-label="Ver código en GitHub">📁</a>
-            </div>
-          </div>
-          <p>Plataforma educativa que conecta +10,000 estudiantes de IA en 50+ ciudades. Incluye sistema de gestión de proyectos, matching automático y tracking de progreso.</p>
-          <div class="project-tech">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">AI/ML</span>
-          </div>
-          <div class="project-impact">
-            <div class="impact-metric">
-              <strong>10,000+</strong>
-              <span>Estudiantes</span>
-            </div>
-            <div class="impact-metric">
-              <strong>500+</strong>
-              <span>Proyectos</span>
-            </div>
-            <div class="impact-metric">
-              <strong>50+</strong>
-              <span>Ciudades</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>AI Governance Framework</h3>
-            <div class="project-links">
-              <a href="#" target="_blank" aria-label="Ver documentación">📋</a>
-              <a href="#" target="_blank" aria-label="Ver repositorio">📁</a>
-            </div>
-          </div>
-          <p>Marco de trabajo para implementación ética de IA en organizaciones públicas. Incluye metodologías, herramientas de auditoría y templates de políticas.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Policy</span>
-            <span class="tech-tag">Ethics</span>
-            <span class="tech-tag">Governance</span>
-          </div>
-          <div class="project-impact">
-            <div class="impact-metric">
-              <strong>15+</strong>
-              <span>Organismos</span>
-            </div>
-            <div class="impact-metric">
-              <strong>3</strong>
-              <span>Países</span>
-            </div>
-            <div class="impact-metric">
-              <strong>100M+</strong>
-              <span>Ciudadanos</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>DAWIA - Women in AI</h3>
-            <div class="project-links">
-              <a href="https://dawia.ai" target="_blank" aria-label="Ver sitio web">🌐</a>
-              <a href="#" target="_blank" aria-label="Ver repositorio">📁</a>
-            </div>
-          </div>
-          <p>Iniciativa global para promover la diversidad de género en IA. Red de mentoring, eventos y programa de becas para mujeres en tecnología.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Community</span>
-            <span class="tech-tag">Mentoring</span>
-            <span class="tech-tag">Diversity</span>
-            <span class="tech-tag">Impact</span>
-          </div>
-          <div class="project-impact">
-            <div class="impact-metric">
-              <strong>2,000+</strong>
-              <span>Mujeres</span>
-            </div>
-            <div class="impact-metric">
-              <strong>30+</strong>
-              <span>Países</span>
-            </div>
-            <div class="impact-metric">
-              <strong>100+</strong>
-              <span>Mentoras</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Smart City Analytics</h3>
-            <div class="project-links">
-              <a href="#" target="_blank" aria-label="Ver caso de estudio">📊</a>
-              <a href="#" target="_blank" aria-label="Ver código">📁</a>
-            </div>
-          </div>
-          <p>Sistema de análisis predictivo para optimización de servicios urbanos. Procesamiento de datos IoT, predicción de tráfico y gestión de recursos en tiempo real.</p>
-          <div class="project-tech">
-            <span class="tech-tag">IoT</span>
-            <span class="tech-tag">ML</span>
-            <span class="tech-tag">Real-time</span>
-            <span class="tech-tag">Smart Cities</span>
-          </div>
-          <div class="project-impact">
-            <div class="impact-metric">
-              <strong>25%</strong>
-              <span>Reducción Tráfico</span>
-            </div>
-            <div class="impact-metric">
-              <strong>30%</strong>
-              <span>Ahorro Energía</span>
-            </div>
-            <div class="impact-metric">
-              <strong>1M+</strong>
-              <span>Ciudadanos</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="section">
-    <div class="container">
-      <h2>Testimonios</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Miguel es un visionario en el campo de la IA. Su capacidad para traducir conceptos complejos en estrategias claras y actionables es excepcional. Ha sido fundamental en el desarrollo de nuestras políticas de AI Governance."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Dr. Ana Martínez</strong>
-              <span>Directora de Innovación Digital, Ministerio de Ciencia</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"La comunidad Saturdays.AI que Miguel ha creado ha transformado la educación en IA en España. Su enfoque democratizador y su pasión por el impacto social son inspiradores. Miles de personas han encontrado su camino en la IA gracias a su visión."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Carlos Rodriguez</strong>
-              <span>CTO, TechCorp España</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Miguel combina un profundo conocimiento técnico con una perspectiva ética y social única. Sus conferencias y workshops han sido fundamentales para nuestra transformación digital responsable."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Elena García</strong>
-              <span>VP of AI Strategy, Global Financial Services</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Como mentor en DAWIA, Miguel ha demostrado un compromiso extraordinario con la diversidad en IA. Su liderazgo ha empoderado a cientos de mujeres para entrar y prosperar en este campo."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Maria López</strong>
-              <span>AI Research Scientist, European AI Lab</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"La consultoría de Miguel en AI Governance nos ayudó a navegar el complejo panorama regulatorio mientras manteníamos la innovación. Su expertise es invaluable para cualquier organización seria sobre IA responsable."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>David Johnson</strong>
-              <span>Chief Legal Officer, International Corp</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Miguel tiene la rara habilidad de conectar la tecnología con el propósito social. Sus proyectos de Smart Cities han mejorado la vida de millones de ciudadanos. Es un verdadero agente de cambio."</p>
-          </div>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <strong>Roberto Silva</strong>
-              <span>Alcalde, Ciudad Inteligente</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>¿Hablamos?</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Colaboremos juntos</h3>
-          <p>¿Tienes un proyecto de IA, necesitas asesoramiento estratégico o quieres explorar colaboraciones? Me encanta conectar con personas que comparten la visión de usar la tecnología para generar impacto positivo.</p>
-          
-          <div class="contact-methods">
-            <div class="contact-method">
-              <span class="contact-icon">📧</span>
-              <div>
-                <strong>Email</strong>
-                <a href="mailto:miguel@saturdays.ai">miguel@saturdays.ai</a>
-              </div>
-            </div>
-            <div class="contact-method">
-              <span class="contact-icon">💼</span>
-              <div>
-                <strong>LinkedIn</strong>
-                <a href="https://www.linkedin.com/in/miguelguer" target="_blank">@miguelguer</a>
-              </div>
-            </div>
-            <div class="contact-method">
-              <span class="contact-icon">🐦</span>
-              <div>
-                <strong>Twitter</strong>
-                <a href="https://twitter.com/apolmig" target="_blank">@apolmig</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <form class="contact-form" id="contact-form" action="mail/contact_me.php" method="POST">
-          <div class="form-group">
-            <label for="name">Nombre *</label>
-            <input type="text" id="name" name="name" required>
-            <span class="error-message" id="name-error"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
-            <span class="error-message" id="email-error"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Teléfono</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Asunto</label>
-            <select id="subject" name="subject">
-              <option value="">Selecciona un tema</option>
-              <option value="consulting">Consultoría en IA</option>
-              <option value="speaking">Charlas y Conferencias</option>
-              <option value="collaboration">Colaboraciones</option>
-              <option value="education">Programas Educativos</option>
-              <option value="other">Otro</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Mensaje *</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto, idea o cómo puedo ayudarte..."></textarea>
-            <span class="error-message" id="message-error"></span>
-          </div>
-          
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span class="btn-text">Enviar Mensaje</span>
-            <span class="btn-loading" style="display: none;">Enviando...</span>
-          </button>
-          
-          <div class="form-status" id="form-status"></div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Three.js y post-procesado (bloom solo en desktop) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-  <script>
-  (() => {
-    const ACCENT = 0xff6600;         // naranja tecnológico
-    const ACCENT_SOFT = 0xff9933;    // variación cálida
-    const LINE_LIGHT = 0xffffff;
-    const LINE_DARK = 0x444444;
-
-    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const darkMode = matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const canvas = document.getElementById('bg-animation');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(isMobile ? 1 : 1.5, devicePixelRatio || 1));
-    renderer.setSize(innerWidth, innerHeight);
-    camera.position.z = 5;
-
-    // Config según dispositivo
-    const cfg = isMobile
-      ? { nodes: 10, connectChance: 0.82, useBloom: false, maxFPS: 30, speed: 1 }
-      : { nodes: 22, connectChance: 0.70, useBloom: true,  maxFPS: 60, speed: 1 };
-
-    // Bloom (solo desktop)
-    let composer = null, bloomPass = null;
-    if (cfg.useBloom) {
-      composer = new THREE.EffectComposer(renderer);
-      composer.addPass(new THREE.RenderPass(scene, camera));
-      bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.15, 0.45, 0.85);
-      composer.addPass(bloomPass);
-    }
-
-    // Nodos
-    const nodes = [];
-    const nodeGeo = new THREE.SphereGeometry(0.06, 16, 16);
-    for (let i = 0; i < cfg.nodes; i++) {
-      const mat = new THREE.MeshBasicMaterial({ color: ACCENT });
-      const m = new THREE.Mesh(nodeGeo, mat);
-      m.position.set((Math.random()-0.5)*5, (Math.random()-0.5)*5, (Math.random()-0.5)*5);
-      scene.add(m);
-      nodes.push(m);
-    }
-
-    // Conexiones + partículas naranja (flujo de datos)
-    const lineMat = new THREE.LineBasicMaterial({
-      color: darkMode ? LINE_LIGHT : LINE_DARK,
-      opacity: 0.32,
-      transparent: true
-    });
-    const edges = [];
-    nodes.forEach((a,i)=>nodes.forEach((b,j)=>{
-      if (i<j && Math.random()>cfg.connectChance) {
-        const g = new THREE.BufferGeometry().setFromPoints([a.position, b.position]);
-        const line = new THREE.Line(g, lineMat);
-        scene.add(line);
-
-        // Partícula
-        const p = new THREE.Mesh(
-          new THREE.SphereGeometry(isMobile ? 0.012 : 0.016, 8, 8),
-          new THREE.MeshBasicMaterial({ color: ACCENT })
-        );
-        scene.add(p);
-
-        const dist = a.position.distanceTo(b.position);
-        edges.push({ a, b, p, t: Math.random(), baseSpeed: 0.001 + (1/dist)*0.0005 });
-      }
-    }));
-
-    // Interacción: hover en el título (sube velocidad y bloom)
-    let networkSpeed = cfg.speed;
-    const title = document.getElementById('title');
-    if (title) {
-      title.addEventListener('mouseenter', () => {
-        networkSpeed = cfg.speed * 2;
-        if (bloomPass) bloomPass.strength = 1.7;
-        lineMat.opacity = 0.55;
-      });
-      title.addEventListener('mouseleave', () => {
-        networkSpeed = cfg.speed;
-        if (bloomPass) bloomPass.strength = 1.15;
-        lineMat.opacity = 0.32;
-      });
-    }
-
-    // Pausa cuando la pestaña no está activa
-    let active = true;
-    document.addEventListener('visibilitychange', () => { active = !document.hidden; });
-
-    // Animación
-    let last = 0;
-    function frame(now){
-      requestAnimationFrame(frame);
-      if (!active) return;
-
-      if (reduceMotion) {
-        // 1 frame estático para accesibilidad
-        if (composer) composer.render(); else renderer.render(scene, camera);
-        return;
-      }
-
-      const minDelta = 1000 / cfg.maxFPS;
-      if (now - last < minDelta) return;
-      last = now;
-
-      scene.rotation.y += 0.0015 * networkSpeed;
-
-      const t = Date.now() * 0.002;
-      edges.forEach(e => {
-        const speed = e.baseSpeed * networkSpeed * (isMobile ? 0.9 : 1);
-        e.t += speed; if (e.t > 1) e.t = 0;
-        e.p.position.lerpVectors(e.a.position, e.b.position, e.t);
-
-        // Oscilación sutil entre naranja principal y naranja suave
-        const mix = (Math.sin(t + e.t*10) + 1) / 2;
-        e.p.material.color.setHex(lerpHex(ACCENT, ACCENT_SOFT, mix));
-      });
-
-      if (composer) composer.render(); else renderer.render(scene, camera);
-    }
-    requestAnimationFrame(frame);
-
-    // Utilidad para mezclar colores hex
-    function lerpHex(a, b, t) {
-      const ar=(a>>16)&0xff, ag=(a>>8)&0xff, ab=a&0xff;
-      const br=(b>>16)&0xff, bg=(b>>8)&0xff, bb=b&0xff;
-      const rr = ar + (br - ar) * t;
-      const rg = ag + (bg - ag) * t;
-      const rb = ab + (bb - ab) * t;
-      return ((rr&255)<<16) | ((rg&255)<<8) | (rb&255);
-    }
-
-    // Resize
-    addEventListener('resize', () => {
-      camera.aspect = innerWidth / innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth, innerHeight);
-      if (composer) composer.setSize(innerWidth, innerHeight);
-    });
-  })();
-
-  // Navigation functionality
-  (() => {
-    const navHeader = document.getElementById('nav-header');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const navLinks = document.getElementById('nav-links');
-    const navLinkElements = document.querySelectorAll('.nav-link');
-    let lastScrollY = window.scrollY;
-
-    // Show/hide navigation on scroll
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > 100) {
-        navHeader.classList.add('visible');
-      } else {
-        navHeader.classList.remove('visible');
-      }
-      
-      lastScrollY = currentScrollY;
-    }
-
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-      navLinks.classList.toggle('open');
-      const isOpen = navLinks.classList.contains('open');
-      mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
-      mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-    }
-
-    // Smooth scroll to sections
-    function smoothScrollTo(targetId) {
-      const target = document.getElementById(targetId);
-      if (target) {
-        const offsetTop = target.offsetTop - 80; // Account for nav height
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    }
-
-    // Update active nav link based on scroll position
-    function updateActiveNavLink() {
-      const sections = document.querySelectorAll('.section');
-      let current = '';
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinkElements.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Event listeners
-    window.addEventListener('scroll', () => {
-      handleScroll();
-      updateActiveNavLink();
-    });
-
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-    // Navigation link clicks
-    navLinkElements.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        smoothScrollTo(targetId);
-        
-        // Close mobile menu if open
-        if (navLinks.classList.contains('open')) {
-          toggleMobileMenu();
-        }
-      });
-    });
-
-    // Initialize
-    handleScroll();
-    updateActiveNavLink();
-  })();
-
-  // Contact Form Functionality
-  (() => {
-    const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const formStatus = document.getElementById('form-status');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-
-    // Form validation
-    function validateField(field) {
-      const value = field.value.trim();
-      const errorElement = document.getElementById(field.name + '-error');
-      let isValid = true;
-      let errorMessage = '';
-
-      // Reset error state
-      errorElement.classList.remove('show');
-      field.style.borderColor = '';
-
-      // Validation rules
-      switch (field.name) {
-        case 'name':
-          if (!value) {
-            errorMessage = 'El nombre es requerido';
-            isValid = false;
-          } else if (value.length < 2) {
-            errorMessage = 'El nombre debe tener al menos 2 caracteres';
-            isValid = false;
-          } else if (value.length > 100) {
-            errorMessage = 'El nombre no puede exceder 100 caracteres';
-            isValid = false;
-          }
-          break;
-        case 'email':
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!value) {
-            errorMessage = 'El email es requerido';
-            isValid = false;
-          } else if (!emailRegex.test(value)) {
-            errorMessage = 'Ingresa un email válido';
-            isValid = false;
-          }
-          break;
-        case 'message':
-          if (!value) {
-            errorMessage = 'El mensaje es requerido';
-            isValid = false;
-          } else if (value.length < 10) {
-            errorMessage = 'El mensaje debe tener al menos 10 caracteres';
-            isValid = false;
-          } else if (value.length > 5000) {
-            errorMessage = 'El mensaje no puede exceder 5000 caracteres';
-            isValid = false;
-          }
-          break;
-      }
-
-      if (!isValid) {
-        errorElement.textContent = errorMessage;
-        errorElement.classList.add('show');
-        field.style.borderColor = '#e74c3c';
-      }
-
-      return isValid;
-    }
-
-    // Show form status message
-    function showFormStatus(message, type) {
-      formStatus.textContent = message;
-      formStatus.className = `form-status show ${type}`;
-      setTimeout(() => {
-        formStatus.classList.remove('show');
-      }, 5000);
-    }
-
-    // Set loading state
-    function setLoadingState(loading) {
-      submitBtn.disabled = loading;
-      if (loading) {
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline';
-      } else {
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
-      }
-    }
-
-    // Real-time validation
-    ['name', 'email', 'message'].forEach(fieldName => {
-      const field = document.getElementById(fieldName);
-      field.addEventListener('blur', () => validateField(field));
-      field.addEventListener('input', () => {
-        // Clear error on input
-        const errorElement = document.getElementById(fieldName + '-error');
-        if (errorElement.classList.contains('show')) {
-          errorElement.classList.remove('show');
-          field.style.borderColor = '';
-        }
-      });
-    });
-
-    // Form submission
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Validate all fields
-      const nameField = document.getElementById('name');
-      const emailField = document.getElementById('email');
-      const messageField = document.getElementById('message');
-      
-      const isNameValid = validateField(nameField);
-      const isEmailValid = validateField(emailField);
-      const isMessageValid = validateField(messageField);
-      
-      if (!isNameValid || !isEmailValid || !isMessageValid) {
-        showFormStatus('Por favor corrige los errores del formulario', 'error');
-        return;
-      }
-
-      // Submit form
-      setLoadingState(true);
-      
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-          showFormStatus('¡Mensaje enviado correctamente! Te responderé pronto.', 'success');
-          form.reset();
-          
-          // Track successful form submission
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_submit', {
-              form_name: 'contact_form',
-              form_status: 'success'
-            });
-          }
-        } else {
-          throw new Error(result.error || 'Error al enviar el mensaje');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        showFormStatus(
-          error.message || 'Error al enviar el mensaje. Por favor intenta de nuevo.',
-          'error'
-        );
-        
-        // Track form submission error
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_submit', {
-            form_name: 'contact_form',
-            form_status: 'error',
-            error_message: error.message
-          });
-        }
-      } finally {
-        setLoadingState(false);
-      }
-    });
-  })();
-
-  // Skills Animation
-  (() => {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    let skillsAnimated = false;
-
-    function animateSkills() {
-      if (skillsAnimated) return;
-      
-      skillBars.forEach((bar, index) => {
-        const width = bar.getAttribute('data-width');
-        setTimeout(() => {
-          bar.style.width = width;
-        }, index * 100);
-      });
-      
-      skillsAnimated = true;
-    }
-
-    // Intersection Observer for skills animation
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateSkills();
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      observer.observe(skillsSection);
-    }
-  })();
-
-  // Theme Toggle Functionality
-  (() => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    
-    // Get saved theme or detect system preference
-    function getInitialTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) return savedTheme;
-      
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    
-    // Apply theme
-    function applyTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      localStorage.setItem('theme', theme);
-      
-      // Track theme changes
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'theme_change', {
-          theme_mode: theme
-        });
-      }
-    }
-    
-    // Toggle theme
-    function toggleTheme() {
-      const currentTheme = html.getAttribute('data-theme') || getInitialTheme();
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-    }
-    
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
-    
-    // Initialize theme
-    applyTheme(getInitialTheme());
-    
-    // Event listener
-    themeToggle.addEventListener('click', toggleTheme);
-  })();
-  </script>
+    <script src="ai-animation.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
