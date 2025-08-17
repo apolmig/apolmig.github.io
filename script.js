@@ -44,10 +44,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Enhanced Intersection Observer for animations
+// Fast Intersection Observer for animations
 const observerOptions = {
-    threshold: 0.05,
-    rootMargin: '0px 0px 100px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px 50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -60,21 +60,23 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for scroll animations with staggered delays
+// Observe elements for scroll animations with minimal delays
 const animatedElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .contact-item, .merit-card');
 animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+    el.style.transform = 'translateY(15px)';
+    // Reduced delay and faster animation
+    const delay = Math.min(index * 0.02, 0.1); // Max 0.1s delay
+    el.style.transition = `opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
     observer.observe(el);
 });
 
-// Add CSS animations dynamically
+// Optimized CSS animations
 const animationStyles = `
     @keyframes slideInUp {
         from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(15px);
         }
         to {
             opacity: 1;
@@ -85,7 +87,7 @@ const animationStyles = `
     @keyframes fadeInScale {
         from {
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.98);
         }
         to {
             opacity: 1;
@@ -94,11 +96,11 @@ const animationStyles = `
     }
     
     .animate-in {
-        animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: slideInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     
     .scale-in {
-        animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: fadeInScale 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 `;
 
@@ -250,8 +252,8 @@ const rippleStyles = `
     
     .section-reveal {
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(15px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .section-reveal.visible {
@@ -275,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.animationDelay = `${index * 0.2}s`;
     });
     
-    // Smooth section reveals
+    // Fast section reveals
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
         section.classList.add('section-reveal');
@@ -287,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.05, rootMargin: '0px 0px 150px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px 75px 0px' });
     
     sections.forEach(section => {
         sectionObserver.observe(section);
@@ -310,7 +312,7 @@ function typewriterEffect() {
     const titleElement = document.querySelector('.hero-title');
     if (!titleElement) return;
     
-    const originalText = "AI Leadership for Organizational Transformation";
+    const originalText = "Driving AI Innovation in Organizations Worldwide";
     titleElement.textContent = '';
     
     let i = 0;
@@ -321,7 +323,7 @@ function typewriterEffect() {
         } else {
             clearInterval(timer);
         }
-    }, 80);
+    }, 60);
 }
 
 // Initialize typewriter effect after a short delay
