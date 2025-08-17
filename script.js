@@ -44,10 +44,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Fast Intersection Observer for animations
+// Ultra-fast Intersection Observer for animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px 50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px 200px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -60,14 +60,14 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for scroll animations with minimal delays
+// Observe elements for instant scroll animations
 const animatedElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .contact-item, .merit-card');
 animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(15px)';
-    // Reduced delay and faster animation
-    const delay = Math.min(index * 0.02, 0.1); // Max 0.1s delay
-    el.style.transition = `opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
+    el.style.transform = 'translateY(10px)';
+    // Ultra-fast animation with minimal delay
+    const delay = Math.min(index * 0.01, 0.05); // Max 0.05s delay
+    el.style.transition = `opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
     observer.observe(el);
 });
 
@@ -252,8 +252,8 @@ const rippleStyles = `
     
     .section-reveal {
         opacity: 0;
-        transform: translateY(15px);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(10px);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .section-reveal.visible {
@@ -266,8 +266,61 @@ const rippleStyleSheet = document.createElement('style');
 rippleStyleSheet.textContent = rippleStyles;
 document.head.appendChild(rippleStyleSheet);
 
+// Add preloader
+function addPreloader() {
+    const preloader = document.createElement('div');
+    preloader.id = 'preloader';
+    preloader.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #fef7ed 0%, #fff7ed 50%, #ffedd5 100%);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease;
+    `;
+    
+    const spinner = document.createElement('div');
+    spinner.style.cssText = `
+        width: 50px;
+        height: 50px;
+        border: 3px solid #fed7aa;
+        border-top: 3px solid #ea6d00;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    `;
+    
+    const spinKeyframes = document.createElement('style');
+    spinKeyframes.textContent = `
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(spinKeyframes);
+    
+    preloader.appendChild(spinner);
+    document.body.appendChild(preloader);
+    
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                if (preloader.parentNode) {
+                    preloader.parentNode.removeChild(preloader);
+                }
+            }, 500);
+        }, 500);
+    });
+}
+
 // Initialize enhanced animations
 document.addEventListener('DOMContentLoaded', () => {
+    addPreloader();
     enhanceNeuralNetwork();
     addEnhancedInteractions();
     
@@ -277,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.animationDelay = `${index * 0.2}s`;
     });
     
-    // Fast section reveals
+    // Instant section reveals
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
         section.classList.add('section-reveal');
@@ -289,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px 75px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px 300px 0px' });
     
     sections.forEach(section => {
         sectionObserver.observe(section);
@@ -365,12 +418,21 @@ function createScrollIndicator() {
         background: linear-gradient(90deg, #ea6d00, #f97316);
         z-index: 1001;
         transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(234, 109, 0, 0.5);
     `;
     document.body.appendChild(scrollIndicator);
     
+    let ticking = false;
+    
     window.addEventListener('scroll', () => {
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        scrollIndicator.style.width = scrollPercent + '%';
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                scrollIndicator.style.width = Math.min(scrollPercent, 100) + '%';
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
 }
 

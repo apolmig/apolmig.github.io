@@ -434,6 +434,13 @@ body {
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
+    background: var(--gradient-primary);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -445,12 +452,33 @@ body {
 .btn-secondary:hover {
     background: var(--primary-color);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
 }
 
 /* About Section */
 .about {
     padding: var(--spacing-4xl) 0;
     background: var(--background);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-glow);
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .about-content {
@@ -1093,98 +1121,125 @@ body {
 /* Mobile phones */
 @media (max-width: 480px) {
     .container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-lg);
     }
 
     .section-title {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.3;
     }
 
     .section-subtitle {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-lg);
+        line-height: 1.5;
     }
 
     .hero-title {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.3;
     }
     
     .hero-subtitle {
         font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-lg);
     }
     
     .hero-description {
         font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-xl);
+        line-height: 1.6;
     }
 
     .hero-stats {
-        flex-direction: column;
-        gap: var(--spacing-md);
-        margin-bottom: var(--spacing-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
     }
     
     .hero-features {
         flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-sm);
+        align-items: stretch;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
     }
     
     .feature {
         width: 100%;
-        max-width: 250px;
+        padding: var(--spacing-lg);
+        text-align: center;
     }
     
     .hero-badge {
         align-self: center;
+        margin-bottom: var(--spacing-xl);
     }
     
     .stat-number {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
     }
 
     .ai-visualization {
-        width: 280px;
-        height: 280px;
+        width: 320px;
+        height: 320px;
     }
     
     .merit-card,
     .project-card,
     .timeline-content {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-lg);
     }
     
     .merit-icon,
     .project-icon {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
     }
     
     .navbar {
-        padding: 0 var(--spacing-md);
+        padding: 0;
     }
     
     .nav-container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-lg);
+        height: 60px;
     }
     
     .timeline-item {
-        padding-left: var(--spacing-lg);
+        padding-left: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
     }
     
     .timeline-marker {
-        left: 4px;
-        width: 12px;
-        height: 12px;
+        left: 6px;
+        width: 14px;
+        height: 14px;
     }
     
     .timeline::before {
-        left: 9px;
+        left: 12px;
     }
     
     .btn {
         width: 100%;
         justify-content: center;
-        padding: var(--spacing-md) var(--spacing-lg);
+        padding: var(--spacing-lg) var(--spacing-xl);
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-actions {
+        gap: var(--spacing-lg);
+    }
+    
+    /* Improve touch targets */
+    .nav-link,
+    .project-link,
+    .contact-details a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
 }
 
