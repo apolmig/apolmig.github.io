@@ -61,7 +61,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for instant scroll animations
-const animatedElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .contact-item, .merit-card');
+const animatedElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .contact-item');
 animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(10px)';
@@ -69,6 +69,32 @@ animatedElements.forEach((el, index) => {
     const delay = Math.min(index * 0.01, 0.05); // Max 0.05s delay
     el.style.transition = `opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
     observer.observe(el);
+});
+
+// Special observer for merit cards with even faster triggering
+const fastObserverOptions = {
+    threshold: 0.01,
+    rootMargin: '0px 0px 400px 0px'
+};
+
+const fastObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, fastObserverOptions);
+
+const meritCards = document.querySelectorAll('.merit-card');
+meritCards.forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(10px)';
+    // Even faster animation for merit cards
+    const delay = Math.min(index * 0.005, 0.02); // Max 0.02s delay
+    el.style.transition = `opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
+    fastObserver.observe(el);
 });
 
 // Optimized CSS animations
