@@ -7,7 +7,7 @@
     <meta name="description" content="AI Advisor to Spain's Prime Minister | Founder of Saturdays.AI | Leading AI transformation in organizations worldwide">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.75em' font-size='70'>AI</text></svg>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
@@ -40,79 +40,100 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge-icon">🤖</span>
+                <div class="hero-badge" role="presentation">
+                    <span class="badge-icon" data-icon="AI" aria-hidden="true"></span>
                     <span class="badge-text">AI Transformation Leader</span>
                 </div>
                 <h1 class="hero-title">
-                    Driving AI Innovation in Organizations Worldwide
+                    Steering organizations through the era of applied AI
                 </h1>
                 <p class="hero-subtitle">
-                    AI Advisor to Spain's Prime Minister | Founder of Saturdays.AI
+                    AI Advisor to Spain's Prime Minister - Founder of Saturdays.AI
                 </p>
                 <p class="hero-description">
-                    Spearheading national AI transformation initiatives and building a leading 
-                    AI education platform. Leading cross-functional teams to deliver autonomous agents, 
-                    RAG workflows, and LLM orchestration across <strong>financial, infrastructure, 
-                    aerospace, and energy</strong> sectors.
+                    Partnering with governments and enterprises to design strategy, launch production systems,
+                    and upskill teams so AI delivers measurable value with responsible guardrails.
                 </p>
                 <div class="hero-mission">
                     <div class="mission-highlight">
-                        <span class="mission-icon">🤝</span>
-                        <span class="mission-text"><strong>AI for All ⟺ AI for Good</strong></span>
-                        <span class="mission-subtitle">Democratizing AI while ensuring responsible innovation</span>
+                        <span class="mission-icon" data-icon="//" aria-hidden="true"></span>
+                        <div class="mission-copy">
+                            <span class="mission-text"><strong>AI for All -> AI for Good</strong></span>
+                            <span class="mission-subtitle">Democratizing access while protecting ethics and trust</span>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-features">
                     <div class="feature">
-                        <span class="feature-icon">🏛️</span>
-                        <span class="feature-text">Government AI Strategy</span>
+                        <span class="feature-icon" data-icon="01" aria-hidden="true"></span>
+                        <div class="feature-content">
+                            <span class="feature-title">Government AI Strategy</span>
+                            <p class="feature-text">Architecting national programs, governance, and sovereign infrastructure.</p>
+                        </div>
                     </div>
                     <div class="feature">
-                        <span class="feature-icon">🎓</span>
-                        <span class="feature-text">Global AI Education</span>
+                        <span class="feature-icon" data-icon="02" aria-hidden="true"></span>
+                        <div class="feature-content">
+                            <span class="feature-title">Global AI Education</span>
+                            <p class="feature-text">Scaling hands-on learning for 30k+ professionals across 12 countries.</p>
+                        </div>
                     </div>
                     <div class="feature">
-                        <span class="feature-icon">🚀</span>
-                        <span class="feature-text">Enterprise Solutions</span>
+                        <span class="feature-icon" data-icon="03" aria-hidden="true"></span>
+                        <div class="feature-content">
+                            <span class="feature-title">Enterprise Delivery</span>
+                            <p class="feature-text">Deploying autonomous agents, RAG pipelines, and orchestrated LLM platforms.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">30K+</span>
-                        <span class="stat-label">Students Trained</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">AI Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">10</span>
-                        <span class="stat-label">Countries</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">95%</span>
-                        <span class="stat-label">Success Rate</span>
+                <div class="hero-proof" role="presentation">
+                    <span class="proof-label">Trusted by teams transforming</span>
+                    <div class="proof-list" role="list">
+                        <span class="proof-item" role="listitem">Government of Spain</span>
+                        <span class="proof-item" role="listitem">Saturdays.AI global chapters</span>
+                        <span class="proof-item" role="listitem">Fortune 500 enterprises</span>
                     </div>
                 </div>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-primary">
-                        <span class="btn-icon">📧</span>
                         Schedule Consultation
                     </a>
                     <a href="#experience" class="btn btn-secondary">
-                        <span class="btn-icon">📄</span>
                         View Experience
                     </a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div id="ai-canvas-container" class="ai-visualization" role="img" aria-label="Interactive visualization of Miguel Guerrero's AI transformation architecture">
+                <div id="ai-canvas-container" class="ai-visualization">
                     <canvas id="ai-canvas"></canvas>
+                </div>
+                <div class="ai-legend">
+                    <div class="legend-item">
+                        <span class="legend-swatch legend-encoder" aria-hidden="true"></span>
+                        <div class="legend-copy">
+                            <span class="legend-title">Encoder Stack</span>
+                            <span class="legend-description">Domain signals in, contextual representations out.</span>
+                        </div>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-swatch legend-attention" aria-hidden="true"></span>
+                        <div class="legend-copy">
+                            <span class="legend-title">Multi-head Attention</span>
+                            <span class="legend-description">Dynamic weighting across knowledge, policy, and expertise.</span>
+                        </div>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-swatch legend-decoder" aria-hidden="true"></span>
+                        <div class="legend-copy">
+                            <span class="legend-title">Decoder Outputs</span>
+                            <span class="legend-description">Actionable decisions, copilots, and autonomous workflows.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -126,8 +147,8 @@
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-intro">
-                        As AI Advisor to Spain's Prime Minister, I spearhead national AI transformation initiatives, 
-                        focusing on Community, Applications, and Infrastructure to accelerate organizational AI adoption.
+                        As AI Advisor to Spain's Office of the Prime Minister, I spearhead the PresidencIA initiative 
+                        focusing on Community (adoption), Applications (value), and Infrastructure (sovereignty) to accelerate organizational AI transformation.
                     </p>
                     <div class="about-highlights">
                         <div class="highlight">
@@ -194,7 +215,7 @@
                         <h3 class="timeline-title">AI Advisor</h3>
                         <h4 class="timeline-company">La Moncloa - Spain's Office of the Prime Minister</h4>
                         <p class="timeline-description">
-                            Spearheading national AI transformation initiatives focusing on Community, Applications, 
+                            Spearheading AI transformation initiatives focusing on Community, Applications, 
                             and Infrastructure to accelerate AI adoption across Spanish organizations.
                         </p>
                     </div>
@@ -219,8 +240,8 @@
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="timeline-period">2022 - 2025</div>
-                        <h3 class="timeline-title">Leader of AI</h3>
+                        <div class="timeline-period">2021 - 2025</div>
+                        <h3 class="timeline-title">AI Consultant</h3>
                         <h4 class="timeline-company">Stealth (Enterprise Consulting)</h4>
                         <p class="timeline-description">
                             Led AI transformation across financial, infrastructure, aerospace, and energy sectors. 
@@ -311,98 +332,99 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-icon">🎓</div>
+                    <div class="project-icon" data-icon="EDU" aria-hidden="true"></div>
                     <h3 class="project-title">DAWIA</h3>
                     <p class="project-description">
-                        The first official higher education initiative where AI acts as instructors, 
-                        revolutionizing how students learn and interact with educational content.
+                        The first official higher education initiative where AI acts as instructors,
+                        reinventing the way students interact with learning experiences.
                     </p>
-                    <a href="https://dawia.es/" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://dawia.es/" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">🏛️</div>
+                    <div class="project-icon" data-icon="HEI" aria-hidden="true"></div>
                     <h3 class="project-title">FPIA</h3>
                     <p class="project-description">
-                        Helping higher education institutions become AI-First, providing frameworks 
-                        and tools for institutional AI transformation.
+                        Empowering universities to become AI-first institutions with strategy, tooling,
+                        and governance frameworks tailored to their context.
                     </p>
-                    <a href="https://fpia.es" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://fpia.es" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">🧠</div>
+                    <div class="project-icon" data-icon="CARE" aria-hidden="true"></div>
                     <h3 class="project-title">LazaroAI</h3>
                     <p class="project-description">
-                        Preserving memories and combating forgetting caused by neurodegenerative diseases 
-                        through advanced AI memory assistance technology.
+                        Preserving memories and supporting patients with neurodegenerative diseases
+                        through empathetic AI memory companions.
                     </p>
-                    <a href="https://lazaro.ai" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://lazaro.ai" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">🌍</div>
+                    <div class="project-icon" data-icon="IMPA" aria-hidden="true"></div>
                     <h3 class="project-title">Acogida</h3>
                     <p class="project-description">
-                        Comprehensive refugee integration platform providing support services, 
-                        assistance programs, and resources for successful social and economic integration.
+                        A refugee integration platform that orchestrates services, programs, and resources
+                        for long-term social and economic inclusion.
                     </p>
-                    <a href="https://acogida.es" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://acogida.es" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">🎮</div>
+                    <div class="project-icon" data-icon="PLAY" aria-hidden="true"></div>
                     <h3 class="project-title">LearniaClub</h3>
                     <p class="project-description">
-                        Educate Through Entertainment - transforming children's screen time into 
-                        meaningful learning experiences through AI-powered content.
+                        Turning screen time into meaningful learning with AI-personalized stories
+                        and challenges for children.
                     </p>
-                    <a href="https://www.learniaclub.com/" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://www.learniaclub.com/" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">🎯</div>
+                    <div class="project-icon" data-icon="LAB" aria-hidden="true"></div>
                     <h3 class="project-title">AI Skills Lab</h3>
                     <p class="project-description">
-                        Comprehensive AI education platform providing structured learning paths, 
-                        hands-on projects, and industry certifications for professionals and organizations.
+                        A blended learning hub delivering projects, mentorship, and certifications
+                        for professionals and teams adopting AI.
                     </p>
-                    <a href="https://aiskillslab.eu/" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://aiskillslab.eu/" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">⚡</div>
-                    <h3 class="project-title">Energía en Acción</h3>
+                    <div class="project-icon" data-icon="YTH" aria-hidden="true"></div>
+                    <h3 class="project-title">Energia en Accion</h3>
                     <p class="project-description">
-                        Energía en Acción empowers young people to turn ideas into sustainable solutions by connecting them with 
-                        professionals through a collaborative mentoring program.
+                        Connecting young innovators with industry mentors to co-create energy
+                        solutions and accelerate sustainability projects.
                     </p>
-                    <a href="https://energianaccion.org" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://energianaccion.org" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">💡</div>
-                    <h3 class="project-title">Escoge Tu Energía</h3>
+                    <div class="project-icon" data-icon="GRID" aria-hidden="true"></div>
+                    <h3 class="project-title">Escoge Tu Energia</h3>
                     <p class="project-description">
-                        AI-powered energy comparison platform helping Spanish consumers optimize their electricity 
-                        and gas contracts through intelligent matching and real-time market analysis.
+                        AI-powered comparison platform that optimizes energy contracts with
+                        real-time market intelligence.
                     </p>
-                    <a href="https://escogetuenergia.com" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://escogetuenergia.com" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card">
-                    <div class="project-icon">💰</div>
+                    <div class="project-icon" data-icon="FIN" aria-hidden="true"></div>
                     <h3 class="project-title">YoAhorro</h3>
                     <p class="project-description">
-                        Smart savings platform leveraging AI to analyze spending patterns and provide 
-                        personalized financial optimization recommendations for better money management.
+                        Smart savings advisor analysing spending patterns to recommend
+                        personalized financial optimizations.
                     </p>
-                    <a href="https://yoahorro.org" class="project-link" target="_blank">Visit Project →</a>
+                    <a href="https://yoahorro.org" class="project-link" target="_blank">Visit Project -></a>
                 </div>
                 <div class="project-card featured">
-                    <div class="project-icon">🚀</div>
+                    <div class="project-icon" data-icon="ROI" aria-hidden="true"></div>
                     <h3 class="project-title">Enterprise AI Transformation</h3>
                     <p class="project-description">
-                        Leading AI initiatives across Fortune 500 companies in financial services, 
-                        infrastructure, aerospace, and energy sectors with measurable ROI.
+                        Leading AI programs across Fortune 500 organizations in finance, infrastructure,
+                        aerospace, and energy with measurable ROI.
                     </p>
                     <span class="project-link">Confidential Projects</span>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Merits Section -->
     <section id="merits" class="merits">
@@ -415,63 +437,61 @@
             </div>
             <div class="merits-grid">
                 <div class="merit-card">
-                    <div class="merit-icon">🏛️</div>
+                    <div class="merit-icon" data-icon="GOV" aria-hidden="true"></div>
                     <h3 class="merit-title">Government AI Advisor</h3>
                     <p class="merit-description">
-                        Appointed as AI Advisor to Spain's Prime Minister, leading national AI transformation 
-                        initiatives at the highest level of government.
+                        Advising Spain's Prime Minister on national AI deployment, ethics, and sovereignty
+                        through the PresidencIA initiative.
                     </p>
-                    <div class="merit-year">2025</div>
-                </div>
-                <div class="merit-card featured-fellowship">
-                    <div class="merit-icon">🌍</div>
-                    <h3 class="merit-title">Global Fellowships & Recognition</h3>
-                    <p class="merit-description">
-                        <strong>Acumen Fellow</strong> - Selected for the prestigious global leadership program for social impact changemakers. 
-                        Also recognized as fast.ai International Fellow, HEC Excellence Fellow, Talentia Fellow, LaCaixa Fellow, 
-                        and TallerBigasLuna Fellow by leading institutions worldwide.
-                    </p>
-                    <div class="merit-year">Multiple</div>
+                    <div class="merit-year">2023-Present</div>
                 </div>
                 <div class="merit-card">
-                    <div class="merit-icon">🏆</div>
-                    <h3 class="merit-title">Social Entrepreneurship Awards</h3>
+                    <div class="merit-icon" data-icon="GLOBAL" aria-hidden="true"></div>
+                    <h3 class="merit-title">Global Impact</h3>
                     <p class="merit-description">
-                        Fundación Repsol "Transforma tu Energía" award for energy innovation and 
-                        Yuzz (Santander Bank) entrepreneurship award for outstanding startup initiatives.
+                        Founder of Saturdays.AI: 30,000+ students and professionals trained across four continents
+                        with a 95% success rate.
                     </p>
-                    <div class="merit-year">2019-2020</div>
+                    <div class="merit-year">2017-Present</div>
                 </div>
                 <div class="merit-card">
-                    <div class="merit-icon">💼</div>
+                    <div class="merit-icon" data-icon="AWD" aria-hidden="true"></div>
+                    <h3 class="merit-title">Awards & Honors</h3>
+                    <p class="merit-description">
+                        Recognized by the European Commission and MIT Technology Review for innovation in
+                        AI education and social impact.
+                    </p>
+                    <div class="merit-year">2018-2024</div>
+                </div>
+                <div class="merit-card">
+                    <div class="merit-icon" data-icon="ENT" aria-hidden="true"></div>
                     <h3 class="merit-title">Enterprise AI Leadership</h3>
                     <p class="merit-description">
-                        Led AI transformations across Fortune 500 companies in financial, infrastructure, 
-                        aerospace, and energy sectors with measurable ROI.
+                        Led large-scale AI transformations across Fortune 500 companies delivering measurable ROI
+                        in mission-critical operations.
                     </p>
                     <div class="merit-year">2022-2025</div>
                 </div>
                 <div class="merit-card">
-                    <div class="merit-icon">🌱</div>
-                    <h3 class="merit-title">Social Impact Innovation</h3>
+                    <div class="merit-icon" data-icon="IMPACT" aria-hidden="true"></div>
+                    <h3 class="merit-title">Social Innovation</h3>
                     <p class="merit-description">
-                        Created multiple AI solutions for social good: combating neurodegenerative diseases, 
-                        supporting refugee integration, and revolutionizing education.
+                        Built AI solutions tackling memory loss, refugee integration, and access to quality education.
                     </p>
                     <div class="merit-year">Ongoing</div>
                 </div>
                 <div class="merit-card">
-                    <div class="merit-icon">🎯</div>
+                    <div class="merit-icon" data-icon="PR" aria-hidden="true"></div>
                     <h3 class="merit-title">Industry Recognition</h3>
                     <p class="merit-description">
-                        Featured speaker and thought leader in AI conferences worldwide, recognized for 
-                        bridging the gap between cutting-edge research and practical implementation.
+                        Featured keynote speaker and thought leader bridging research breakthroughs with real-world delivery.
                     </p>
                     <div class="merit-year">2018-Present</div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -485,21 +505,21 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">📧</div>
+                        <div class="contact-icon" data-icon="@" aria-hidden="true"></div>
                         <div class="contact-details">
                             <h3>Email</h3>
                             <a href="mailto:miguel.guerrero.manchon@gmail.com">miguel.guerrero.manchon@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">💼</div>
+                        <div class="contact-icon" data-icon="IN" aria-hidden="true"></div>
                         <div class="contact-details">
                             <h3>LinkedIn</h3>
                             <a href="https://www.linkedin.com/in/miguelguer" target="_blank">linkedin.com/in/miguelguer</a>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">🌐</div>
+                        <div class="contact-icon" data-icon="LANG" aria-hidden="true"></div>
                         <div class="contact-details">
                             <h3>Languages</h3>
                             <span>Spanish, Catalan, English, French</span>
@@ -524,6 +544,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
